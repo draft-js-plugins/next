@@ -1,0 +1,9 @@
+{
+	"devDependencies": {
+		"lerna": "^2.11.0"
+	},
+	"dependencies": {
+		"flow-bin": "^0.80.0",
+		"flow-typed": "^2.5.1"
+	}
+}
