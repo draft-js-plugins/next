@@ -1,5 +1,9 @@
 # draft-js-plugins@next
 
+# DISCLAIMER: This project isn't usable yet
+
+This is at an experimental stage, mostly this project isn't complete and ready for use. If you're interested in participating, whether it's code or just debate, please open an issue, hit me up on twitter or the [draft js slack channel](https://draftjs.herokuapp.com/)
+
 ## Rationale - A component based architecture
 
 Draft js plugins is great. But currently has a bunch of problems, some of which are entirely our own doing, building a plugin system that does more than it should.
