@@ -1,6 +1,6 @@
 {
   "name": "djs-autocomplete",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "Autocomplete plugin",
   "author": "juliankrispel",
   "license": "MIT",
@@ -18,7 +18,7 @@
     "deploy": "gh-pages -d example/build"
   },
   "dependencies": {
-    "djs-editor": "^0.0.1",
+    "djs-editor": "^0.1.0",
     "react-text-selection-popover": "^1.1.1"
   },
   "peerDependencies": {
