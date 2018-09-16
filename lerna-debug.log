@@ -1,0 +1,234 @@
+0 silly input [ 'publish' ]
+1 silly flags { _: [ 'publish' ], 'reject-cycles': false, rejectCycles: false }
+2 verbose rootPath /Users/juliiankrispel/projects/draft-js-plugins-next
+3 info version 2.11.0
+4 silly isInitialized
+5 silly isInitialized true
+6 silly existsSync /Users/juliiankrispel/projects/draft-js-plugins-next/VERSION
+7 silly initialize attempt
+8 info current version 0.0.0
+9 silly isDetachedHead
+10 silly getCurrentBranch
+11 verbose getCurrentBranch master
+12 verbose isDetachedHead false
+13 silly getCurrentBranch
+14 verbose getCurrentBranch master
+15 silly getUpdates
+16 info Checking for updated packages...
+17 silly hasTags
+18 verbose hasTags false
+19 info Comparing with initial commit.
+20 verbose updated djs-autocomplete
+21 verbose updated djs-buttons
+22 verbose updated djs-editor
+23 verbose updated djs-emoji
+24 info Checking for prereleased packages...
+25 silly collectDependents
+26 silly isPackageDependentOf djs-autocomplete djs-autocomplete
+27 silly isPackageDependentOf djs-editor djs-autocomplete
+28 silly isPackageDependentOf djs-autocomplete djs-buttons
+29 silly isPackageDependentOf djs-editor djs-buttons
+30 silly isPackageDependentOf djs-autocomplete djs-editor
+31 verbose dependent djs-autocomplete depends on djs-editor
+32 silly isPackageDependentOf djs-autocomplete djs-emoji
+33 silly isPackageDependentOf djs-editor djs-emoji
+34 silly isPackageDependentOf djs-buttons djs-autocomplete
+35 silly isPackageDependentOf djs-buttons djs-buttons
+36 silly isPackageDependentOf djs-buttons djs-editor
+37 silly isPackageDependentOf djs-buttons djs-emoji
+38 silly isPackageDependentOf djs-editor djs-autocomplete
+39 silly isPackageDependentOf djs-editor djs-buttons
+40 silly isPackageDependentOf djs-editor djs-editor
+41 silly isPackageDependentOf djs-editor djs-emoji
+42 silly isPackageDependentOf djs-emoji djs-autocomplete
+43 silly isPackageDependentOf djs-emoji djs-buttons
+44 silly isPackageDependentOf djs-emoji djs-editor
+45 silly isPackageDependentOf djs-emoji djs-emoji
+46 silly collectUpdates
+47 verbose has filtered update djs-autocomplete
+48 verbose has filtered update djs-buttons
+49 verbose has filtered update djs-editor
+50 verbose has filtered update djs-emoji
+51 silly initialize success
+52 silly execute attempt
+53 silly addFile /Users/juliiankrispel/projects/draft-js-plugins-next/lerna.json
+54 silly runScriptSync preversion undefined
+55 silly runScriptSync preversion djs-autocomplete
+56 silly runScriptSync version djs-autocomplete
+57 silly runScriptSync preversion djs-buttons
+58 silly runScriptSync version djs-buttons
+59 silly runScriptSync preversion djs-editor
+60 silly runScriptSync version djs-editor
+61 silly runScriptSync preversion djs-emoji
+62 silly runScriptSync version djs-emoji
+63 silly runScriptSync version undefined
+64 silly addFile /Users/juliiankrispel/projects/draft-js-plugins-next/packages/djs-autocomplete/package.json
+65 silly addFile /Users/juliiankrispel/projects/draft-js-plugins-next/packages/djs-buttons/package.json
+66 silly addFile /Users/juliiankrispel/projects/draft-js-plugins-next/packages/djs-editor/package.json
+67 silly addFile /Users/juliiankrispel/projects/draft-js-plugins-next/packages/djs-emoji/package.json
+68 silly commit v0.0.1
+69 verbose commit [ 'commit', '--no-verify', '-m', 'v0.0.1' ]
+70 silly addTag v0.0.1
+71 silly runScriptSync postversion djs-autocomplete
+72 silly runScriptSync postversion djs-buttons
+73 silly runScriptSync postversion djs-editor
+74 silly runScriptSync postversion djs-emoji
+75 silly runScriptSync postversion undefined
+76 info publish Publishing packages to npm...
+77 silly existsSync /Users/juliiankrispel/projects/draft-js-plugins-next/packages/djs-autocomplete/scripts/prepublish.js
+78 verbose execScript No prepublish script found at /Users/juliiankrispel/projects/draft-js-plugins-next/packages/djs-autocomplete/scripts/prepublish.js
+79 silly existsSync /Users/juliiankrispel/projects/draft-js-plugins-next/packages/djs-buttons/scripts/prepublish.js
+80 verbose execScript No prepublish script found at /Users/juliiankrispel/projects/draft-js-plugins-next/packages/djs-buttons/scripts/prepublish.js
+81 silly existsSync /Users/juliiankrispel/projects/draft-js-plugins-next/packages/djs-editor/scripts/prepublish.js
+82 verbose execScript No prepublish script found at /Users/juliiankrispel/projects/draft-js-plugins-next/packages/djs-editor/scripts/prepublish.js
+83 silly existsSync /Users/juliiankrispel/projects/draft-js-plugins-next/packages/djs-emoji/scripts/prepublish.js
+84 verbose execScript No prepublish script found at /Users/juliiankrispel/projects/draft-js-plugins-next/packages/djs-emoji/scripts/prepublish.js
+85 verbose publishing djs-buttons
+86 silly publishTaggedInDir latest djs-buttons
+87 silly getExecOpts { cwd: '/Users/juliiankrispel/projects/draft-js-plugins-next/packages/djs-buttons' }
+88 verbose publishing djs-editor
+89 silly publishTaggedInDir latest djs-editor
+90 silly getExecOpts { cwd: '/Users/juliiankrispel/projects/draft-js-plugins-next/packages/djs-editor' }
+91 verbose publishing djs-emoji
+92 silly publishTaggedInDir latest djs-emoji
+93 silly getExecOpts { cwd: '/Users/juliiankrispel/projects/draft-js-plugins-next/packages/djs-emoji' }
+94 error publish Retrying failed publish: djs-buttons
+95 verbose publish error undefined
+96 verbose publishing djs-buttons
+97 silly publishTaggedInDir latest djs-buttons
+98 silly getExecOpts { cwd: '/Users/juliiankrispel/projects/draft-js-plugins-next/packages/djs-buttons' }
+99 error publish Retrying failed publish: djs-emoji
+100 verbose publish error undefined
+101 verbose publishing djs-emoji
+102 silly publishTaggedInDir latest djs-emoji
+103 silly getExecOpts { cwd: '/Users/juliiankrispel/projects/draft-js-plugins-next/packages/djs-emoji' }
+104 error publish Retrying failed publish: djs-editor
+105 verbose publish error undefined
+106 verbose publishing djs-editor
+107 silly publishTaggedInDir latest djs-editor
+108 silly getExecOpts { cwd: '/Users/juliiankrispel/projects/draft-js-plugins-next/packages/djs-editor' }
+109 error publish Retrying failed publish: djs-buttons
+110 verbose publish error undefined
+111 verbose publishing djs-buttons
+112 silly publishTaggedInDir latest djs-buttons
+113 silly getExecOpts { cwd: '/Users/juliiankrispel/projects/draft-js-plugins-next/packages/djs-buttons' }
+114 error publish Retrying failed publish: djs-emoji
+115 verbose publish error undefined
+116 verbose publishing djs-emoji
+117 silly publishTaggedInDir latest djs-emoji
+118 silly getExecOpts { cwd: '/Users/juliiankrispel/projects/draft-js-plugins-next/packages/djs-emoji' }
+119 error publish Retrying failed publish: djs-editor
+120 verbose publish error undefined
+121 verbose publishing djs-editor
+122 silly publishTaggedInDir latest djs-editor
+123 silly getExecOpts { cwd: '/Users/juliiankrispel/projects/draft-js-plugins-next/packages/djs-editor' }
+124 error publish Retrying failed publish: djs-buttons
+125 verbose publish error undefined
+126 verbose publishing djs-buttons
+127 silly publishTaggedInDir latest djs-buttons
+128 silly getExecOpts { cwd: '/Users/juliiankrispel/projects/draft-js-plugins-next/packages/djs-buttons' }
+129 error publish Retrying failed publish: djs-emoji
+130 verbose publish error undefined
+131 verbose publishing djs-emoji
+132 silly publishTaggedInDir latest djs-emoji
+133 silly getExecOpts { cwd: '/Users/juliiankrispel/projects/draft-js-plugins-next/packages/djs-emoji' }
+134 error publish Retrying failed publish: djs-editor
+135 verbose publish error undefined
+136 verbose publishing djs-editor
+137 silly publishTaggedInDir latest djs-editor
+138 silly getExecOpts { cwd: '/Users/juliiankrispel/projects/draft-js-plugins-next/packages/djs-editor' }
+139 error publish Retrying failed publish: djs-buttons
+140 verbose publish error undefined
+141 verbose publishing djs-buttons
+142 silly publishTaggedInDir latest djs-buttons
+143 silly getExecOpts { cwd: '/Users/juliiankrispel/projects/draft-js-plugins-next/packages/djs-buttons' }
+144 error publish Retrying failed publish: djs-emoji
+145 verbose publish error undefined
+146 verbose publishing djs-emoji
+147 silly publishTaggedInDir latest djs-emoji
+148 silly getExecOpts { cwd: '/Users/juliiankrispel/projects/draft-js-plugins-next/packages/djs-emoji' }
+149 error publish Retrying failed publish: djs-editor
+150 verbose publish error undefined
+151 verbose publishing djs-editor
+152 silly publishTaggedInDir latest djs-editor
+153 silly getExecOpts { cwd: '/Users/juliiankrispel/projects/draft-js-plugins-next/packages/djs-editor' }
+154 error publish Ran out of retries while publishing djs-buttons Error: Command failed: npm publish --tag latest
+154 error publish
+154 error publish src/index.js → dist/index.js, dist/index.es.js...
+154 error publish created dist/index.js, dist/index.es.js in 1.1s
+154 error publish npm notice
+154 error publish npm notice 📦  djs-buttons@0.0.1
+154 error publish npm notice === Tarball Contents ===
+154 error publish npm notice 1.7kB package.json
+154 error publish npm notice 587B  README.md
+154 error publish npm notice 3.3kB dist/index.es.js
+154 error publish npm notice 3.5kB dist/index.js
+154 error publish npm notice === Tarball Details ===
+154 error publish npm notice name:          djs-buttons
+154 error publish npm notice version:       0.0.1
+154 error publish npm notice package size:  2.5 kB
+154 error publish npm notice unpacked size: 9.2 kB
+154 error publish npm notice shasum:        9f0ee72c0732a4584286ddbbc2152691beffa14c
+154 error publish npm notice integrity:     sha512-q7IcOOme1wR7N[...]p1F4wvT/xg9hg==
+154 error publish npm notice total files:   4
+154 error publish npm notice
+154 error publish npm ERR! publish Failed PUT 401
+154 error publish npm ERR! code E401
+154 error publish npm ERR! This operation requires a one-time password from your authenticator.
+154 error publish npm ERR! You can provide a one-time password by passing --otp=<code> to the command you ran.
+154 error publish npm ERR! If you already provided a one-time password then it is likely that you either typoed
+154 error publish npm ERR! it, or it timed out. Please try again.
+154 error publish
+154 error publish npm ERR! A complete log of this run can be found in:
+154 error publish npm ERR!     /Users/juliiankrispel/.npm/_logs/2018-09-16T10_47_31_774Z-debug.log
+154 error publish
+154 error publish > djs-buttons@0.0.1 prepare .
+154 error publish > yarn run build
+154 error publish
+154 error publish yarn run v1.5.1
+154 error publish $ rollup -c
+154 error publish Done in 2.76s.
+154 error publish
+154 error publish     at Promise.all.then.arr (/Users/juliiankrispel/.nvm/versions/node/v8.10.0/lib/node_modules/lerna/node_modules/execa/index.js:236:11)
+154 error publish     at <anonymous>
+154 error publish     at process._tickCallback (internal/process/next_tick.js:188:7)
+155 error execute callback with error
+156 error Error: Command failed: npm publish --tag latest
+156 error
+156 error src/index.js → dist/index.js, dist/index.es.js...
+156 error created dist/index.js, dist/index.es.js in 1.1s
+156 error npm notice
+156 error npm notice 📦  djs-buttons@0.0.1
+156 error npm notice === Tarball Contents ===
+156 error npm notice 1.7kB package.json
+156 error npm notice 587B  README.md
+156 error npm notice 3.3kB dist/index.es.js
+156 error npm notice 3.5kB dist/index.js
+156 error npm notice === Tarball Details ===
+156 error npm notice name:          djs-buttons
+156 error npm notice version:       0.0.1
+156 error npm notice package size:  2.5 kB
+156 error npm notice unpacked size: 9.2 kB
+156 error npm notice shasum:        9f0ee72c0732a4584286ddbbc2152691beffa14c
+156 error npm notice integrity:     sha512-q7IcOOme1wR7N[...]p1F4wvT/xg9hg==
+156 error npm notice total files:   4
+156 error npm notice
+156 error npm ERR! publish Failed PUT 401
+156 error npm ERR! code E401
+156 error npm ERR! This operation requires a one-time password from your authenticator.
+156 error npm ERR! You can provide a one-time password by passing --otp=<code> to the command you ran.
+156 error npm ERR! If you already provided a one-time password then it is likely that you either typoed
+156 error npm ERR! it, or it timed out. Please try again.
+156 error
+156 error npm ERR! A complete log of this run can be found in:
+156 error npm ERR!     /Users/juliiankrispel/.npm/_logs/2018-09-16T10_47_31_774Z-debug.log
+156 error
+156 error > djs-buttons@0.0.1 prepare .
+156 error > yarn run build
+156 error
+156 error yarn run v1.5.1
+156 error $ rollup -c
+156 error Done in 2.76s.
+156 error
+156 error     at Promise.all.then.arr (/Users/juliiankrispel/.nvm/versions/node/v8.10.0/lib/node_modules/lerna/node_modules/execa/index.js:236:11)
+156 error     at <anonymous>
