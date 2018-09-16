@@ -1,10 +1,10 @@
 {
   "name": "djs-editor",
-  "version": "1.0.0",
+  "version": "0.0.1",
   "description": "Draft Js Plugins Editor",
   "author": "juliankrispel",
   "license": "MIT",
-  "repository": "draft-js-plugins/djs-alpha",
+  "repository": "draft-js-plugins/next/packages/djs-editor",
   "main": "dist/index.js",
   "module": "dist/index.es.js",
   "jsnext:main": "dist/index.es.js",
