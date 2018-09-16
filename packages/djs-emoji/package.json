@@ -1,10 +1,10 @@
 {
-  "name": "djs-editor",
+  "name": "djs-emoji",
   "version": "0.0.1",
-  "description": "Draft Js Plugins Editor",
+  "description": "An emoji picker for draft-js-plugins, successor to draft-js-emoji-plugin",
   "author": "juliankrispel",
   "license": "MIT",
-  "repository": "draft-js-plugins/next/packages/djs-editor",
+  "repository": "draft-js-plugins/next",
   "main": "dist/index.js",
   "module": "dist/index.es.js",
   "jsnext:main": "dist/index.es.js",
@@ -18,11 +18,9 @@
     "deploy": "gh-pages -d example/build"
   },
   "dependencies": {
-    "draft-js": "^0.10.5"
+    "emoji-codex": "^1.0.3"
   },
   "peerDependencies": {
-    "draft-js": "^0.10.5",
-    "flow-bin": "^0.80.0",
     "prop-types": "^15.5.4",
     "react": "^15.0.0 || ^16.0.0",
     "react-dom": "^15.0.0 || ^16.0.0"
