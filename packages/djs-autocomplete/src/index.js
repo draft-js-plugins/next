@@ -2,33 +2,39 @@
 
 import React, { Component } from 'react'
 import { withEditorContext } from 'djs-editor'
-import Popover from 'react-text-selection-popover'
+import type { EditorState } from 'draft-js'
+import styles from './styles.css'
 
 type Props = {
   trigger: string | (textUntilCursor: string) => ?string,
-  renderSuggestion: ({ suggestion: any, onSelect: any => void }),
+  renderSuggestion?: ({ suggestion: any, onSelect: any => void }),
+  onSelect: (suggestion: any) => void,
+  onAutocomplete: (searchText: string) => void,
+  suggestions: Array<any>,
   pluginMethods: Object,
-  getSuggestions: (searchText: string) => Array<any> | Promise<Array<any>>,
 }
 
 type State = {
   isOpen: boolean,
   isSearching: boolean,
   suggestions: Array<any>,
+  focusedIndex: number,
 }
 
 class Suggestions extends Component<Props, State> {
   static defaultProps = {
-    trigger: '@',
-    renderSuggestion: ({ suggestion, onSelect }) => {
-      return <li key={suggestion.value} onMouseDown={() => onSelect(suggestion)}>
+    renderSuggestion: ({ suggestion, isFocused, onSelect }) => {
+      const classNames = [styles.suggestion]
+      if (isFocused) classNames.push(styles.suggestionFocused)
+      return <span className={`${classNames.join(' ')}`} onMouseDown={() => onSelect(suggestion)}>
         {suggestion.label}
-      </li>
+      </span>
     }
   }
 
   state = {
     isOpen: false,
+    focusedIndex: 0,
     isSearching: false,
     suggestions: []
   }
@@ -37,43 +43,25 @@ class Suggestions extends Component<Props, State> {
     const { pluginMethods: { registerPlugin } } = this.props
 
     this._unregister = registerPlugin({
-      onChange: this.onChange
+      onChange: this.onChange,
+      onBlur: this.onBlur,
+      keyBindingFn: this.keyBindingFn
     })
   }
 
+  onBlur = () => this.setState({ isOpen: false })
+
   componentWillUnmount() {
+
     this._unregister()
   }
 
-  selectSuggestion = (suggestion) => {
-    console.log('select suggestion', suggestion)
+  keyBindingFn = (e: SyntheticKeyboardEvent) => {
+    console.log('keybinding fn', e)
   }
 
-  openSuggestions = (searchText) => {
-    const result = this.props.getSuggestions(searchText)
-    if (result.then != null) {
-      this.setState({
-        isOpen: true,
-        isSearching: true
-      })
-      result.then(suggestions => this.setState({
-        isSearching: false,
-        suggestions
-      }))
-        .catch(err => this.setState({
-          isSearching: false,
-          error: err.message
-        }))
-    } else if (result != null) {
-      this.setState({
-        isOpen: true,
-        suggestions: result
-      })
-    }
-  }
-
-  onChange = (editorState) => {
-    const { trigger } = this.props
+  onChange = (editorState: EditorState) => {
+    const { trigger, onAutocomplete } = this.props
     const selection = editorState.getSelection()
 
     if (!selection.isCollapsed()) {
@@ -85,48 +73,44 @@ class Suggestions extends Component<Props, State> {
       .getText()
       .slice(0, selection.getStartOffset())
 
+    let searchText = null
+
     if (typeof trigger === 'string') {
       const lastWord = textUntilCursor.split(/\s/).slice(-1)[0]
-
-      if (lastWord != null && lastWord[0] === trigger) {
-        this.openSuggestions(lastWord.slice(1))
-      } else {
-        this.setState({ isOpen: false })
+      if (lastWord[0] === '@') {
+        searchText = lastWord.slice(1)
       }
     } else if (typeof trigger === 'function') {
-      const match = trigger(textUntilCursor)
+      searchText = trigger(textUntilCursor)
+    }
 
-      if (match != null) {
-        this.openSuggestions(match)
-      } else {
-        this.setState({ isOpen: false })
-      }
+    if (searchText != null) {
+      this.setState({ isOpen: true })
+      onAutocomplete(searchText)
     } else {
       this.setState({ isOpen: false })
     }
   }
 
-  renderSuggestions = () => {
-    if (this.state.isOpen === true && this.state.isSearching) {
-      return <div>Searching ...</div>
-    } else if (this.state.isOpen === true && this.state.suggestions.length === 0) {
-      return <div>No results ...</div>
-    } else if (this.state.isOpen === true && this.state.suggestions.length > 0) {
-      return <ul>
-        {this.state.suggestions.map(suggestion =>
-          this.props.renderSuggestion({
-            suggestion,
-            onSelect: this.selectSuggestion
-          })
-        )}
+  render() {
+    const { suggestions, renderSuggestion, onSelect } = this.props
+    const { isOpen, focusedIndex } = this.state
+
+    if (isOpen === true && suggestions.length > 0) {
+      return <ul className={styles.ul}>
+        {suggestions.map((suggestion, index) => (
+          <li className={styles.li} key={`autocomplete-option-${index}`}>
+            {renderSuggestion({
+              isFocused: focusedIndex === index,
+              suggestion,
+              onSelect
+            })}
+          </li>
+        ))}
       </ul>
     }
-  }
 
-  render() {
-    return this.state.isOpen === true && <Popover isOpen={true}>
-      {this.renderSuggestions()}
-    </Popover>
+    return null
   }
 }
 

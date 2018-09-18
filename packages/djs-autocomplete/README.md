@@ -12,11 +12,32 @@ npm install --save djs-autocomplete
 
 ## Usage
 
+```
+<Popover>
+  <Autocomplete
+    trigger="@"
+    suggestions={this.state.suggestions}
+    onAutocomplete={searchText = this.filterSuggestions(searchText)}
+    onSelect={suggestion => this.insertMention(suggestion)}
+  />
+</Popover>
+```
+
+## Props
+
+```
+trigger: string | (textUntilCursor: string) => ?string,
+renderSuggestion?: ({ suggestion: any, onSelect: any => void }),
+getSuggestions: (searchText: string) => Array<any> | Promise<Array<any>>,
+```
+
+## Complete Example
+
 ```jsx
 import React, { Component } from 'react'
 import { EditorState } from 'draft-js';
 import { EditorContainer, Editor } from 'djs-editor'
-import AutocompletePlugin from 'djs-autocomplete'
+import Autocomplete from 'djs-autocomplete'
 
 class ExampleEmojiEditor extends Component {
   state = { editorState: EditoState.createEmpty()}
@@ -25,7 +46,7 @@ class ExampleEmojiEditor extends Component {
   render () {
     return (
       <EditorContainer editorState={editorState} onChange={this.onChange}>
-        <AutocompletePlugin />
+        <Autocomplete trigger="@" />
         <Editor />
       </EditorContainer>
     )

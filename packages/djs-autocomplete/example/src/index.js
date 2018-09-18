@@ -4,8 +4,8 @@ import ReactDOM from 'react-dom'
 import { EditorState } from 'draft-js'
 import { EditorContainer, Editor } from 'djs-editor'
 import Autocomplete from 'djs-autocomplete'
-
-// const Unstyled = <div style={{background: 'yellow'}} />
+import 'djs-autocomplete/dist/index.css'
+import './styles.css'
 
 const suggestions = [{
   label: 'Julian Krispel-Samsel',
@@ -17,10 +17,15 @@ const suggestions = [{
 
 class App extends Component {
   state = {
-    editorState: EditorState.createEmpty()
+    editorState: EditorState.createEmpty(),
+    suggestions: []
   }
 
-  getSuggestions = searchText => suggestions
+  setSuggestions = (searchText) => {
+    this.setState({
+      suggestions: suggestions.filter(item => item.label.includes(searchText))
+    })
+  }
 
   render () {
     return (
@@ -28,8 +33,14 @@ class App extends Component {
         <EditorContainer editorState={this.state.editorState} onChange={editorState => this.setState({ editorState })}>
           Hello
 
-          <Autocomplete getSuggestions={this.getSuggestions} />
           <Editor />
+
+          <Autocomplete
+            trigger='@'
+            onSelect={option => console.log('insert option', option)}
+            suggestions={this.state.suggestions}
+            onAutocomplete={this.setSuggestions}
+          />
         </EditorContainer>
       </div>
     )

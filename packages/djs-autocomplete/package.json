@@ -18,8 +18,7 @@
     "deploy": "gh-pages -d example/build"
   },
   "dependencies": {
-    "djs-editor": "^0.1.0",
-    "react-text-selection-popover": "^1.1.1"
+    "djs-editor": "^0.1.0"
   },
   "peerDependencies": {
     "prop-types": "^15.5.4",

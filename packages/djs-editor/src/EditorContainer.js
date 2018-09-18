@@ -1,12 +1,11 @@
 // @flow
+
 import React, { createContext, Component } from 'react'
-import Immutable from 'immutable'
 import Draft from 'draft-js'
+import { HANDLED } from './constants'
+import type { DraftEditorProps } from 'draft-js/lib/DraftEditorProps'
 
 const { CompositeDecorator, EditorState, DefaultDraftBlockRenderMap } = Draft
-
-const HANDLED = 'handled'
-const NOT_HANDLED = 'not-handled'
 
 export const Context = createContext({})
 
@@ -17,23 +16,29 @@ export const withConsumer = Comp => props => (
 const resolveDecorator = plugins => new CompositeDecorator(
   Array.from(plugins.values()).reduce((acc, plugin) => (
     Array.isArray(plugin.decorators)
-    ? ([
-      ...acc,
-      ...plugin.decorators
-    ])
-    : acc
+      ? ([
+        ...acc,
+        ...plugin.decorators
+      ])
+      : acc
   ), [])
 )
 
-export default class EditorContainer extends Component {
+type Props = DraftEditorProps
+
+type State = {
+  plugins: Map<number, Object>
+}
+
+export default class EditorContainer extends Component<Props, State> {
   static defaultProps = {
     customStyleMap: {},
-    blockRenderMap: DefaultDraftBlockRenderMap,
+    blockRenderMap: DefaultDraftBlockRenderMap
   }
 
   constructor(props) {
     super(props)
-    this.mapKey = 0;
+    this.mapKey = 0
   }
 
   state = {
@@ -63,9 +68,8 @@ export default class EditorContainer extends Component {
       ariaLabel,
       ariaLabelledBy,
       ariaMultiline,
-      webDriverTestID,
+      webDriverTestID
     } = props
-
 
     return {
       ...state,
@@ -94,7 +98,7 @@ export default class EditorContainer extends Component {
         ariaLabel,
         ariaLabelledBy,
         ariaMultiline,
-        webDriverTestID,
+        webDriverTestID
       }
     }
   }
@@ -103,25 +107,28 @@ export default class EditorContainer extends Component {
 
   resolveCustomStyleMap = () => Array.from(this.state.plugins.values()).reduce(
     (acc, plugin) => plugin.customStyleMap != null
-    ? {...acc, ...plugin.customStyleMap }
-    : acc,
+      ? {...acc, ...plugin.customStyleMap}
+      : acc,
     this.props.customStyleMap
   )
 
   resolveBlockRendererMap = () => Array.from(this.state.plugins.values()).reduce(
     (acc, plugin) => plugin.blockRenderMap != null
-    ? acc.merge(plugin.blockRenderMap)
-    : acc,
+      ? acc.merge(plugin.blockRenderMap)
+      : acc,
     this.props.blockRenderMap
   )
 
   setupEditorState = () => this.setState({
-    editorState: EditorState.set(this.state.editorState, { decorator: this.resolveDecorator()})
+    editorState: EditorState.set(
+      this.state.editorState,
+      {decorator: this.resolveDecorator()}
+    )
   })
 
   unregisterPlugin = (key) => {
     const { plugins } = this.state
-    this.setState({ plugins: plugins.delete(key)})
+    this.setState({plugins: plugins.delete(key)})
     this.setUpEditorState()
   }
 
@@ -138,9 +145,9 @@ export default class EditorContainer extends Component {
   }
 
   returnFirstTruthy = (methodName, ...args) => {
-    for (plugin in this.state.plugins) {
+    for (let plugin of this.state.plugins.values()) {
       if (plugin[methodName] != null) {
-        const _result = plugin[methodName](...args)
+        const result = plugin[methodName](...args)
         if (result) {
           return result
         }
@@ -149,9 +156,9 @@ export default class EditorContainer extends Component {
   }
 
   returnFirstHandled = (methodName, ...args) => {
-    for (plugin in this.state.plugins) {
+    for (let plugin of this.state.plugins.values()) {
       if (plugin[methodName] != null) {
-        const _result = plugin[methodName](...args)
+        const result = plugin[methodName](...args)
         if (result === HANDLED) {
           return result
         }
@@ -181,9 +188,9 @@ export default class EditorContainer extends Component {
         blockRenderMap: this.resolveBlockRendererMap(),
         editorState: this.state.editorState,
         blockRendererFn: (...args) => this.returnFirstTruthy('blockRendererFn', ...args),
-        keyBindingFn: (...args) => this.returnFirstTruthy('keyBindingFn', ...args),
         blockStyleFn: (...args) => this.returnFirstTruthy('blockStyleFn', ...args),
         customStyleFn: (...args) => this.returnFirstTruthy('customStyleFn', ...args),
+        keyBindingFn: (...args) => this.returnFirstTruthy('keyBindingFn', ...args),
         handleKeyCommand: (...args) => this.returnFirstHandled('handleKeyCommand', ...args),
         handleBeforeInput: (...args) => this.returnFirstHandled('handleBeforeInput', ...args),
         handlePastedText: (...args) => this.returnFirstHandled('handlePastedText', ...args),
@@ -193,7 +200,7 @@ export default class EditorContainer extends Component {
         handleReturn: (...args) => this.returnFirstHandled('handleReturn', ...args),
         onChange: this.onChange,
         onFocus: (...args) => this.eventCallback('onFocus', ...args),
-        onBlur: (...args) => this.eventCallback('onBlur', ...args),
+        onBlur: (...args) => this.eventCallback('onBlur', ...args)
       }
     }}>
       {this.props.children}

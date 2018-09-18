@@ -7,20 +7,10 @@ import Mentions from './Mentions'
 
 const Unstyled = <div style={{background: 'yellow'}} />
 
-const suggestions = [{
-  label: 'Julian Krispel-Samsel',
-  value: 'julian',
-}, {
-  label: 'Nik Graf',
-  value: 'nik',
-}]
-
 export default class App extends Component {
   state = {
     editorState: EditorState.createEmpty()
   }
-
-  getSuggestions = searchText => suggestions
 
   render () {
     return (
@@ -28,7 +18,11 @@ export default class App extends Component {
         <EditorContainer editorState={this.state.editorState} onChange={editorState => this.setState({ editorState })}>
           Hello
 
-          <Mentions getSuggestions={this.getSuggestions} />
+          <Plugin
+            handleKeyCommand={e => console.log('yo', e)}
+            handleBeforeInput={(e) => console.log('handle before input', e)}
+            keyBindingFn={(e) => { console.log('keybinding fn', e.key); }}
+          />
           <Editor />
         </EditorContainer>
       </div>

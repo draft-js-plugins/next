@@ -1,8 +1,18 @@
-/* add css styles here (optional) */
+.ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
 
-.test {
-  display: inline-block;
-  margin: 2em auto;
-  border: 2px solid #000;
-  font-size: 2em;
+.li {
+  padding: 0;
+  list-style-type: none;
+}
+
+.suggestion {
+  padding: 0 .5em;
+}
+
+.suggestionFocused {
+  background: teal;
 }
