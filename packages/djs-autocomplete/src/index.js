@@ -1,7 +1,7 @@
 // @flow
 
 import React, { Component } from 'react'
-import { withEditorContext } from 'djs-editor'
+import { withEditorContext, constants } from 'djs-editor'
 import type { EditorState } from 'draft-js'
 import styles from './styles.css'
 
@@ -18,7 +18,7 @@ type State = {
   isOpen: boolean,
   isSearching: boolean,
   suggestions: Array<any>,
-  focusedIndex: number,
+  selectedItem: number,
 }
 
 class Suggestions extends Component<Props, State> {
@@ -34,9 +34,13 @@ class Suggestions extends Component<Props, State> {
 
   state = {
     isOpen: false,
-    focusedIndex: 0,
-    isSearching: false,
-    suggestions: []
+    selectedItem: 0,
+    isSearching: false
+  }
+
+  constructor(props) {
+    super(props)
+    this.list = React.createRef()
   }
 
   componentDidMount() {
@@ -52,8 +56,31 @@ class Suggestions extends Component<Props, State> {
   onBlur = () => this.setState({ isOpen: false })
 
   componentWillUnmount() {
-
     this._unregister()
+  }
+
+  onArrowDown = () => {
+    if (this.state.isOpen && this.props.suggestions.length > 0) {
+      const selectedItem = this.state.selectedItem >= this.props.suggestions.length - 1
+        ? 0
+        : this.state.selectedItem + 1
+
+      this.setState({ selectedItem })
+      return constants.HANDLED
+    }
+    return constants.NOT_HANDLED
+  }
+
+  onArrowUp = () => {
+    if (this.state.isOpen && this.props.suggestions.length > 0) {
+      const selectedItem = this.state.selectedItem === 0
+        ? this.props.suggestions - 1
+        : this.state.selectedItem - 1
+
+      this.setState({ selectedItem })
+      return constants.HANDLED
+    }
+    return constants.NOT_HANDLED
   }
 
   keyBindingFn = (e: SyntheticKeyboardEvent) => {
@@ -94,14 +121,14 @@ class Suggestions extends Component<Props, State> {
 
   render() {
     const { suggestions, renderSuggestion, onSelect } = this.props
-    const { isOpen, focusedIndex } = this.state
+    const { isOpen, selectedItem } = this.state
 
     if (isOpen === true && suggestions.length > 0) {
-      return <ul className={styles.ul}>
+      return <ul ref={this.list} className={styles.ul}>
         {suggestions.map((suggestion, index) => (
           <li className={styles.li} key={`autocomplete-option-${index}`}>
             {renderSuggestion({
-              isFocused: focusedIndex === index,
+              isFocused: selectedItem === index,
               suggestion,
               onSelect
             })}

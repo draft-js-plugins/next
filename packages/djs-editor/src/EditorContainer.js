@@ -199,6 +199,12 @@ export default class EditorContainer extends Component<Props, State> {
         handleDrop: (...args) => this.returnFirstHandled('handleDrop', ...args),
         handleReturn: (...args) => this.returnFirstHandled('handleReturn', ...args),
         onChange: this.onChange,
+        onDownArrow: (...args) => this.eventCallback('onDownArrow', ...args),
+        onEscape: (...args) => this.eventCallback('onEscape', ...args),
+        onLeftArrow: (...args) => this.eventCallback('onLeftArrow', ...args),
+        onRightArrow: (...args) => this.eventCallback('onRightArrow', ...args),
+        onTab: (...args) => this.eventCallback('onTab', ...args),
+        onUpArrow: (...args) => this.eventCallback('onUpArrow', ...args),
         onFocus: (...args) => this.eventCallback('onFocus', ...args),
         onBlur: (...args) => this.eventCallback('onBlur', ...args)
       }
