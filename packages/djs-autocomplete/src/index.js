@@ -49,7 +49,9 @@ class Suggestions extends Component<Props, State> {
     this._unregister = registerPlugin({
       onChange: this.onChange,
       onBlur: this.onBlur,
-      keyBindingFn: this.keyBindingFn
+      onDownArrow: this.onDownArrow,
+      onUpArrow: this.onUpArrow,
+      handleReturn: this.handleReturn,
     })
   }
 
@@ -59,8 +61,18 @@ class Suggestions extends Component<Props, State> {
     this._unregister()
   }
 
-  onArrowDown = () => {
+  handleReturn = () => {
     if (this.state.isOpen && this.props.suggestions.length > 0) {
+      this.props.onSelect(this.props.suggestions[this.state.selectedItem])
+      return constants.HANDLED
+    }
+
+    return constants.NOT_HANDLED
+  }
+
+  onDownArrow = (e) => {
+    if (this.state.isOpen && this.props.suggestions.length > 0) {
+      e.preventDefault()
       const selectedItem = this.state.selectedItem >= this.props.suggestions.length - 1
         ? 0
         : this.state.selectedItem + 1
@@ -71,20 +83,17 @@ class Suggestions extends Component<Props, State> {
     return constants.NOT_HANDLED
   }
 
-  onArrowUp = () => {
+  onUpArrow = (e) => {
     if (this.state.isOpen && this.props.suggestions.length > 0) {
+      e.preventDefault()
       const selectedItem = this.state.selectedItem === 0
-        ? this.props.suggestions - 1
+        ? this.props.suggestions.length - 1
         : this.state.selectedItem - 1
 
       this.setState({ selectedItem })
       return constants.HANDLED
     }
     return constants.NOT_HANDLED
-  }
-
-  keyBindingFn = (e: SyntheticKeyboardEvent) => {
-    console.log('keybinding fn', e)
   }
 
   onChange = (editorState: EditorState) => {
