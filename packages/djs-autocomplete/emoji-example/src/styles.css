@@ -1,0 +1,14 @@
+body {
+  font-family: sans-serif;
+}
+
+.list__item {
+  padding: .5em;
+  color: #888;
+  background: #fff;
+}
+
+.list__item--focused {
+  color: #000;
+  background: #f9f9f9;
+}

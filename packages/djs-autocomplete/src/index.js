@@ -23,10 +23,10 @@ type State = {
 
 class Suggestions extends Component<Props, State> {
   static defaultProps = {
-    renderSuggestion: ({ suggestion, isFocused, onSelect }) => {
+    renderSuggestion: ({ suggestion, isFocused }) => {
       const classNames = [styles.suggestion]
       if (isFocused) classNames.push(styles.suggestionFocused)
-      return <span className={`${classNames.join(' ')}`} onMouseDown={() => onSelect(suggestion)}>
+      return <span className={`${classNames.join(' ')}`} >
         {suggestion.label}
       </span>
     }
@@ -135,11 +135,14 @@ class Suggestions extends Component<Props, State> {
     if (isOpen === true && suggestions.length > 0) {
       return <ul ref={this.list} className={styles.ul}>
         {suggestions.map((suggestion, index) => (
-          <li className={styles.li} key={`autocomplete-option-${index}`}>
+          <li
+            className={styles.li}
+            key={`autocomplete-option-${index}`}
+            onMouseDown={() => onSelect(suggestion)}
+          >
             {renderSuggestion({
               isFocused: selectedItem === index,
-              suggestion,
-              onSelect
+              suggestion
             })}
           </li>
         ))}
