@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import ReactDOM from 'react-dom'
 
-import { EditorState, Modifier } from 'draft-js'
+import { EditorState, ContentState, Modifier } from 'draft-js'
 import { EditorContainer, Editor } from 'djs-editor'
 import Autocomplete from 'djs-autocomplete'
 import emojis from 'emoji.json'
@@ -10,7 +10,7 @@ import './styles.css'
 
 class App extends Component {
   state = {
-    editorState: EditorState.createEmpty(),
+    editorState: EditorState.createWithContent(ContentState.createFromText('To triggeer the emoji autocomplete just type :')),
     suggestions: []
   }
 
