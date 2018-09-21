@@ -1,21 +1,12 @@
 import React, { Component } from 'react'
 import ReactDOM from 'react-dom'
 
-import { EditorState } from 'draft-js'
+import { EditorState, Modifier } from 'draft-js'
 import { EditorContainer, Editor } from 'djs-editor'
 import Autocomplete from 'djs-autocomplete'
 import emojis from 'emoji.json'
 import 'djs-autocomplete/dist/index.css'
 import './styles.css'
-
-
-const suggestions = [{
-  label: 'Julian Krispel-Samsel',
-  value: 'julian'
-}, {
-  label: 'Nik Graf',
-  value: 'nik'
-}]
 
 class App extends Component {
   state = {
@@ -32,25 +23,49 @@ class App extends Component {
   }
 
   setSuggestions = (searchText) => {
-    console.log('set suggestion?')
+    const search = searchText.slice(1)
     this.setState({
-      suggestions: emojis.filter(item => item.name.includes(searchText) || item.keywords.includes(searchText)).slice(0, 30)
+      suggestions: emojis.filter(item => item.name.includes(search) || item.keywords.includes(search)).slice(0, 30)
     })
+  }
+
+  insertEmoji = (emoji, searchText) => {
+    const { editorState } = this.state
+    const selection = editorState.getSelection()
+
+    this.setState({
+      editorState: EditorState.push(
+        editorState,
+        Modifier.replaceText(
+          editorState.getCurrentContent(),
+          selection.merge({
+            anchorOffset: selection.getAnchorOffset() - searchText.length
+          }),
+          emoji.char
+        )
+      )
+    })
+  }
+
+  onChange = (editorState) => {
+    this.setState({ editorState })
   }
 
   render () {
     return (
       <div>
-        <EditorContainer editorState={this.state.editorState} onChange={editorState => this.setState({ editorState })}>
+        <EditorContainer editorState={this.state.editorState} onChange={this.onChange}>
           <Editor />
 
-          <Autocomplete
-            trigger='@'
-            onSelect={option => console.log('insert option', option)}
-            suggestions={this.state.suggestions}
-            renderSuggestion={this.renderSuggestion}
-            onAutocomplete={this.setSuggestions}
-          />
+          <div className="autocomplete">
+            <Autocomplete
+              trigger=':'
+              onSelect={this.insertEmoji}
+              suggestions={this.state.suggestions}
+              renderSuggestion={this.renderSuggestion}
+              onSearch={this.setSuggestions}
+            />
+          </div>
         </EditorContainer>
       </div>
     )

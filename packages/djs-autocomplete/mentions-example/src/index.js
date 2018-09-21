@@ -39,7 +39,7 @@ class App extends Component {
             trigger='@'
             onSelect={option => console.log('insert option', option)}
             suggestions={this.state.suggestions}
-            onAutocomplete={this.setSuggestions}
+            onSearch={this.setSuggestions}
           />
         </EditorContainer>
       </div>

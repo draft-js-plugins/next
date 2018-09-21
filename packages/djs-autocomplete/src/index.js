@@ -2,14 +2,16 @@
 
 import React, { Component } from 'react'
 import { withEditorContext, constants } from 'djs-editor'
-import type { EditorState } from 'draft-js'
+import Draft from 'draft-js'
 import styles from './styles.css'
+
+const { EditorState, Modifier } = Draft
 
 type Props = {
   trigger: string | (textUntilCursor: string) => ?string,
   renderSuggestion?: ({ suggestion: any, onSelect: any => void }),
   onSelect: (suggestion: any) => void,
-  onAutocomplete: (searchText: string) => void,
+  onSearch: (searchText: string) => void,
   suggestions: Array<any>,
   pluginMethods: Object,
 }
@@ -47,7 +49,6 @@ class Suggestions extends Component<Props, State> {
     const { pluginMethods: { registerPlugin } } = this.props
 
     this._unregister = registerPlugin({
-      onChange: this.onChange,
       onBlur: this.onBlur,
       onDownArrow: this.onDownArrow,
       onUpArrow: this.onUpArrow,
@@ -63,7 +64,7 @@ class Suggestions extends Component<Props, State> {
 
   handleReturn = () => {
     if (this.state.isOpen && this.props.suggestions.length > 0) {
-      this.props.onSelect(this.props.suggestions[this.state.selectedItem])
+      this.onSelect(this.props.suggestions[this.state.selectedItem])
       return constants.HANDLED
     }
 
@@ -96,8 +97,9 @@ class Suggestions extends Component<Props, State> {
     return constants.NOT_HANDLED
   }
 
-  onChange = (editorState: EditorState) => {
-    const { trigger, onAutocomplete } = this.props
+  static getDerivedStateFromProps(props, state) {
+    const { trigger, suggestions, onSearch, editorProps: { editorState } } = props
+
     const selection = editorState.getSelection()
 
     if (!selection.isCollapsed()) {
@@ -113,23 +115,33 @@ class Suggestions extends Component<Props, State> {
 
     if (typeof trigger === 'string') {
       const lastWord = textUntilCursor.split(/\s/).slice(-1)[0]
-      if (lastWord[0] === '@') {
-        searchText = lastWord.slice(1)
+      if (lastWord[0] === trigger) {
+        searchText = lastWord
       }
     } else if (typeof trigger === 'function') {
       searchText = trigger(textUntilCursor)
     }
 
-    if (searchText != null) {
-      this.setState({ isOpen: true })
-      onAutocomplete(searchText)
-    } else {
-      this.setState({ isOpen: false })
+    return {
+      ...state,
+      selectedItem: state.selectedItem > suggestions.length - 1 ? 0 : state.selectedItem,
+      searchText,
+      isOpen: searchText != null && suggestions.length > 0,
     }
   }
 
+  componentDidUpdate (prevProps, prevState) {
+    if (this.state.searchText != null && prevState.searchText != this.state.searchText) {
+      this.props.onSearch(this.state.searchText)
+    }
+  }
+
+  onSelect = (item) => {
+    this.props.onSelect(item, this.state.searchText)
+  }
+
   render() {
-    const { suggestions, renderSuggestion, onSelect } = this.props
+    const { suggestions, renderSuggestion } = this.props
     const { isOpen, selectedItem } = this.state
 
     if (isOpen === true && suggestions.length > 0) {
@@ -138,7 +150,7 @@ class Suggestions extends Component<Props, State> {
           <li
             className={styles.li}
             key={`autocomplete-option-${index}`}
-            onMouseDown={() => onSelect(suggestion)}
+            onMouseDown={() => this.onSelect(suggestion)}
           >
             {renderSuggestion({
               isFocused: selectedItem === index,

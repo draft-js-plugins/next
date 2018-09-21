@@ -1,4 +1,4 @@
-# djs-editor
+# djs-editor - Not officially released, please use with caution ;)
 
 > Draft Js Plugins Core components
 

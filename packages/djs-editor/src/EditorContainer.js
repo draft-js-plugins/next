@@ -5,7 +5,7 @@ import Draft from 'draft-js'
 import { HANDLED } from './constants'
 import type { DraftEditorProps } from 'draft-js/lib/DraftEditorProps'
 
-const { CompositeDecorator, EditorState, DefaultDraftBlockRenderMap } = Draft
+const { CompositeDecorator, EditorState, getDefaultKeyBinding, DefaultDraftBlockRenderMap } = Draft
 
 export const Context = createContext({})
 
@@ -42,7 +42,7 @@ export default class EditorContainer extends Component<Props, State> {
   }
 
   state = {
-    plugins: new Map()
+    plugins: (new Map()).set('default', { keyBindingFn: getDefaultKeyBinding })
   }
 
   static getDerivedStateFromProps(props, state) {
@@ -122,14 +122,14 @@ export default class EditorContainer extends Component<Props, State> {
   setupEditorState = () => this.setState({
     editorState: EditorState.set(
       this.state.editorState,
-      {decorator: this.resolveDecorator()}
+      { decorator: this.resolveDecorator() }
     )
   })
 
   unregisterPlugin = (key) => {
     const { plugins } = this.state
     this.setState({plugins: plugins.delete(key)})
-    this.setUpEditorState()
+    this.setupEditorState()
   }
 
   registerPlugin = (plugin) => {
@@ -171,7 +171,7 @@ export default class EditorContainer extends Component<Props, State> {
 
   onChange = editorState => {
     this.props.onChange(editorState)
-    this.eventCallback('onChange', editorState)
+    // this.eventCallback('onChange', editorState)
   }
 
   render() {
