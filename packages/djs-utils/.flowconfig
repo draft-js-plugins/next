@@ -1,0 +1,16 @@
+[ignore]
+.*/node_modules/.*
+
+[include]
+node_modules/draft-js
+
+[libs]
+
+[lints]
+
+[options]
+
+[strict]
+
+[version]
+^0.81.0

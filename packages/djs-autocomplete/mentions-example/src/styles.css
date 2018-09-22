@@ -1,3 +1,10 @@
 body {
   font-family: sans-serif;
 }
+
+.mention {
+  padding: .2em;
+  border-radius: 3px;
+  background: #000;
+  color: #fff;
+}
