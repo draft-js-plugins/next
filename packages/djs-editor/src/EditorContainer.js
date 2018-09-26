@@ -128,7 +128,10 @@ export default class EditorContainer extends Component<Props, State> {
 
   unregisterPlugin = (key) => {
     const { plugins } = this.state
-    this.setState({plugins: plugins.delete(key)})
+
+    plugins.delete(key)
+
+    this.setState({plugins})
     this.setupEditorState()
   }
 
