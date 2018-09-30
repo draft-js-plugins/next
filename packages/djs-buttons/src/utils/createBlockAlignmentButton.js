@@ -6,6 +6,26 @@ import { withEditorContext, constants } from 'djs-editor';
 export default ({ alignment, children }) => {
   class BlockAlignmentButton extends Component {
 
+    componentDidMount() {
+      const { pluginMethods: { registerPlugin } } = this.props
+
+      this._unregister = registerPlugin({
+        blockRendererFn: this.blockRendererFn,
+      })
+    }
+
+    blockRendererFn = (contentBlock, { getEditorState, setEditorState }) => {
+      const entityKey = contentBlock.getEntityAt(0);
+      const contentState = getEditorState().getCurrentContent();
+      const alignmentData = entityKey ? contentState.getEntity(entityKey).data : {};
+      return {
+        props: {
+          alignment: alignmentData.alignment || 'default',
+          setAlignment: createSetAlignment(contentBlock, { getEditorState, setEditorState }),
+        },
+      };
+    }
+
     activate = (event) => {
       event.preventDefault();
       this.props.setAlignment({ alignment });
