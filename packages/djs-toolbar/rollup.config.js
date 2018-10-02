@@ -8,7 +8,7 @@ import url from 'rollup-plugin-url'
 import pkg from './package.json'
 
 export default {
-  external: ['djs-editor'],
+  external: ['react', 'djs-editor'],
   input: 'src/index.js',
   output: [
     {
@@ -30,7 +30,9 @@ export default {
     babel({
       exclude: 'node_modules/**'
     }),
-    resolve(),
+    resolve({
+      modulesOnly: true
+    }),
     commonjs()
   ]
 }
