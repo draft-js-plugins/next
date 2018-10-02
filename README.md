@@ -54,3 +54,38 @@ In this case we use a text selection popover for a medium style toolbar, but thi
   <Editor />
 </EditorStateContainer>
 ```
+
+
+### Atomic blocks
+
+```jsx
+<EditorContainer>
+  <Editor />
+
+  <AtomicBlock type="IMAGE">
+    {(props) => <Image {...props} />}
+  </AtomicBlock>
+
+  <AtomicBlock type="VIDEO">
+    {(props) => <Video {...props} />}
+  </AtomicBlock>
+</EditorContainer>
+```
+
+### File
+
+```jsx
+<EditorContainer>
+  <Editor />
+
+  <Upload
+    onSelectFile={}
+  >
+    {() => (
+      <input type="file" />
+    )}
+  </Upload>
+</EditorContainer>
+```
+
+

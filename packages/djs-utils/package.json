@@ -1,0 +1,49 @@
+{
+  "name": "djs-utils",
+  "version": "0.1.2",
+  "description": "Utilities for draft js",
+  "author": "juliankrispel",
+  "license": "MIT",
+  "repository": "juliankrispel/djs-utils",
+  "main": "dist/index.js",
+  "module": "dist/index.es.js",
+  "jsnext:main": "dist/index.es.js",
+  "scripts": {
+    "test": "cross-env CI=1 react-scripts test --env=jsdom",
+    "test:watch": "react-scripts test --env=jsdom",
+    "build": "rollup -c",
+    "start": "rollup -c -w",
+    "prepare": "yarn run build",
+    "predeploy": "cd example && yarn install && yarn run build",
+    "deploy": "gh-pages -d example/build"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.1.0",
+    "@babel/preset-env": "^7.1.0",
+    "cross-env": "^5.1.4",
+    "eslint": "^4.19.1",
+    "eslint-config-standard": "^11.0.0",
+    "eslint-config-standard-react": "^6.0.0",
+    "eslint-plugin-import": "^2.11.0",
+    "eslint-plugin-node": "^6.0.1",
+    "eslint-plugin-promise": "^3.7.0",
+    "eslint-plugin-react": "^7.7.0",
+    "eslint-plugin-standard": "^3.0.1",
+    "flow-bin": "^0.81.0",
+    "flow-typed": "^2.5.1",
+    "react": "^16.2.0",
+    "rollup": "^0.66.2",
+    "rollup-plugin-babel": "^4.0.3",
+    "rollup-plugin-commonjs": "^9.1.8",
+    "rollup-plugin-peer-deps-external": "^2.0.0"
+  },
+  "files": [
+    "dist"
+  ],
+  "peerDependencies": {
+    "draft-js": "^0.10.5"
+  },
+  "dependencies": {
+    "@babel/preset-flow": "^7.0.0"
+  }
+}

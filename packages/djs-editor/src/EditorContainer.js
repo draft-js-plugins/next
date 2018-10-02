@@ -77,7 +77,6 @@ export default class EditorContainer extends Component<Props, State> {
         ? EditorState.set(editorState, { decorator: resolveDecorator(state.plugins) })
         : editorState,
       editorProps: {
-        editorState,
         autoCapitalize,
         autoComplete,
         autoCorrect,
@@ -174,44 +173,57 @@ export default class EditorContainer extends Component<Props, State> {
 
   onChange = editorState => {
     this.props.onChange(editorState)
-    // this.eventCallback('onChange', editorState)
+  }
+
+  getEditorState = () => {
+    return this.state.editorState
   }
 
   render() {
-    return <Context.Provider value={{
-      // plugin specific
-      pluginMethods: {
-        registerPlugin: this.registerPlugin,
-        setEditorState: this.onChange,
-        setEditorProps: editorProps => this.setState({ editorProps })
-      },
-      editorProps: {
-        ...this.state.editorProps,
-        customStyleMap: this.resolveCustomStyleMap(),
-        blockRenderMap: this.resolveBlockRendererMap(),
-        editorState: this.state.editorState,
-        blockRendererFn: (...args) => this.returnFirstTruthy('blockRendererFn', ...args),
-        blockStyleFn: (...args) => this.returnFirstTruthy('blockStyleFn', ...args),
-        customStyleFn: (...args) => this.returnFirstTruthy('customStyleFn', ...args),
-        keyBindingFn: (...args) => this.returnFirstTruthy('keyBindingFn', ...args),
-        handleKeyCommand: (...args) => this.returnFirstHandled('handleKeyCommand', ...args),
-        handleBeforeInput: (...args) => this.returnFirstHandled('handleBeforeInput', ...args),
-        handlePastedText: (...args) => this.returnFirstHandled('handlePastedText', ...args),
-        handlePastedFiles: (...args) => this.returnFirstHandled('handlePastedFiles', ...args),
-        handleDroppedFiles: (...args) => this.returnFirstHandled('handleDroppedFiles', ...args),
-        handleDrop: (...args) => this.returnFirstHandled('handleDrop', ...args),
-        handleReturn: (...args) => this.returnFirstHandled('handleReturn', ...args),
-        onChange: this.onChange,
-        onDownArrow: (...args) => this.eventCallback('onDownArrow', ...args),
-        onEscape: (...args) => this.eventCallback('onEscape', ...args),
-        onLeftArrow: (...args) => this.eventCallback('onLeftArrow', ...args),
-        onRightArrow: (...args) => this.eventCallback('onRightArrow', ...args),
-        onTab: (...args) => this.eventCallback('onTab', ...args),
-        onUpArrow: (...args) => this.eventCallback('onUpArrow', ...args),
-        onFocus: (...args) => this.eventCallback('onFocus', ...args),
-        onBlur: (...args) => this.eventCallback('onBlur', ...args)
+    const editorProps = {
+      ...this.state.editorProps,
+      editorState: this.state.editorState,
+      customStyleMap: this.resolveCustomStyleMap(),
+      blockRenderMap: this.resolveBlockRendererMap(),
+      blockRendererFn: (...args) => this.returnFirstTruthy('blockRendererFn', ...args),
+      blockStyleFn: (...args) => this.returnFirstTruthy('blockStyleFn', ...args),
+      customStyleFn: (...args) => this.returnFirstTruthy('customStyleFn', ...args),
+      keyBindingFn: (...args) => this.returnFirstTruthy('keyBindingFn', ...args),
+      handleKeyCommand: (...args) => this.returnFirstHandled('handleKeyCommand', ...args),
+      handleBeforeInput: (...args) => this.returnFirstHandled('handleBeforeInput', ...args),
+      handlePastedText: (...args) => this.returnFirstHandled('handlePastedText', ...args),
+      handlePastedFiles: (...args) => this.returnFirstHandled('handlePastedFiles', ...args),
+      handleDroppedFiles: (...args) => this.returnFirstHandled('handleDroppedFiles', ...args),
+      handleDrop: (...args) => this.returnFirstHandled('handleDrop', ...args),
+      handleReturn: (...args) => this.returnFirstHandled('handleReturn', ...args),
+      onChange: this.onChange,
+      onDownArrow: (...args) => this.eventCallback('onDownArrow', ...args),
+      onEscape: (...args) => this.eventCallback('onEscape', ...args),
+      onLeftArrow: (...args) => this.eventCallback('onLeftArrow', ...args),
+      onRightArrow: (...args) => this.eventCallback('onRightArrow', ...args),
+      onTab: (...args) => this.eventCallback('onTab', ...args),
+      onUpArrow: (...args) => this.eventCallback('onUpArrow', ...args),
+      onFocus: (...args) => this.eventCallback('onFocus', ...args),
+      onBlur: (...args) => this.eventCallback('onBlur', ...args)
+    }
+
+    // yepyepyep this gets the editorState lazily
+    // avoids having to have a `getEditorState` prop
+    Object.defineProperty(
+      editorProps,
+      'editorState',
+      {
+        get: () => this.state.editorState
       }
-    }}>
+    )
+
+    const pluginMethods = {
+      registerPlugin: this.registerPlugin,
+      setEditorState: this.onChange,
+      setEditorProps: editorProps => this.setState({ editorProps: { ...this.state.editorProps, ...editorProps} })
+    }
+
+    return <Context.Provider value={{ pluginMethods, editorProps }}>
       {this.props.children}
     </Context.Provider>
   }

@@ -1,11 +1,23 @@
 import React, { Component } from 'react'
 import ReactDOM from 'react-dom'
 
-import { EditorState } from 'draft-js'
-import { EditorContainer, Editor } from 'djs-editor'
+import { EditorState, Modifier } from 'draft-js'
+import { EditorContainer, Editor, Plugin } from 'djs-editor'
 import Autocomplete from 'djs-autocomplete'
+import { createEntityDecorator, insertTextWithEntity } from 'djs-utils'
 import 'djs-autocomplete/dist/index.css'
 import './styles.css'
+
+const Mention = (props) => {
+  return <span className="mention">{props.children}</span>;
+};
+
+const MENTION = 'MENTION';
+
+const mentionDecorator = createEntityDecorator(
+  MENTION,
+  Mention
+)
 
 const suggestions = [{
   label: 'Julian Krispel-Samsel',
@@ -22,8 +34,45 @@ class App extends Component {
   }
 
   setSuggestions = (searchText) => {
+    console.log('set suggestions', searchText)
     this.setState({
-      suggestions: suggestions.filter(item => item.label.includes(searchText))
+      suggestions: suggestions.filter(item => item.label.includes(searchText.slice(1)))
+    })
+  }
+
+  insertMention = (mention, searchText) => {
+    const { editorState } = this.state
+    const selection = editorState.getSelection()
+
+    let content = Modifier.removeRange(
+      editorState.getCurrentContent(),
+      selection.merge({
+        anchorOffset: selection.getAnchorOffset() - searchText.length
+      }),
+    )
+
+    content = insertTextWithEntity(
+      content,
+      content.getSelectionAfter(),
+      MENTION,
+      mention.label,
+      'SEGMENTED',
+      mention
+    )
+
+    // insert a space after
+    content = Modifier.insertText(
+      content,
+      content.getSelectionAfter(),
+      ' '
+    )
+
+    this.setState({
+      editorState: EditorState.push(
+        editorState,
+        content,
+        'replace-fragment'
+      )
     })
   }
 
@@ -35,9 +84,11 @@ class App extends Component {
 
           <Editor />
 
+          <Plugin decorators={[mentionDecorator]} />
+
           <Autocomplete
             trigger='@'
-            onSelect={option => console.log('insert option', option)}
+            onSelect={this.insertMention}
             suggestions={this.state.suggestions}
             onSearch={this.setSuggestions}
           />
