@@ -4,8 +4,9 @@
     "lerna": "^2.11.0"
   },
   "scripts": {
-    "contributors:add": "all-contributors add",
-    "contributors:generate": "all-contributors generate"
+    "contributors": "./node_modules/.bin/all-contributors",
+    "contributors:add": "./node_modules/.bin/all-contributors add",
+    "contributors:generate": "./node_modules/.bin/all-contributors generate"
   },
   "dependencies": {
     "flow-bin": "^0.80.0",

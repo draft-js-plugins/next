@@ -10,21 +10,11 @@
   "commit": true,
   "contributors": [
     {
-      "login": "juliankrispel",
-      "name": "Julian Krispel-Samsel",
-      "avatar_url": "https://avatars1.githubusercontent.com/u/1188186?v=4",
-      "profile": "http://reactrocket.com",
-      "contributions": [
-        "creator"
-      ]
-    },
-    {
       "login": "freedomlang",
       "name": "blackywkl",
       "avatar_url": "https://avatars2.githubusercontent.com/u/11409069?v=4",
       "profile": "http://freedomlang.com",
       "contributions": [
-        "co-creator",
         "code",
         "doc",
         "example"
@@ -36,7 +26,6 @@
       "avatar_url": "https://avatars2.githubusercontent.com/u/1166143?v=4",
       "profile": "http://hosmelq.com",
       "contributions": [
-        "first contributor!",
         "code"
       ]
     }
