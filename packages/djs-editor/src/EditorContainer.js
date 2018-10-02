@@ -174,7 +174,7 @@ export default class EditorContainer extends Component<Props, State> {
 
   onChange = editorState => {
     this.props.onChange(editorState)
-    // this.eventCallback('onChange', editorState)
+    this.eventCallback('onChange', editorState)
   }
 
   render() {
@@ -182,7 +182,7 @@ export default class EditorContainer extends Component<Props, State> {
       // plugin specific
       pluginMethods: {
         registerPlugin: this.registerPlugin,
-        setEditorState: this.onChange,
+        setEditorState: editorState => this.props.onChange(editorState),
         setEditorProps: editorProps => this.setState({ editorProps })
       },
       editorProps: {
