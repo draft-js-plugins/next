@@ -2317,9 +2317,9 @@ diffie-hellman@^5.0.0:
     miller-rabin "^4.0.0"
     randombytes "^2.0.0"
 
-djs-editor@^0.1.0:
-  version "0.1.0"
-  resolved "https://registry.yarnpkg.com/djs-editor/-/djs-editor-0.1.0.tgz#e02999303a4f0171abc337466c091f15825b0953"
+djs-editor@^0.1.1:
+  version "0.1.1"
+  resolved "https://registry.yarnpkg.com/djs-editor/-/djs-editor-0.1.1.tgz#47740a0f239562bdbe0e31de5b5960c35e792abd"
   dependencies:
     draft-js "^0.10.5"
 

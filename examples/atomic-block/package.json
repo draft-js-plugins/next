@@ -1,5 +1,5 @@
 {
-  "name": "djs-atomic-block",
+  "name": "djs-atomic-block-example",
   "homepage": "https://juliankrispel.github.io/djs-autocomplete",
   "version": "0.0.0",
   "private": true,
@@ -8,6 +8,7 @@
     "emoji.json": "^11.0.0",
     "prop-types": "^15.6.1",
     "djs-autocomplete": "latest",
+    "djs-atomic-block": "latest",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
     "react-scripts": "^1.1.1"
