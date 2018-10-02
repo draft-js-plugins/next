@@ -19,7 +19,8 @@
     "deploy": "gh-pages -d example/build"
   },
   "dependencies": {
-    "djs-editor": "^0.1.1"
+    "djs-editor": "^0.1.1",
+    "union-class-names": "^1.0.0"
   },
   "peerDependencies": {
     "prop-types": "^15.5.4",
@@ -38,6 +39,7 @@
     "react-dom": "^16.2.0",
     "react-scripts": "^1.1.1",
     "rollup": "^0.54.0",
+    "rollup-plugin-analyzer": "^2.1.0",
     "rollup-plugin-babel": "^3.0.3",
     "rollup-plugin-commonjs": "^8.2.1",
     "rollup-plugin-node-resolve": "^3.0.2",

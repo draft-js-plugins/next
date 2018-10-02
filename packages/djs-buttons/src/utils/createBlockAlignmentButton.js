@@ -1,7 +1,8 @@
-/* eslint-disable react/no-children-prop */
+// @flow
 import React, { Component } from 'react';
 import unionClassNames from 'union-class-names';
-import { withEditorContext, constants } from 'djs-editor';
+import { withEditorContext } from 'djs-editor';
+import buttonStyles from '../buttonStyles.css';
 
 export default ({ alignment, children }) => {
   class BlockAlignmentButton extends Component {
@@ -36,11 +37,10 @@ export default ({ alignment, children }) => {
     isActive = () => this.props.alignment === alignment;
 
     render() {
-      const { theme } = this.props;
-      const className = this.isActive() ? unionClassNames(theme.button, theme.active) : theme.button;
+      const className = this.isActive() ? unionClassNames(buttonStyles.button, buttonStyles.active) : buttonStyles.button;
       return (
         <div
-          className={theme.buttonWrapper}
+          className={buttonStyles.buttonWrapper}
           onMouseDown={this.preventBubblingUp}
         >
           <button

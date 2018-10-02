@@ -1,8 +1,11 @@
-/* eslint-disable react/no-children-prop */
-import React, { Component } from 'react';
-import { RichUtils } from 'draft-js';
-import unionClassNames from 'union-class-names';
-import { withEditorContext, constants } from 'djs-editor';
+// @flow
+import React, { Component } from 'react'
+import Draft from 'draft-js'
+import unionClassNames from 'union-class-names'
+import { withEditorContext } from 'djs-editor'
+import buttonStyles from '../buttonStyles.css'
+
+const { RichUtils } = Draft
 
 export default ({ style, children }) => {
   class InlineStyleButton extends Component {
@@ -33,11 +36,10 @@ export default ({ style, children }) => {
     }
 
     render() {
-      const { theme } = this.props;
-      const className = this.styleIsActive() ? unionClassNames(theme.button, theme.active) : theme.button;
+      const className = this.styleIsActive() ? unionClassNames(buttonStyles.button, buttonStyles.active) : buttonStyles.button;
       return (
         <div
-          className={theme.buttonWrapper}
+          className={buttonStyles.buttonWrapper}
           onMouseDown={this.preventBubblingUp}
         >
           <button

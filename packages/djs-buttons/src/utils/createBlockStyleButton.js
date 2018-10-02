@@ -1,8 +1,11 @@
-/* eslint-disable react/no-children-prop */
+// @flow
 import React, { Component } from 'react';
-import { RichUtils } from 'draft-js';
+import Draft from 'draft-js';
 import unionClassNames from 'union-class-names';
-import { withEditorContext, constants } from 'djs-editor';
+import { withEditorContext } from 'djs-editor';
+import buttonStyles from '../buttonStyles.css';
+
+const { RichUtils } = Draft;
 
 export default ({ blockType, children }) => {
   class BlockStyleButton extends Component {
@@ -42,11 +45,10 @@ export default ({ blockType, children }) => {
     }
 
     render() {
-      const { theme } = this.props;
-      const className = this.blockTypeIsActive() ? unionClassNames(theme.button, theme.active) : theme.button;
+      const className = this.blockTypeIsActive() ? unionClassNames(buttonStyles.button, buttonStyles.active) : buttonStyles.button;
       return (
         <div
-          className={theme.buttonWrapper}
+          className={buttonStyles.buttonWrapper}
           onMouseDown={this.preventBubblingUp}
         >
           <button
