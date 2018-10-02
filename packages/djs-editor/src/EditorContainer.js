@@ -9,9 +9,11 @@ const { CompositeDecorator, EditorState, getDefaultKeyBinding, DefaultDraftBlock
 
 export const Context = createContext({})
 
-export const withConsumer = Comp => props => (
-  <Context.Consumer>{contextProps => <Comp {...props} {...contextProps} />}</Context.Consumer>
-)
+export const withConsumer = Comp => React.forwardRef((props, ref) => (
+  <Context.Consumer>
+    {contextProps => <Comp {...props} {...contextProps} ref={ref} />}
+  </Context.Consumer>
+))
 
 const resolveDecorator = plugins => new CompositeDecorator(
   Array.from(plugins.values()).reduce((acc, plugin) => (
