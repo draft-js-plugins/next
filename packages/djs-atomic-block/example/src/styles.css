@@ -1,0 +1,33 @@
+body {
+  font-family: sans-serif;
+  font-size: 1.8em;
+  padding: 1em;
+  background: #12312e;
+}
+
+.public-DraftEditor-content {
+  padding: 2em;
+  border-radius: 5px;
+  color: #fff;
+  border: #555;
+  background: #244a46;
+}
+
+.autocomplete {
+  margin-top: 1em;
+}
+
+.list__item {
+  display: block;
+  padding: .5em;
+  color: #ccc;
+  background: transparent;
+  transition: 100ms;
+}
+
+.list__item--focused {
+  color: #fff;
+  padding-left: 1.2em;
+  background: #2a6f51;
+  border-radius: 5px;
+}

@@ -1,15 +1,12 @@
 0 silly input [ 'publish' ]
-1 silly flags { _: [ 'publish' ],
-1 silly flags   'reject-cycles': false,
-1 silly flags   rejectCycles: false,
-1 silly flags   otp: 492581 }
+1 silly flags { _: [ 'publish' ], 'reject-cycles': false, rejectCycles: false }
 2 verbose rootPath /Users/juliiankrispel/projects/draft-js-plugins-next
 3 info version 2.11.0
 4 silly isInitialized
 5 silly isInitialized true
 6 silly existsSync /Users/juliiankrispel/projects/draft-js-plugins-next/VERSION
 7 silly initialize attempt
-8 info current version 0.1.0
+8 info current version 0.1.1
 9 silly isDetachedHead
 10 silly getCurrentBranch
 11 verbose getCurrentBranch master
@@ -21,152 +18,123 @@
 17 silly hasTags
 18 verbose hasTags true
 19 silly getLastTag
-20 verbose getLastTag v0.1.0
-21 info Comparing with v0.1.0.
-22 silly diffSinceIn v0.1.0 packages/djs-autocomplete
-23 silly diff packages/djs-autocomplete/.babelrc
-23 silly diff packages/djs-autocomplete/.editorconfig
-23 silly diff packages/djs-autocomplete/.eslintrc
-23 silly diff packages/djs-autocomplete/.gitignore
-23 silly diff packages/djs-autocomplete/README.md
-23 silly diff packages/djs-autocomplete/emoji-example/README.md
+20 verbose getLastTag v0.1.1
+21 info Comparing with v0.1.1.
+22 silly diffSinceIn v0.1.1 packages/djs-autocomplete
 23 silly diff packages/djs-autocomplete/emoji-example/package.json
-23 silly diff packages/djs-autocomplete/emoji-example/public/index.html
 23 silly diff packages/djs-autocomplete/emoji-example/src/index.js
-23 silly diff packages/djs-autocomplete/emoji-example/src/styles.css
-23 silly diff packages/djs-autocomplete/emoji-example/yarn.lock
-23 silly diff packages/djs-autocomplete/mentions-example/README.md
 23 silly diff packages/djs-autocomplete/mentions-example/package.json
-23 silly diff packages/djs-autocomplete/mentions-example/public/index.html
 23 silly diff packages/djs-autocomplete/mentions-example/src/index.js
 23 silly diff packages/djs-autocomplete/mentions-example/src/styles.css
-23 silly diff packages/djs-autocomplete/mentions-example/yarn.lock
-23 silly diff packages/djs-autocomplete/package.json
-23 silly diff packages/djs-autocomplete/rollup.config.js
-23 silly diff packages/djs-autocomplete/src/.eslintrc
-23 silly diff packages/djs-autocomplete/src/index.js
-23 silly diff packages/djs-autocomplete/src/styles.css
-23 silly diff packages/djs-autocomplete/yarn.lock
-24 silly diffSinceIn v0.1.0 packages/djs-buttons
-25 silly diff packages/djs-buttons/.babelrc
-25 silly diff packages/djs-buttons/.editorconfig
-25 silly diff packages/djs-buttons/.eslintrc
-25 silly diff packages/djs-buttons/.gitignore
-25 silly diff packages/djs-buttons/README.md
-25 silly diff packages/djs-buttons/example/README.md
-25 silly diff packages/djs-buttons/example/package.json
-25 silly diff packages/djs-buttons/example/public/index.html
-25 silly diff packages/djs-buttons/example/public/manifest.json
-25 silly diff packages/djs-buttons/example/src/App.js
-25 silly diff packages/djs-buttons/example/src/index.css
-25 silly diff packages/djs-buttons/example/src/index.js
-25 silly diff packages/djs-buttons/example/yarn.lock
-25 silly diff packages/djs-buttons/package.json
-25 silly diff packages/djs-buttons/rollup.config.js
-25 silly diff packages/djs-buttons/src/.eslintrc
-25 silly diff packages/djs-buttons/src/index.js
-25 silly diff packages/djs-buttons/src/styles.css
-25 silly diff packages/djs-buttons/src/test.js
-25 silly diff packages/djs-buttons/yarn.lock
-26 silly diffSinceIn v0.1.0 packages/djs-editor
-27 silly diff packages/djs-editor/README.md
-27 silly diff packages/djs-editor/example/src/App.js
-27 silly diff packages/djs-editor/rollup.config.js
-27 silly diff packages/djs-editor/src/EditorContainer.js
-27 silly diff packages/djs-editor/src/constants.js
-27 silly diff packages/djs-editor/src/index.js
-27 silly diff packages/djs-editor/src/styles.css
-27 silly diff packages/djs-editor/src/test.js
-28 verbose updated djs-autocomplete
-29 verbose updated djs-buttons
-30 verbose updated djs-editor
-31 info Checking for prereleased packages...
-32 silly collectDependents
-33 silly isPackageDependentOf djs-autocomplete djs-autocomplete
-34 silly isPackageDependentOf djs-editor djs-autocomplete
-35 silly isPackageDependentOf djs-autocomplete djs-buttons
-36 silly isPackageDependentOf djs-editor djs-buttons
-37 silly isPackageDependentOf djs-autocomplete djs-editor
-38 verbose dependent djs-autocomplete depends on djs-editor
-39 silly isPackageDependentOf djs-buttons djs-autocomplete
-40 silly isPackageDependentOf djs-buttons djs-buttons
-41 silly isPackageDependentOf djs-buttons djs-editor
-42 silly isPackageDependentOf djs-editor djs-autocomplete
-43 silly isPackageDependentOf djs-editor djs-buttons
-44 silly isPackageDependentOf djs-editor djs-editor
-45 silly collectUpdates
-46 verbose has filtered update djs-autocomplete
-47 verbose has filtered update djs-buttons
-48 verbose has filtered update djs-editor
-49 silly initialize success
-50 silly execute attempt
-51 silly addFile /Users/juliiankrispel/projects/draft-js-plugins-next/lerna.json
-52 silly runScriptSync preversion undefined
-53 silly runScriptSync preversion djs-autocomplete
-54 silly runScriptSync version djs-autocomplete
-55 silly runScriptSync preversion djs-buttons
-56 silly runScriptSync version djs-buttons
-57 silly runScriptSync preversion djs-editor
-58 silly runScriptSync version djs-editor
-59 silly runScriptSync version undefined
-60 silly addFile /Users/juliiankrispel/projects/draft-js-plugins-next/packages/djs-autocomplete/package.json
-61 silly addFile /Users/juliiankrispel/projects/draft-js-plugins-next/packages/djs-buttons/package.json
-62 silly addFile /Users/juliiankrispel/projects/draft-js-plugins-next/packages/djs-editor/package.json
-63 silly commit v0.1.1
-64 verbose commit [ 'commit', '--no-verify', '-m', 'v0.1.1' ]
-65 silly addTag v0.1.1
-66 silly runScriptSync postversion djs-autocomplete
-67 silly runScriptSync postversion djs-buttons
-68 silly runScriptSync postversion djs-editor
-69 silly runScriptSync postversion undefined
-70 info publish Publishing packages to npm...
-71 silly existsSync /Users/juliiankrispel/projects/draft-js-plugins-next/packages/djs-autocomplete/scripts/prepublish.js
-72 verbose execScript No prepublish script found at /Users/juliiankrispel/projects/draft-js-plugins-next/packages/djs-autocomplete/scripts/prepublish.js
-73 silly existsSync /Users/juliiankrispel/projects/draft-js-plugins-next/packages/djs-buttons/scripts/prepublish.js
-74 verbose execScript No prepublish script found at /Users/juliiankrispel/projects/draft-js-plugins-next/packages/djs-buttons/scripts/prepublish.js
-75 silly existsSync /Users/juliiankrispel/projects/draft-js-plugins-next/packages/djs-editor/scripts/prepublish.js
-76 verbose execScript No prepublish script found at /Users/juliiankrispel/projects/draft-js-plugins-next/packages/djs-editor/scripts/prepublish.js
-77 verbose publishing djs-editor
-78 silly publishTaggedInDir latest djs-editor
-79 silly getExecOpts { cwd: '/Users/juliiankrispel/projects/draft-js-plugins-next/packages/djs-editor' }
-80 error publish Retrying failed publish: djs-editor
+24 silly diffSinceIn v0.1.1 packages/djs-buttons
+25 silly diff
+26 silly diffSinceIn v0.1.1 packages/djs-editor
+27 silly diff
+28 silly diffSinceIn v0.1.1 packages/djs-utils
+29 silly diff packages/djs-utils/.babelrc
+29 silly diff packages/djs-utils/.editorconfig
+29 silly diff packages/djs-utils/.eslintrc
+29 silly diff packages/djs-utils/.flowconfig
+29 silly diff packages/djs-utils/.gitignore
+29 silly diff packages/djs-utils/README.md
+29 silly diff packages/djs-utils/package.json
+29 silly diff packages/djs-utils/rollup.config.js
+29 silly diff packages/djs-utils/src/.eslintrc
+29 silly diff packages/djs-utils/src/index.js
+29 silly diff packages/djs-utils/yarn.lock
+30 verbose updated djs-autocomplete
+31 verbose updated djs-utils
+32 info Checking for prereleased packages...
+33 silly collectDependents
+34 silly isPackageDependentOf djs-autocomplete djs-autocomplete
+35 silly isPackageDependentOf djs-editor djs-autocomplete
+36 silly isPackageDependentOf djs-autocomplete djs-utils
+37 silly isPackageDependentOf djs-editor djs-utils
+38 silly isPackageDependentOf djs-buttons djs-autocomplete
+39 silly isPackageDependentOf djs-buttons djs-utils
+40 silly isPackageDependentOf djs-editor djs-autocomplete
+41 silly isPackageDependentOf djs-editor djs-utils
+42 silly isPackageDependentOf djs-utils djs-autocomplete
+43 silly isPackageDependentOf djs-utils djs-utils
+44 silly collectUpdates
+45 verbose has filtered update djs-autocomplete
+46 verbose has filtered update djs-utils
+47 silly initialize success
+48 silly execute attempt
+49 silly addFile /Users/juliiankrispel/projects/draft-js-plugins-next/lerna.json
+50 silly runScriptSync preversion undefined
+51 silly runScriptSync preversion djs-autocomplete
+52 silly runScriptSync version djs-autocomplete
+53 silly runScriptSync preversion djs-utils
+54 silly runScriptSync version djs-utils
+55 silly runScriptSync version undefined
+56 silly addFile /Users/juliiankrispel/projects/draft-js-plugins-next/packages/djs-autocomplete/package.json
+57 silly addFile /Users/juliiankrispel/projects/draft-js-plugins-next/packages/djs-utils/package.json
+58 silly commit v0.1.2
+59 verbose commit [ 'commit', '--no-verify', '-m', 'v0.1.2' ]
+60 silly addTag v0.1.2
+61 silly runScriptSync postversion djs-autocomplete
+62 silly runScriptSync postversion djs-utils
+63 silly runScriptSync postversion undefined
+64 info publish Publishing packages to npm...
+65 silly existsSync /Users/juliiankrispel/projects/draft-js-plugins-next/packages/djs-autocomplete/scripts/prepublish.js
+66 verbose execScript No prepublish script found at /Users/juliiankrispel/projects/draft-js-plugins-next/packages/djs-autocomplete/scripts/prepublish.js
+67 silly existsSync /Users/juliiankrispel/projects/draft-js-plugins-next/packages/djs-utils/scripts/prepublish.js
+68 verbose execScript No prepublish script found at /Users/juliiankrispel/projects/draft-js-plugins-next/packages/djs-utils/scripts/prepublish.js
+69 verbose publishing djs-autocomplete
+70 silly publishTaggedInDir latest djs-autocomplete
+71 silly getExecOpts { cwd: '/Users/juliiankrispel/projects/draft-js-plugins-next/packages/djs-autocomplete' }
+72 verbose publishing djs-utils
+73 silly publishTaggedInDir latest djs-utils
+74 silly getExecOpts { cwd: '/Users/juliiankrispel/projects/draft-js-plugins-next/packages/djs-utils' }
+75 error publish Retrying failed publish: djs-utils
+76 verbose publish error undefined
+77 verbose publishing djs-utils
+78 silly publishTaggedInDir latest djs-utils
+79 silly getExecOpts { cwd: '/Users/juliiankrispel/projects/draft-js-plugins-next/packages/djs-utils' }
+80 error publish Retrying failed publish: djs-utils
 81 verbose publish error undefined
-82 verbose publishing djs-editor
-83 silly publishTaggedInDir latest djs-editor
-84 silly getExecOpts { cwd: '/Users/juliiankrispel/projects/draft-js-plugins-next/packages/djs-editor' }
-85 error publish Retrying failed publish: djs-editor
+82 verbose publishing djs-utils
+83 silly publishTaggedInDir latest djs-utils
+84 silly getExecOpts { cwd: '/Users/juliiankrispel/projects/draft-js-plugins-next/packages/djs-utils' }
+85 error publish Retrying failed publish: djs-autocomplete
 86 verbose publish error undefined
-87 verbose publishing djs-editor
-88 silly publishTaggedInDir latest djs-editor
-89 silly getExecOpts { cwd: '/Users/juliiankrispel/projects/draft-js-plugins-next/packages/djs-editor' }
-90 error publish Retrying failed publish: djs-editor
+87 verbose publishing djs-autocomplete
+88 silly publishTaggedInDir latest djs-autocomplete
+89 silly getExecOpts { cwd: '/Users/juliiankrispel/projects/draft-js-plugins-next/packages/djs-autocomplete' }
+90 error publish Retrying failed publish: djs-utils
 91 verbose publish error undefined
-92 verbose publishing djs-editor
-93 silly publishTaggedInDir latest djs-editor
-94 silly getExecOpts { cwd: '/Users/juliiankrispel/projects/draft-js-plugins-next/packages/djs-editor' }
-95 error publish Retrying failed publish: djs-editor
+92 verbose publishing djs-utils
+93 silly publishTaggedInDir latest djs-utils
+94 silly getExecOpts { cwd: '/Users/juliiankrispel/projects/draft-js-plugins-next/packages/djs-utils' }
+95 error publish Retrying failed publish: djs-utils
 96 verbose publish error undefined
-97 verbose publishing djs-editor
-98 silly publishTaggedInDir latest djs-editor
-99 silly getExecOpts { cwd: '/Users/juliiankrispel/projects/draft-js-plugins-next/packages/djs-editor' }
-100 error publish Ran out of retries while publishing djs-editor Error: Command failed: npm publish --tag latest
+97 verbose publishing djs-utils
+98 silly publishTaggedInDir latest djs-utils
+99 silly getExecOpts { cwd: '/Users/juliiankrispel/projects/draft-js-plugins-next/packages/djs-utils' }
+100 error publish Ran out of retries while publishing djs-utils Error: Command failed: npm publish --tag latest
 100 error publish
 100 error publish src/index.js → dist/index.js, dist/index.es.js...
-100 error publish created dist/index.js, dist/index.es.js in 772ms
+100 error publish (!) Unresolved dependencies
+100 error publish https://github.com/rollup/rollup/wiki/Troubleshooting#treating-module-as-external-dependency
+100 error publish react (imported by src/index.js)
+100 error publish (!) Unused external imports
+100 error publish default imported from external module 'react' but never used
+100 error publish created dist/index.js, dist/index.es.js in 630ms
 100 error publish npm notice
-100 error publish npm notice 📦  djs-editor@0.1.1
+100 error publish npm notice 📦  djs-utils@0.1.2
 100 error publish npm notice === Tarball Contents ===
-100 error publish npm notice 1.8kB  package.json
-100 error publish npm notice 388B   README.md
-100 error publish npm notice 19.4kB dist/index.es.js
-100 error publish npm notice 19.8kB dist/index.js
+100 error publish npm notice 1.4kB package.json
+100 error publish npm notice 571B  README.md
+100 error publish npm notice 2.6kB dist/index.es.js
+100 error publish npm notice 2.9kB dist/index.js
 100 error publish npm notice === Tarball Details ===
-100 error publish npm notice name:          djs-editor
-100 error publish npm notice version:       0.1.1
-100 error publish npm notice package size:  5.5 kB
-100 error publish npm notice unpacked size: 41.4 kB
-100 error publish npm notice shasum:        47740a0f239562bdbe0e31de5b5960c35e792abd
-100 error publish npm notice integrity:     sha512-GP9ra42IxUNtc[...]IJ3UVaqWOHOyA==
+100 error publish npm notice name:          djs-utils
+100 error publish npm notice version:       0.1.2
+100 error publish npm notice package size:  1.9 kB
+100 error publish npm notice unpacked size: 7.4 kB
+100 error publish npm notice shasum:        4d635860e4f18507d1204bc445e4416f5d82d98d
+100 error publish npm notice integrity:     sha512-Ue7ZrNrULiRQp[...]yB5Le5kAvjj6A==
 100 error publish npm notice total files:   4
 100 error publish npm notice
 100 error publish npm ERR! publish Failed PUT 401
@@ -177,14 +145,14 @@
 100 error publish npm ERR! it, or it timed out. Please try again.
 100 error publish
 100 error publish npm ERR! A complete log of this run can be found in:
-100 error publish npm ERR!     /Users/juliiankrispel/.npm/_logs/2018-09-21T09_32_01_753Z-debug.log
+100 error publish npm ERR!     /Users/juliiankrispel/.npm/_logs/2018-09-22T11_28_40_644Z-debug.log
 100 error publish
-100 error publish > djs-editor@0.1.1 prepare .
+100 error publish > djs-utils@0.1.2 prepare .
 100 error publish > yarn run build
 100 error publish
 100 error publish yarn run v1.5.1
 100 error publish $ rollup -c
-100 error publish Done in 1.94s.
+100 error publish Done in 1.17s.
 100 error publish
 100 error publish     at Promise.all.then.arr (/Users/juliiankrispel/.nvm/versions/node/v8.10.0/lib/node_modules/lerna/node_modules/execa/index.js:236:11)
 100 error publish     at <anonymous>
@@ -193,21 +161,26 @@
 102 error Error: Command failed: npm publish --tag latest
 102 error
 102 error src/index.js → dist/index.js, dist/index.es.js...
-102 error created dist/index.js, dist/index.es.js in 772ms
+102 error (!) Unresolved dependencies
+102 error https://github.com/rollup/rollup/wiki/Troubleshooting#treating-module-as-external-dependency
+102 error react (imported by src/index.js)
+102 error (!) Unused external imports
+102 error default imported from external module 'react' but never used
+102 error created dist/index.js, dist/index.es.js in 630ms
 102 error npm notice
-102 error npm notice 📦  djs-editor@0.1.1
+102 error npm notice 📦  djs-utils@0.1.2
 102 error npm notice === Tarball Contents ===
-102 error npm notice 1.8kB  package.json
-102 error npm notice 388B   README.md
-102 error npm notice 19.4kB dist/index.es.js
-102 error npm notice 19.8kB dist/index.js
+102 error npm notice 1.4kB package.json
+102 error npm notice 571B  README.md
+102 error npm notice 2.6kB dist/index.es.js
+102 error npm notice 2.9kB dist/index.js
 102 error npm notice === Tarball Details ===
-102 error npm notice name:          djs-editor
-102 error npm notice version:       0.1.1
-102 error npm notice package size:  5.5 kB
-102 error npm notice unpacked size: 41.4 kB
-102 error npm notice shasum:        47740a0f239562bdbe0e31de5b5960c35e792abd
-102 error npm notice integrity:     sha512-GP9ra42IxUNtc[...]IJ3UVaqWOHOyA==
+102 error npm notice name:          djs-utils
+102 error npm notice version:       0.1.2
+102 error npm notice package size:  1.9 kB
+102 error npm notice unpacked size: 7.4 kB
+102 error npm notice shasum:        4d635860e4f18507d1204bc445e4416f5d82d98d
+102 error npm notice integrity:     sha512-Ue7ZrNrULiRQp[...]yB5Le5kAvjj6A==
 102 error npm notice total files:   4
 102 error npm notice
 102 error npm ERR! publish Failed PUT 401
@@ -218,14 +191,14 @@
 102 error npm ERR! it, or it timed out. Please try again.
 102 error
 102 error npm ERR! A complete log of this run can be found in:
-102 error npm ERR!     /Users/juliiankrispel/.npm/_logs/2018-09-21T09_32_01_753Z-debug.log
+102 error npm ERR!     /Users/juliiankrispel/.npm/_logs/2018-09-22T11_28_40_644Z-debug.log
 102 error
-102 error > djs-editor@0.1.1 prepare .
+102 error > djs-utils@0.1.2 prepare .
 102 error > yarn run build
 102 error
 102 error yarn run v1.5.1
 102 error $ rollup -c
-102 error Done in 1.94s.
+102 error Done in 1.17s.
 102 error
 102 error     at Promise.all.then.arr (/Users/juliiankrispel/.nvm/versions/node/v8.10.0/lib/node_modules/lerna/node_modules/execa/index.js:236:11)
 102 error     at <anonymous>
