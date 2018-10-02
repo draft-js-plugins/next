@@ -1,9 +1,14 @@
 {
-	"devDependencies": {
-		"lerna": "^2.11.0"
-	},
-	"dependencies": {
-		"flow-bin": "^0.80.0",
-		"flow-typed": "^2.5.1"
-	}
+  "devDependencies": {
+    "all-contributors-cli": "^5.4.0",
+    "lerna": "^2.11.0"
+  },
+  "scripts": {
+    "contributors:add": "all-contributors add",
+    "contributors:generate": "all-contributors generate"
+  },
+  "dependencies": {
+    "flow-bin": "^0.80.0",
+    "flow-typed": "^2.5.1"
+  }
 }
