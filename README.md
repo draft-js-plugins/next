@@ -24,6 +24,11 @@ Having thought this over for almost a year now I think the best way forward woul
 3. Components provide great patterns for composition, and everyone who uses react is familiar with at least a handful of these patterns.
 4. Using component patterns over massive configuration objects, would make the API much smaller and easier to test, follow, maintain
 
+# Development process
+
+
+
+# Examples:
 Now some examples, if you have any questions ideas lmk!
 
 ### EditorStateContainer
