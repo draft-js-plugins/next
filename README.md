@@ -1,4 +1,5 @@
 # draft-js-plugins@next
+[![All Contributors](https://img.shields.io/badge/all_contributors-1-orange.svg?style=flat-square)](#contributors)
 
 # DISCLAIMER: This project isn't usable yet
 
@@ -89,3 +90,15 @@ In this case we use a text selection popover for a medium style toolbar, but thi
 ```
 
 
+
+## Contributors
+
+Thanks goes to these wonderful people ([emoji key](https://github.com/kentcdodds/all-contributors#emoji-key)):
+
+<!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
+<!-- prettier-ignore -->
+| [<img src="https://avatars1.githubusercontent.com/u/1188186?v=4" width="100px;"/><br /><sub><b>Julian Krispel-Samsel</b></sub>](http://reactrocket.com)<br />[💻](https://github.com/draft-js-plugins/next/commits?author=juliankrispel "Code") [🎨](#design-juliankrispel "Design") [📖](https://github.com/draft-js-plugins/next/commits?author=juliankrispel "Documentation") [🤔](#ideas-juliankrispel "Ideas, Planning, & Feedback") |
+| :---: |
+<!-- ALL-CONTRIBUTORS-LIST:END -->
+
+This project follows the [all-contributors](https://github.com/kentcdodds/all-contributors) specification. Contributions of any kind welcome!
