@@ -1,6 +1,6 @@
 {
-  "short_name": "djs-buttons",
-  "name": "djs-buttons",
+  "short_name": "@djsp/buttons",
+  "name": "@djsp/buttons",
   "start_url": "./index.html",
   "display": "standalone",
   "theme_color": "#000000",

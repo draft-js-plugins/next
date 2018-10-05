@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import Immutable from 'immutable'
 
 import { EditorState } from 'draft-js';
-import { EditorContainer, Editor, Plugin } from 'djs-editor'
+import { EditorContainer, Editor, Plugin } from '@djsp/editor'
 import Mentions from './Mentions'
 
 const Unstyled = <div style={{background: 'yellow'}} />

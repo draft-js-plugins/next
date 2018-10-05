@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 
-import ExampleComponent from 'djs-buttons'
+import ExampleComponent from '@djsp/buttons'
 
 export default class App extends Component {
   render () {

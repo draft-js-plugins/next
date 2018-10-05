@@ -2,10 +2,10 @@ import React, { Component } from 'react'
 import ReactDOM from 'react-dom'
 
 import { EditorState, ContentState, Modifier } from 'draft-js'
-import { EditorContainer, Editor } from 'djs-editor'
-import Autocomplete from 'djs-autocomplete'
+import { EditorContainer, Editor } from '@djsp/editor'
+import Autocomplete from '@djsp/autocomplete'
 import emojis from 'emoji.json'
-import 'djs-autocomplete/dist/index.css'
+import '@djsp/autocomplete/dist/index.css'
 import './styles.css'
 
 class App extends Component {

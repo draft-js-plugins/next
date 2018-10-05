@@ -1,11 +1,10 @@
 {
-  "name": "djs-buttons",
-  "version": "0.1.1",
-  "description": "Buttons for draft js plugins",
-  "private": true,
+  "name": "@djsp/autocomplete",
+  "version": "0.1.2",
+  "description": "Autocomplete plugin",
   "author": "juliankrispel",
   "license": "MIT",
-  "repository": "draft-js-plugins/next",
+  "repository": "draft-js-plugins/next/tree/master/packages/djs-autocomplete",
   "main": "dist/index.js",
   "module": "dist/index.es.js",
   "jsnext:main": "dist/index.es.js",
@@ -17,6 +16,10 @@
     "prepare": "yarn run build",
     "predeploy": "cd example && yarn install && yarn run build",
     "deploy": "gh-pages -d example/build"
+  },
+  "dependencies": {
+    "@djsp/editor": "^0.1.1",
+    "emojis-list": "^2.1.0"
   },
   "peerDependencies": {
     "prop-types": "^15.5.4",
