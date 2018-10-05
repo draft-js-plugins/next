@@ -1,13 +1,13 @@
-# djs-utils
+# @djsp/utils
 
 > Utilities for draft js
 
-[![NPM](https://img.shields.io/npm/v/djs-utils.svg)](https://www.npmjs.com/package/djs-utils) [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
+[![NPM](https://img.shields.io/npm/v/@djsp/utils.svg)](https://www.npmjs.com/package/@djsp/utils) [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
 
 ## Install
 
 ```bash
-npm install --save djs-utils
+npm install --save @djsp/utils
 ```
 
 ## Usage
@@ -15,7 +15,7 @@ npm install --save djs-utils
 ```jsx
 import React, { Component } from 'react'
 
-import MyComponent from 'djs-utils'
+import MyComponent from '@djsp/utils'
 
 class Example extends Component {
   render () {

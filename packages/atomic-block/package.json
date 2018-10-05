@@ -4,7 +4,7 @@
   "description": "Plugin for atomic block",
   "author": "Julian Krispel",
   "license": "MIT",
-  "repository": "draft-js-plugins/next/tree/master/packages/djs-atomic-block",
+  "repository": "draft-js-plugins/next/tree/master/packages/@djsp/atomic-block",
   "main": "dist/index.js",
   "module": "dist/index.es.js",
   "jsnext:main": "dist/index.es.js",

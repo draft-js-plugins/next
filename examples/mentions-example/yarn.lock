@@ -1989,7 +1989,7 @@ diffie-hellman@^5.0.0:
     miller-rabin "^4.0.0"
     randombytes "^2.0.0"
 
-"djs-suggestions@link:..":
+"@djsp/suggestions@link:..":
   version "0.0.0"
   uid ""
 

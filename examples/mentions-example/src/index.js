@@ -4,7 +4,7 @@ import ReactDOM from 'react-dom'
 import { EditorState, Modifier } from 'draft-js'
 import { EditorContainer, Editor, Plugin } from '@djsp/editor'
 import Autocomplete from '@djsp/autocomplete'
-import { createEntityDecorator, insertTextWithEntity } from 'djs-utils'
+import { createEntityDecorator, insertTextWithEntity } from '@djsp/utils'
 import '@djsp/autocomplete/dist/index.css'
 import './styles.css'
 
