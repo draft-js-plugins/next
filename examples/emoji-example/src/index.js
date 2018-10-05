@@ -10,7 +10,7 @@ import './styles.css'
 
 class App extends Component {
   state = {
-    editorState: EditorState.createWithContent(ContentState.createFromText('To triggeer the emoji autocomplete just type :')),
+    editorState: EditorState.createWithContent(ContentState.createFromText('To trigger the emoji autocomplete just type :')),
     suggestions: []
   }
 
