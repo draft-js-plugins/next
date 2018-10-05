@@ -1,11 +1,11 @@
 {
-  "name": "djs-editor-example",
-  "homepage": "https://juliankrispel.github.io/djs-editor",
+  "name": "@djsp/editor-example",
+  "homepage": "https://juliankrispel.github.io/@djsp/editor",
   "version": "0.0.0",
   "private": true,
   "license": "MIT",
   "dependencies": {
-    "djs-editor": "link:..",
+    "@djsp/editor": "latest",
     "draft-js": "^0.10.5",
     "prop-types": "^15.6.1",
     "react": "^16.5.0",

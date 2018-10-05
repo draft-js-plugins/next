@@ -1,5 +1,5 @@
 {
-  "name": "djs-autocomplete-example",
+  "name": "@djsp/autocomplete-example",
   "homepage": "https://juliankrispel.github.io/djs-autocomplete",
   "version": "0.0.0",
   "private": true,
@@ -8,8 +8,8 @@
     "prop-types": "^15.6.1",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
-    "djs-utils": "^0.0.1",
-    "djs-autocomplete": "0.0.1",
+    "@djsp/utils": "latest",
+    "@djsp/autocomplete": "latest",
     "react-scripts": "^1.1.1"
   },
   "scripts": {

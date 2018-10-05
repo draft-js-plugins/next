@@ -1,7 +1,7 @@
 // @flow
 
 import React, { Component } from 'react'
-import { withEditorContext, constants, Plugin } from 'djs-editor'
+import { withEditorContext, constants, Plugin } from '@djsp/editor'
 import Draft from 'draft-js'
 import AtomicBlock from './AtomicBlock'
 

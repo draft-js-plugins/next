@@ -1,6 +1,6 @@
 {
-  "short_name": "djs-editor",
-  "name": "djs-editor",
+  "short_name": "@djsp/editor",
+  "name": "@djsp/editor",
   "start_url": "./index.html",
   "display": "standalone",
   "theme_color": "#000000",

@@ -2,9 +2,9 @@ import React, { Component } from 'react'
 import ReactDOM from 'react-dom'
 
 import { EditorState, convertFromRaw } from 'draft-js'
-import { EditorContainer, Editor } from 'djs-editor'
-import AtomicBlock from 'djs-atomic-block'
-import 'djs-atomic-block/dist/index.css'
+import { EditorContainer, Editor } from '@djsp/editor'
+import AtomicBlock from '@djsp/atomic-block'
+import '@djsp/atomic-block/dist/index.css'
 import './styles.css'
 
 const rawContent = {

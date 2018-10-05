@@ -1,10 +1,10 @@
 {
-  "name": "djs-autocomplete",
-  "version": "0.1.2",
+  "name": "@djsp/autocomplete",
+  "version": "0.0.1",
   "description": "Autocomplete plugin",
   "author": "juliankrispel",
   "license": "MIT",
-  "repository": "draft-js-plugins/next/tree/master/packages/djs-autocomplete",
+  "repository": "draft-js-plugins/next/tree/master/packages/autocomplete",
   "main": "dist/index.js",
   "module": "dist/index.es.js",
   "jsnext:main": "dist/index.es.js",
@@ -18,7 +18,7 @@
     "deploy": "gh-pages -d example/build"
   },
   "dependencies": {
-    "djs-editor": "^0.1.1",
+    "@djsp/editor": "^0.1.1",
     "emojis-list": "^2.1.0"
   },
   "peerDependencies": {

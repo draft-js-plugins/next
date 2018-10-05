@@ -1,10 +1,10 @@
 {
-  "name": "djs-utils",
-  "version": "0.1.2",
-  "description": "Utilities for draft js",
-  "author": "juliankrispel",
+  "name": "@djsp/atomic-block",
+  "version": "0.0.1",
+  "description": "Plugin for atomic block",
+  "author": "Julian Krispel",
   "license": "MIT",
-  "repository": "juliankrispel/djs-utils",
+  "repository": "draft-js-plugins/next/tree/master/packages/atomic-block",
   "main": "dist/index.js",
   "module": "dist/index.es.js",
   "jsnext:main": "dist/index.es.js",
@@ -17,10 +17,22 @@
     "predeploy": "cd example && yarn install && yarn run build",
     "deploy": "gh-pages -d example/build"
   },
+  "dependencies": {
+    "@babel/plugin-proposal-class-properties": "^7.1.0",
+    "@babel/preset-stage-0": "^7.0.0",
+    "@djsp/editor": "^0.1.1"
+  },
+  "peerDependencies": {
+    "prop-types": "^15.5.4",
+    "react": "^15.0.0 || ^16.0.0",
+    "react-dom": "^15.0.0 || ^16.0.0"
+  },
   "devDependencies": {
     "@babel/core": "^7.1.0",
     "@babel/preset-env": "^7.1.0",
-    "cross-env": "^5.1.4",
+    "@babel/preset-flow": "^7.0.0",
+    "@babel/preset-react": "^7.0.0",
+    "@babel/preset-stage-2": "^7.0.0",
     "eslint": "^4.19.1",
     "eslint-config-standard": "^11.0.0",
     "eslint-config-standard-react": "^6.0.0",
@@ -32,18 +44,17 @@
     "flow-bin": "^0.81.0",
     "flow-typed": "^2.5.1",
     "react": "^16.2.0",
+    "react-dom": "^16.2.0",
+    "react-scripts": "^1.1.1",
     "rollup": "^0.66.2",
     "rollup-plugin-babel": "^4.0.3",
     "rollup-plugin-commonjs": "^9.1.8",
-    "rollup-plugin-peer-deps-external": "^2.0.0"
+    "rollup-plugin-node-resolve": "^3.4.0",
+    "rollup-plugin-peer-deps-external": "^2.2.0",
+    "rollup-plugin-postcss": "^1.6.2",
+    "rollup-plugin-url": "^1.4.0"
   },
   "files": [
     "dist"
-  ],
-  "peerDependencies": {
-    "draft-js": "^0.10.5"
-  },
-  "dependencies": {
-    "@babel/preset-flow": "^7.0.0"
-  }
+  ]
 }

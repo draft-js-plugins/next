@@ -2,10 +2,10 @@ import React, { Component } from 'react'
 import ReactDOM from 'react-dom'
 
 import { EditorState, Modifier } from 'draft-js'
-import { EditorContainer, Editor, Plugin } from 'djs-editor'
-import Autocomplete from 'djs-autocomplete'
-import { createEntityDecorator, insertTextWithEntity } from 'djs-utils'
-import 'djs-autocomplete/dist/index.css'
+import { EditorContainer, Editor, Plugin } from '@djsp/editor'
+import Autocomplete from '@djsp/autocomplete'
+import { createEntityDecorator, insertTextWithEntity } from '@djsp/utils'
+import '@djsp/autocomplete/dist/index.css'
 import './styles.css'
 
 const Mention = (props) => {

@@ -1,11 +1,10 @@
 {
-  "name": "djs-buttons",
-  "version": "0.1.1",
-  "description": "Buttons for draft js plugins",
-  "private": true,
+  "name": "@djsp/editor",
+  "version": "0.0.1",
+  "description": "Draft Js Plugins Editor",
   "author": "juliankrispel",
   "license": "MIT",
-  "repository": "draft-js-plugins/next",
+  "repository": "draft-js-plugins/next/tree/master/packages/editor",
   "main": "dist/index.js",
   "module": "dist/index.es.js",
   "jsnext:main": "dist/index.es.js",
@@ -18,7 +17,12 @@
     "predeploy": "cd example && yarn install && yarn run build",
     "deploy": "gh-pages -d example/build"
   },
+  "dependencies": {
+    "draft-js": "^0.10.5"
+  },
   "peerDependencies": {
+    "draft-js": "^0.10.5",
+    "flow-bin": "^0.80.0",
     "prop-types": "^15.5.4",
     "react": "^15.0.0 || ^16.0.0",
     "react-dom": "^15.0.0 || ^16.0.0"
