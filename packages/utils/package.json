@@ -1,10 +1,10 @@
 {
   "name": "@djsp/utils",
-  "version": "0.1.2",
+  "version": "0.0.1",
   "description": "Utilities for draft js",
   "author": "juliankrispel",
   "license": "MIT",
-  "repository": "draft-js-plugins/next/tree/master/packages/@djsp/utils",
+  "repository": "draft-js-plugins/next/tree/master/packages/utils",
   "main": "dist/index.js",
   "module": "dist/index.es.js",
   "jsnext:main": "dist/index.es.js",
