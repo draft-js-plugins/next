@@ -1,5 +1,5 @@
 # draft-js-plugins@next
-[![All Contributors](https://img.shields.io/badge/all_contributors-2-orange.svg?style=flat-square)](#contributors)
+[![All Contributors](https://img.shields.io/badge/all_contributors-3-orange.svg?style=flat-square)](#contributors)
 
 # DISCLAIMER: This project isn't usable yet
 
@@ -102,8 +102,8 @@ Thanks goes to these wonderful people ([emoji key](https://github.com/kentcdodds
 
 <!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
 <!-- prettier-ignore -->
-| [<img src="https://avatars2.githubusercontent.com/u/11409069?v=4" width="100px;"/><br /><sub><b>blackywkl</b></sub>](http://freedomlang.com)<br />[💻](https://github.com/draft-js-plugins/next/commits?author=freedomlang "Code") [📖](https://github.com/draft-js-plugins/next/commits?author=freedomlang "Documentation") [💡](#example-freedomlang "Examples") | [<img src="https://avatars2.githubusercontent.com/u/1166143?v=4" width="100px;"/><br /><sub><b>Hosmel Quintana</b></sub>](http://hosmelq.com)<br />[💻](https://github.com/draft-js-plugins/next/commits?author=hosmelq "Code") |
-| :---: | :---: |
+| [<img src="https://avatars2.githubusercontent.com/u/11409069?v=4" width="100px;"/><br /><sub><b>blackywkl</b></sub>](http://freedomlang.com)<br />[💻](https://github.com/draft-js-plugins/next/commits?author=freedomlang "Code") [📖](https://github.com/draft-js-plugins/next/commits?author=freedomlang "Documentation") [💡](#example-freedomlang "Examples") | [<img src="https://avatars2.githubusercontent.com/u/1166143?v=4" width="100px;"/><br /><sub><b>Hosmel Quintana</b></sub>](http://hosmelq.com)<br />[💻](https://github.com/draft-js-plugins/next/commits?author=hosmelq "Code") | [<img src="https://avatars0.githubusercontent.com/u/1326431?v=4" width="100px;"/><br /><sub><b>Rose</b></sub>](http://r.osey.me)<br />[💻](https://github.com/draft-js-plugins/next/commits?author=Rosey "Code") |
+| :---: | :---: | :---: |
 <!-- ALL-CONTRIBUTORS-LIST:END -->
 
 This project follows the [all-contributors](https://github.com/kentcdodds/all-contributors) specification. Contributions of any kind welcome!
