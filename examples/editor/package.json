@@ -5,7 +5,7 @@
   "private": true,
   "license": "MIT",
   "dependencies": {
-    "djs-editor": "link:..",
+    "djs-editor": "latest",
     "draft-js": "^0.10.5",
     "prop-types": "^15.6.1",
     "react": "^16.5.0",
