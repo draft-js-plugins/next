@@ -1,12 +1,36 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import * as serviceWorker from './serviceWorker';
+import React, { Component } from "react";
+import ReactDOM from "react-dom";
 
-ReactDOM.render(<App />, document.getElementById('root'));
+import { EditorState, ContentState, Modifier } from "draft-js";
+import { EditorContainer, Editor } from "djs-editor";
+import Toolbar from "djs-toolbar";
 
-// If you want your app to work offline and load faster, you can change
-// unregister() to register() below. Note this comes with some pitfalls.
-// Learn more about service workers: http://bit.ly/CRA-PWA
-serviceWorker.unregister();
+class App extends Component {
+  state = {
+    editorState: EditorState.createWithContent(
+      ContentState.createFromText(
+        "Just type and togger style:"
+      )
+    )
+  };
+
+  onChange = editorState => {
+    this.setState({ editorState });
+  };
+
+  render() {
+    return (
+      <div>
+        <EditorContainer
+          editorState={this.state.editorState}
+          onChange={this.onChange}
+        >
+          <Editor />
+          <Toolbar />
+        </EditorContainer>
+      </div>
+    );
+  }
+}
+
+ReactDOM.render(<App />, document.getElementById("root"));

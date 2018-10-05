@@ -1,8 +1,7 @@
 {
-  "name": "djs-static-toolbar",
+  "name": "djs-toolbar",
   "version": "0.1.0",
-  "description": "Static toolbar plugin",
-  "private": true,
+  "description": "Toolbar plugin",
   "author": "blackywkl",
   "license": "MIT",
   "repository": "draft-js-plugins/next",
@@ -20,6 +19,7 @@
   },
   "dependencies": {
     "djs-editor": "^0.1.1",
+    "djs-buttons": "latest",
     "union-class-names": "^1.0.0"
   },
   "peerDependencies": {
