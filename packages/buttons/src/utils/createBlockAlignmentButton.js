@@ -2,7 +2,7 @@
 import React, { Component } from 'react';
 import unionClassNames from 'union-class-names';
 import { withEditorContext } from 'djs-editor';
-import buttonStyles from '../buttonStyles.css';
+import buttonStyles from '../styles.css';
 
 export default ({ alignment, children }) => {
   class BlockAlignmentButton extends Component {

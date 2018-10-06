@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import Draft from 'draft-js';
 import unionClassNames from 'union-class-names';
 import { withEditorContext } from 'djs-editor';
-import buttonStyles from '../buttonStyles.css';
+import buttonStyles from '../styles.css';
 
 const { RichUtils } = Draft;
 
