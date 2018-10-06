@@ -9,7 +9,7 @@ import { plugin as analyze } from 'rollup-plugin-analyzer'
 import pkg from './package.json'
 
 export default {
-  external: ['react', 'djs-editor'],
+  external: ['react', 'djs-editor', 'draft-js'],
   input: 'src/index.js',
   output: [
     {
@@ -25,14 +25,13 @@ export default {
     external(),
     postcss({
       modules: true,
+      extract: true
     }),
     url(),
     babel({
       exclude: 'node_modules/**',
     }),
-    resolve({
-      modulesOnly: true
-    }),
+    resolve(),
     commonjs(),
     analyze({
       limit: 10

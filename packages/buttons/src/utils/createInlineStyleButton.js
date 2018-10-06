@@ -1,14 +1,25 @@
 // @flow
 import React, { Component } from 'react'
-import Draft from 'draft-js'
+import { RichUtils } from 'draft-js'
 import unionClassNames from 'union-class-names'
 import { withEditorContext } from 'djs-editor'
 import buttonStyles from '../styles.css'
 
-const { RichUtils } = Draft
-
 export default ({ style, children }) => {
   class InlineStyleButton extends Component {
+
+    static defaultProps = {
+      children: (buttonnApi) => {
+        const className = buttonnApi.styleIsActive ? unionClassNames(buttonStyles.button, buttonStyles.active) : buttonStyles.button;
+
+        return <button
+          className={className}
+          onClick={buttonnApi.toggleStyle}
+          type="button"
+          children={children}
+        />
+      }
+    }
 
     toggleStyle = (event) => {
       const {
@@ -36,18 +47,14 @@ export default ({ style, children }) => {
     }
 
     render() {
-      const className = this.styleIsActive() ? unionClassNames(buttonStyles.button, buttonStyles.active) : buttonStyles.button;
       return (
         <div
           className={buttonStyles.buttonWrapper}
           onMouseDown={this.preventBubblingUp}
-        >
-          <button
-            className={className}
-            onClick={this.toggleStyle}
-            type="button"
-            children={children}
-          />
+        >{this.props.children({
+          styleIsActive: this.styleIsActive(),
+          toggleStyle: this.toggleStyle
+        })}
         </div>
       );
     }
