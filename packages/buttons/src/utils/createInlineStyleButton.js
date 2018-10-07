@@ -5,8 +5,12 @@ import unionClassNames from 'union-class-names'
 import { withEditorContext } from 'djs-editor'
 import buttonStyles from '../styles.css'
 
-export default ({ style, children }) => {
-  class InlineStyleButton extends Component {
+export default ({ style: string, children: string | React.Node }) => {
+  type Props = {
+    children: () => React.Node,
+  };
+
+  class InlineStyleButton extends Component<Props> {
 
     static defaultProps = {
       children: (buttonnApi) => {
@@ -21,7 +25,7 @@ export default ({ style, children }) => {
       }
     }
 
-    toggleStyle = (event) => {
+    toggleStyle = (event: SyntheticEvent<HTMLButtonElement>) => {
       const {
         editorProps: { editorState },
         pluginMethods: { setEditorState }
@@ -35,7 +39,7 @@ export default ({ style, children }) => {
       );
     }
 
-    preventBubblingUp = (event) => { event.preventDefault(); }
+    preventBubblingUp = (event: SyntheticEvent<>) => { event.preventDefault(); }
 
     // we check if this.props.getEditorstate is undefined first in case the button is rendered before the editor
     styleIsActive = () => {

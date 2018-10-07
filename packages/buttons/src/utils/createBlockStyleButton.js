@@ -5,8 +5,12 @@ import unionClassNames from 'union-class-names';
 import { withEditorContext } from 'djs-editor';
 import buttonStyles from '../styles.css';
 
-export default ({ blockType, children }) => {
-  class BlockStyleButton extends Component {
+export default ({ blockType: string, children: string | React.Node }) => {
+  type Props = {
+    children: () => React.Node,
+  };
+
+  class BlockStyleButton extends Component<Props> {
 
     static defaultProps = {
       children: (buttonnApi) => {
@@ -21,7 +25,7 @@ export default ({ blockType, children }) => {
       }
     }
 
-    toggleStyle = (event) => {
+    toggleStyle = (event: SyntheticEvent<HTMLButtonElement>) => {
       const {
         editorProps: { editorState },
         pluginMethods: { setEditorState }
@@ -36,7 +40,7 @@ export default ({ blockType, children }) => {
       );
     }
 
-    preventBubblingUp = (event) => { event.preventDefault(); }
+    preventBubblingUp = (event: SyntheticEvent<>) => { event.preventDefault(); }
 
     blockTypeIsActive = () => {
       const {
