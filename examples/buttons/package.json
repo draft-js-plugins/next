@@ -1,14 +1,14 @@
 {
   "name": "@djsp/buttons-example",
   "homepage": "https://juliankrispel.github.io/djs-buttons",
-  "version": "0.0.0",
+  "version": "0.0.2",
   "private": true,
   "license": "MIT",
   "dependencies": {
+    "@djsp/buttons": "latest",
     "prop-types": "^15.6.1",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
-    "@djsp/buttons": "latest",
     "react-scripts": "^1.1.1"
   },
   "scripts": {

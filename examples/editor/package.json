@@ -1,7 +1,7 @@
 {
   "name": "@djsp/editor-example",
   "homepage": "https://juliankrispel.github.io/@djsp/editor",
-  "version": "0.0.0",
+  "version": "0.0.2",
   "private": true,
   "license": "MIT",
   "dependencies": {

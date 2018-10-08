@@ -1,14 +1,14 @@
 {
   "name": "@djsp/atomic-block-example",
   "homepage": "https://juliankrispel.github.io/djs-autocomplete",
-  "version": "0.0.0",
+  "version": "0.0.2",
   "private": true,
   "license": "MIT",
   "dependencies": {
+    "@djsp/atomic-block": "latest",
+    "@djsp/autocomplete": "latest",
     "emoji.json": "^11.0.0",
     "prop-types": "^15.6.1",
-    "@djsp/autocomplete": "latest",
-    "@djsp/atomic-block": "latest",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
     "react-scripts": "^1.1.1"
