@@ -9,19 +9,19 @@ export default {
   output: [
     {
       file: pkg.main,
-      format: 'cjs'
+      format: 'cjs',
     },
     {
       file: pkg.module,
-      format: 'es'
-    }
+      format: 'es',
+    },
   ],
   external: ['draft-js'],
   plugins: [
     external(),
     babel({
-      exclude: 'node_modules/**'
+      exclude: 'node_modules/**',
     }),
-    commonjs()
-  ]
+    commonjs(),
+  ],
 }

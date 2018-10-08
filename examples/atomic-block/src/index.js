@@ -8,45 +8,49 @@ import '@djsp/atomic-block/dist/index.css'
 import './styles.css'
 
 const rawContent = {
-  blocks: [{
-    text: 'Hey there duder'
-  }, {
-    type: 'atomic',
-    text: ' ',
-    entityRanges: [{
-      key: 0,
-      length: 1,
-      offset: 0
-    }]
-  }],
+  blocks: [
+    {
+      text: 'Hey there duder',
+    },
+    {
+      type: 'atomic',
+      text: ' ',
+      entityRanges: [
+        {
+          key: 0,
+          length: 1,
+          offset: 0,
+        },
+      ],
+    },
+  ],
   entityMap: {
     0: {
       data: {
-        src: 'https://placekitten.com/200/200'
+        src: 'https://placekitten.com/200/200',
       },
       mutability: 'IMMUTABLE',
-      type: 'IMAGE'
-    }
-  }
+      type: 'IMAGE',
+    },
+  },
 }
 
 class App extends Component {
   state = {
-    editorState: EditorState.createWithContent(convertFromRaw(rawContent))
+    editorState: EditorState.createWithContent(convertFromRaw(rawContent)),
   }
 
   onChange = editorState => this.setState({ editorState })
 
-  render () {
+  render() {
     return (
       <div>
         <EditorContainer
           editorState={this.state.editorState}
-          onChange={this.onChange}
-        >
+          onChange={this.onChange}>
           <Editor />
 
-          <AtomicBlock type='image'>
+          <AtomicBlock type="image">
             {({ blockProps }) => <img {...blockProps} />}
           </AtomicBlock>
         </EditorContainer>

@@ -1,12 +1,14 @@
-import React, { Component } from 'react'
+// @flow
+
+import { Component } from 'react'
 import { withConsumer } from './EditorContainer'
 
-class Plugin extends Component {
+type Props = Object
+
+class Plugin extends Component<Props> {
   componentDidMount() {
     const {
-      pluginMethods: {
-        registerPlugin
-      },
+      pluginMethods: { registerPlugin },
       editorProps,
       ...props
     } = this.props
@@ -17,7 +19,7 @@ class Plugin extends Component {
 
   render() {
     if (this.props.children) {
-      return this.props.children(this.props.pluginMethods);
+      return this.props.children(this.props.pluginMethods)
     }
     return null
   }

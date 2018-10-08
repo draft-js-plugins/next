@@ -1,3 +1,5 @@
+// @flow
+
 import React, { Component } from 'react'
 import ReactDOM from 'react-dom'
 
@@ -8,35 +10,37 @@ import { createEntityDecorator, insertTextWithEntity } from '@djsp/utils'
 import '@djsp/autocomplete/dist/index.css'
 import './styles.css'
 
-const Mention = (props) => {
-  return <span className="mention">{props.children}</span>;
-};
+const Mention = (props: { children: React.Element }) => {
+  return <span className="mention">{props.children}</span>
+}
 
-const MENTION = 'MENTION';
+const MENTION = 'MENTION'
 
-const mentionDecorator = createEntityDecorator(
-  MENTION,
-  Mention
-)
+const mentionDecorator = createEntityDecorator(MENTION, Mention)
 
-const suggestions = [{
-  label: 'Julian Krispel-Samsel',
-  value: 'julian'
-}, {
-  label: 'Nik Graf',
-  value: 'nik'
-}]
+const suggestions = [
+  {
+    label: 'Julian Krispel-Samsel',
+    value: 'julian',
+  },
+  {
+    label: 'Nik Graf',
+    value: 'nik',
+  },
+]
 
 class App extends Component {
   state = {
     editorState: EditorState.createEmpty(),
-    suggestions: []
+    suggestions: [],
   }
 
-  setSuggestions = (searchText) => {
+  setSuggestions = searchText => {
     console.log('set suggestions', searchText)
     this.setState({
-      suggestions: suggestions.filter(item => item.label.includes(searchText.slice(1)))
+      suggestions: suggestions.filter(item =>
+        item.label.includes(searchText.slice(1))
+      ),
     })
   }
 
@@ -47,8 +51,8 @@ class App extends Component {
     let content = Modifier.removeRange(
       editorState.getCurrentContent(),
       selection.merge({
-        anchorOffset: selection.getAnchorOffset() - searchText.length
-      }),
+        anchorOffset: selection.getAnchorOffset() - searchText.length,
+      })
     )
 
     content = insertTextWithEntity(
@@ -61,33 +65,24 @@ class App extends Component {
     )
 
     // insert a space after
-    content = Modifier.insertText(
-      content,
-      content.getSelectionAfter(),
-      ' '
-    )
+    content = Modifier.insertText(content, content.getSelectionAfter(), ' ')
 
     this.setState({
-      editorState: EditorState.push(
-        editorState,
-        content,
-        'replace-fragment'
-      )
+      editorState: EditorState.push(editorState, content, 'replace-fragment'),
     })
   }
 
-  render () {
+  render() {
     return (
       <div>
-        <EditorContainer editorState={this.state.editorState} onChange={editorState => this.setState({ editorState })}>
+        <EditorContainer
+          editorState={this.state.editorState}
+          onChange={editorState => this.setState({ editorState })}>
           Hello
-
           <Editor />
-
           <Plugin decorators={[mentionDecorator]} />
-
           <Autocomplete
-            trigger='@'
+            trigger="@"
             onSelect={this.insertMention}
             suggestions={this.state.suggestions}
             onSearch={this.setSuggestions}
