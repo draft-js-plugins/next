@@ -1,5 +1,6 @@
 /* eslint-disable react/no-array-index-key */
 import React from 'react';
+import Separator from './components/Separator';
 import { getVisibleSelectionRect } from 'draft-js';
 import {
   ItalicButton,
@@ -145,3 +146,7 @@ class Toolbar extends React.Component {
 }
 
 export default Toolbar;
+
+export {
+  Separator,
+}
