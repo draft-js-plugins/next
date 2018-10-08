@@ -5,7 +5,19 @@
 
 This is at an experimental stage, mostly this project isn't complete and ready for use. If you're interested in participating, whether it's code or just debate, please open an issue, hit me up on twitter or the [draft js slack channel](https://draftjs.herokuapp.com/)
 
-# Development process
+# Contributing
+
+## Install project
+
+1. Run `npm install` (we use package-lock.json rather than `yarn`)
+2. Run `yarn lerna bootstrap`, this will install all dependencies of all packages and examples.
+
+## Working locally
+
+In order to work on packages and examples at the same time, just run `yarn lerna link` and start `yarn watch` in the package/example folders you want to work on.
+
+## Process
+
 If you'd like to contribute, please follow this process. If you disagree with the process or would like to change it, just open an issue or talk to me [on slack](https://draftjs.herokuapp.com).
 
 1. Plugins go into the `packages` folder. Plugins are basic building blocks, they don't cater to a specific usecase, but should be used as composable building blocks for your draft js app. Generally I'm trying to avoid any styling and leave that up to user land. Usage of render props and inversion of control is encouraged, if you're not sure what I mean, please have a peak at [Kent's video](https://www.youtube.com/watch?v=5k2YasGFX7o) building [downshift](https://github.com/paypal/downshift).
