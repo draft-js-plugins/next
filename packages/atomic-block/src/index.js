@@ -1,7 +1,7 @@
 // @flow
 
 import React, { Component } from 'react'
-import { withEditorContext, constants, Plugin } from '@djsp/editor'
+import { withEditorContext } from '@djsp/editor'
 import Draft from 'draft-js'
 import AtomicBlock from './AtomicBlock'
 
@@ -23,12 +23,14 @@ class AtomicBlockPlugin extends Component<Props, State> {
   constructor(props) {
     super(props)
 
-    const { pluginMethods: { registerPlugin } } = this.props
+    const {
+      pluginMethods: { registerPlugin },
+    } = this.props
 
     this.unregister = registerPlugin({
       handleReturn: this.handleReturn,
       keyBindingFn: this.keyBindingFn,
-      blockRendererFn: this.blockRendererFn
+      blockRendererFn: this.blockRendererFn,
     })
   }
 
@@ -39,7 +41,7 @@ class AtomicBlockPlugin extends Component<Props, State> {
   focusBlock = (blockKey: string) => {
     const {
       editorProps: { editorState },
-      pluginMethods: { setEditorState }
+      pluginMethods: { setEditorState },
     } = this.props
 
     let selection = editorState.getSelection()
@@ -50,14 +52,9 @@ class AtomicBlockPlugin extends Component<Props, State> {
       focusOffset: 0,
     })
 
-    window.getSelection().removeAllRanges();
+    window.getSelection().removeAllRanges()
 
-    setEditorState(
-      EditorState.forceSelection(
-        editorState,
-        selection
-      )
-    )
+    setEditorState(EditorState.forceSelection(editorState, selection))
   }
 
   keyBindingFn = (event: SyntheticKeyboardEvent<*>) => {
@@ -65,11 +62,11 @@ class AtomicBlockPlugin extends Component<Props, State> {
   }
 
   handleReturn = () => {
-    const {
-      editorProps: { editorState },
-    } = this.props
+    // const {
+    //   editorProps: { editorState },
+    // } = this.props
 
-    const selection = editorState.getSelection()
+    // const selection = editorState.getSelection()
 
     console.log('handle return')
   }
@@ -81,18 +78,23 @@ class AtomicBlockPlugin extends Component<Props, State> {
 
     const blockKey = props.block.getKey()
     const selection = editorState.getSelection()
-    const isFocused = selection.getAnchorKey() === blockKey
-      && selection.isCollapsed()
+    const isFocused =
+      selection.getAnchorKey() === blockKey && selection.isCollapsed()
 
-    return <AtomicBlock
-      isFocused={isFocused}
-      onClick={() => this.focusBlock(blockKey)}>
-      {this.props.children(props)}
-    </AtomicBlock>
+    return (
+      <AtomicBlock
+        isFocused={isFocused}
+        onClick={() => this.focusBlock(blockKey)}>
+        {this.props.children(props)}
+      </AtomicBlock>
+    )
   }
 
-  blockRendererFn = (block) => {
-    const { type, editorProps: { editorState } } = this.props
+  blockRendererFn = block => {
+    const {
+      type,
+      editorProps: { editorState },
+    } = this.props
     const content = editorState.getCurrentContent()
 
     if (block.getType() === 'atomic') {
@@ -107,7 +109,7 @@ class AtomicBlockPlugin extends Component<Props, State> {
         return {
           component: this.renderChildren,
           editable: false,
-          props: data
+          props: data,
         }
       }
     }

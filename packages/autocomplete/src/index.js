@@ -2,14 +2,14 @@
 
 import React, { Component } from 'react'
 import { withEditorContext, constants } from '@djsp/editor'
-import Draft from 'draft-js'
+// import Draft from 'draft-js'
 import styles from './styles.css'
 
-const { EditorState, Modifier } = Draft
+// const { EditorState, Modifier } = Draft
 
 type Props = {
-  trigger: string | (textUntilCursor: string) => ?string,
-  renderSuggestion?: ({ suggestion: any, onSelect: any => void }),
+  trigger: string | ((textUntilCursor: string) => ?string),
+  renderSuggestion?: { suggestion: any, onSelect: any => void },
   onSelect: (suggestion: any) => void,
   onSearch: (searchText: string) => void,
   suggestions: Array<any>,
@@ -28,16 +28,16 @@ class Suggestions extends Component<Props, State> {
     renderSuggestion: ({ suggestion, isFocused }) => {
       const classNames = [styles.suggestion]
       if (isFocused) classNames.push(styles.suggestionFocused)
-      return <span className={`${classNames.join(' ')}`} >
-        {suggestion.label}
-      </span>
-    }
+      return (
+        <span className={`${classNames.join(' ')}`}>{suggestion.label}</span>
+      )
+    },
   }
 
   state = {
     isOpen: false,
     selectedItem: 0,
-    isSearching: false
+    isSearching: false,
   }
 
   constructor(props) {
@@ -46,7 +46,9 @@ class Suggestions extends Component<Props, State> {
   }
 
   componentDidMount() {
-    const { pluginMethods: { registerPlugin } } = this.props
+    const {
+      pluginMethods: { registerPlugin },
+    } = this.props
 
     this._unregister = registerPlugin({
       onBlur: this.onBlur,
@@ -71,12 +73,13 @@ class Suggestions extends Component<Props, State> {
     return constants.NOT_HANDLED
   }
 
-  onDownArrow = (e) => {
+  onDownArrow = e => {
     if (this.state.isOpen && this.props.suggestions.length > 0) {
       e.preventDefault()
-      const selectedItem = this.state.selectedItem >= this.props.suggestions.length - 1
-        ? 0
-        : this.state.selectedItem + 1
+      const selectedItem =
+        this.state.selectedItem >= this.props.suggestions.length - 1
+          ? 0
+          : this.state.selectedItem + 1
 
       this.setState({ selectedItem })
       return constants.HANDLED
@@ -84,12 +87,13 @@ class Suggestions extends Component<Props, State> {
     return constants.NOT_HANDLED
   }
 
-  onUpArrow = (e) => {
+  onUpArrow = e => {
     if (this.state.isOpen && this.props.suggestions.length > 0) {
       e.preventDefault()
-      const selectedItem = this.state.selectedItem === 0
-        ? this.props.suggestions.length - 1
-        : this.state.selectedItem - 1
+      const selectedItem =
+        this.state.selectedItem === 0
+          ? this.props.suggestions.length - 1
+          : this.state.selectedItem - 1
 
       this.setState({ selectedItem })
       return constants.HANDLED
@@ -98,7 +102,11 @@ class Suggestions extends Component<Props, State> {
   }
 
   static getDerivedStateFromProps(props, state) {
-    const { trigger, suggestions, onSearch, editorProps: { editorState } } = props
+    const {
+      trigger,
+      suggestions,
+      editorProps: { editorState },
+    } = props
 
     const selection = editorState.getSelection()
 
@@ -106,7 +114,8 @@ class Suggestions extends Component<Props, State> {
       return
     }
 
-    const textUntilCursor = editorState.getCurrentContent()
+    const textUntilCursor = editorState
+      .getCurrentContent()
       .getBlockForKey(selection.getStartKey())
       .getText()
       .slice(0, selection.getStartOffset())
@@ -124,19 +133,23 @@ class Suggestions extends Component<Props, State> {
 
     return {
       ...state,
-      selectedItem: state.selectedItem > suggestions.length - 1 ? 0 : state.selectedItem,
+      selectedItem:
+        state.selectedItem > suggestions.length - 1 ? 0 : state.selectedItem,
       searchText,
       isOpen: searchText != null && suggestions.length > 0,
     }
   }
 
-  componentDidUpdate (prevProps, prevState) {
-    if (this.state.searchText != null && prevState.searchText != this.state.searchText) {
+  componentDidUpdate(prevProps, prevState) {
+    if (
+      this.state.searchText != null &&
+      prevState.searchText !== this.state.searchText
+    ) {
       this.props.onSearch(this.state.searchText)
     }
   }
 
-  onSelect = (item) => {
+  onSelect = item => {
     this.props.onSelect(item, this.state.searchText)
   }
 
@@ -145,20 +158,21 @@ class Suggestions extends Component<Props, State> {
     const { isOpen, selectedItem } = this.state
 
     if (isOpen === true && suggestions.length > 0) {
-      return <ul ref={this.list} className={styles.ul}>
-        {suggestions.map((suggestion, index) => (
-          <li
-            className={styles.li}
-            key={`autocomplete-option-${index}`}
-            onMouseDown={() => this.onSelect(suggestion)}
-          >
-            {renderSuggestion({
-              isFocused: selectedItem === index,
-              suggestion
-            })}
-          </li>
-        ))}
-      </ul>
+      return (
+        <ul ref={this.list} className={styles.ul}>
+          {suggestions.map((suggestion, index) => (
+            <li
+              className={styles.li}
+              key={`autocomplete-option-${index}`}
+              onMouseDown={() => this.onSelect(suggestion)}>
+              {renderSuggestion({
+                isFocused: selectedItem === index,
+                suggestion,
+              })}
+            </li>
+          ))}
+        </ul>
+      )
     }
 
     return null

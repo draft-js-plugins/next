@@ -9,18 +9,12 @@ import styles from './styles.css'
 
 export default class ExampleComponent extends Component {
   static propTypes = {
-    text: PropTypes.string
+    text: PropTypes.string,
   }
 
   render() {
-    const {
-      text
-    } = this.props
+    const { text } = this.props
 
-    return (
-      <div className={styles.test}>
-        Example Component: {text}
-      </div>
-    )
+    return <div className={styles.test}>Example Component: {text}</div>
   }
 }

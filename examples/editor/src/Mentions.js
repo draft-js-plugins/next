@@ -1,41 +1,40 @@
 // @flow
 
 import React, { Component } from 'react'
-import { EditorContainer, withEditorContext, Editor, Plugin } from '@djsp/editor'
+import { withEditorContext } from '@djsp/editor'
 import Popover from 'react-text-selection-popover'
 
 type Props = {
-  trigger: string | (textUntilCursor) => ?string,
-  renderSuggestion: ({ suggestion: any, onSelect: any => void }),
+  trigger: string | (textUntilCursor => ?string),
+  renderSuggestion: { suggestion: any, onSelect: any => void },
+  pluginMethods: Object,
   getSuggestions: (searchText: string) => Array<any> | Promise<Array<any>>,
-}
-
-type State = {
-  isOpen: boolean,
-  isSearching: boolean,
-  suggestions: Array<any>,
 }
 
 class Suggestions extends Component<Props> {
   static defaultProps = {
     trigger: '@',
     renderSuggestion: ({ suggestion, onSelect }) => {
-      return <li key={suggestion.value} onMouseDown={() => onSelect(suggestion)}>
-        {suggestion.label}
-      </li>
-    }
+      return (
+        <li key={suggestion.value} onMouseDown={() => onSelect(suggestion)}>
+          {suggestion.label}
+        </li>
+      )
+    },
   }
 
   state = {
     isOpen: false,
     isSearching: false,
-    suggestions: []
+    suggestions: [],
   }
 
   componentDidMount() {
-    const { pluginMethods: { registerPlugin } } = this.props
+    const {
+      pluginMethods: { registerPlugin },
+    } = this.props
     this._unregister = registerPlugin({
-      onChange: this.onChange
+      onChange: this.onChange,
     })
   }
 
@@ -43,41 +42,47 @@ class Suggestions extends Component<Props> {
     this._unregister()
   }
 
-  selectSuggestion = (suggestion) => {
+  selectSuggestion = suggestion => {
     console.log('select suggestion', suggestion)
   }
 
-  openSuggestions = (searchText) => {
+  openSuggestions = searchText => {
     const result = this.props.getSuggestions(searchText)
     if (result.then != null) {
       this.setState({
         isOpen: true,
-        isSearching: true
+        isSearching: true,
       })
-      result.then(suggestions => this.setState({
-        isSearching: false,
-        suggestions
-      }))
-      .catch(err => this.setState({
-        isSearching: false,
-        error: err.message
-      }))
-    } else if (result != null){
+      result
+        .then(suggestions =>
+          this.setState({
+            isSearching: false,
+            suggestions,
+          })
+        )
+        .catch(err =>
+          this.setState({
+            isSearching: false,
+            error: err.message,
+          })
+        )
+    } else if (result != null) {
       this.setState({
         isOpen: true,
-        suggestions: result
+        suggestions: result,
       })
     }
   }
 
-  onChange = (editorState) => {
+  onChange = editorState => {
     const { trigger } = this.props
     const selection = editorState.getSelection()
     if (!selection.isCollapsed()) {
       return
     }
-    const offset = selection.getStartOffset()
-    const textUntilCursor = editorState.getCurrentContent()
+
+    const textUntilCursor = editorState
+      .getCurrentContent()
       .getBlockForKey(selection.getStartKey())
       .getText()
       .slice(0, selection.getStartOffset())
@@ -96,7 +101,7 @@ class Suggestions extends Component<Props> {
       } else {
         this.setState({ isOpen: false })
       }
-    }  else {
+    } else {
       this.setState({ isOpen: false })
     }
   }
@@ -104,24 +109,34 @@ class Suggestions extends Component<Props> {
   renderSuggestions = () => {
     if (this.state.isOpen === true && this.state.isSearching) {
       return <div>Searching ...</div>
-    } else if (this.state.isOpen === true && this.state.suggestions.length === 0) {
+    } else if (
+      this.state.isOpen === true &&
+      this.state.suggestions.length === 0
+    ) {
       return <div>No results ...</div>
-    } else if (this.state.isOpen === true && this.state.suggestions.length > 0) {
-      return <ul>
-        {this.state.suggestions.map(suggestion =>
-          this.props.renderSuggestion({
-            suggestion,
-            onSelect: this.selectSuggestion
-          })
-        )}
-      </ul>
+    } else if (
+      this.state.isOpen === true &&
+      this.state.suggestions.length > 0
+    ) {
+      return (
+        <ul>
+          {this.state.suggestions.map(suggestion =>
+            this.props.renderSuggestion({
+              suggestion,
+              onSelect: this.selectSuggestion,
+            })
+          )}
+        </ul>
+      )
     }
   }
 
   render() {
-    return this.state.isOpen === true && <Popover isOpen={true}>
-      {this.renderSuggestions()}
-    </Popover>
+    return (
+      this.state.isOpen === true && (
+        <Popover isOpen={true}>{this.renderSuggestions()}</Popover>
+      )
+    )
   }
 }
 

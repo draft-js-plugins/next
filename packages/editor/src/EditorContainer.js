@@ -5,35 +5,43 @@ import Draft from 'draft-js'
 import { HANDLED } from './constants'
 import type { DraftEditorProps } from 'draft-js/lib/DraftEditorProps'
 
-const { CompositeDecorator, EditorState, getDefaultKeyBinding, DefaultDraftBlockRenderMap } = Draft
+const {
+  CompositeDecorator,
+  EditorState,
+  getDefaultKeyBinding,
+  DefaultDraftBlockRenderMap,
+} = Draft
 
 export const Context = createContext({})
 
-export const withConsumer = Comp => props => (
-  <Context.Consumer>{contextProps => <Comp {...props} {...contextProps} />}</Context.Consumer>
-)
+export const withConsumer = Comp =>
+  function WithConsumer(props: Object) {
+    return (
+      <Context.Consumer>
+        {contextProps => <Comp {...props} {...contextProps} />}
+      </Context.Consumer>
+    )
+  }
 
-const resolveDecorator = plugins => new CompositeDecorator(
-  Array.from(plugins.values()).reduce((acc, plugin) => (
-    Array.isArray(plugin.decorators)
-      ? ([
-        ...acc,
-        ...plugin.decorators
-      ])
-      : acc
-  ), [])
-)
+const resolveDecorator = plugins =>
+  new CompositeDecorator(
+    Array.from(plugins.values()).reduce(
+      (acc, plugin) =>
+        Array.isArray(plugin.decorators) ? [...acc, ...plugin.decorators] : acc,
+      []
+    )
+  )
 
 type Props = DraftEditorProps
 
 type State = {
-  plugins: Map<number, Object>
+  plugins: Map<number, Object>,
 }
 
 export default class EditorContainer extends Component<Props, State> {
   static defaultProps = {
     customStyleMap: {},
-    blockRenderMap: DefaultDraftBlockRenderMap
+    blockRenderMap: DefaultDraftBlockRenderMap,
   }
 
   constructor(props) {
@@ -42,7 +50,7 @@ export default class EditorContainer extends Component<Props, State> {
   }
 
   state = {
-    plugins: (new Map()).set('default', { keyBindingFn: getDefaultKeyBinding })
+    plugins: new Map().set('default', { keyBindingFn: getDefaultKeyBinding }),
   }
 
   static getDerivedStateFromProps(props, state) {
@@ -68,14 +76,17 @@ export default class EditorContainer extends Component<Props, State> {
       ariaLabel,
       ariaLabelledBy,
       ariaMultiline,
-      webDriverTestID
+      webDriverTestID,
     } = props
 
     return {
       ...state,
-      editorState: editorState != null
-        ? EditorState.set(editorState, { decorator: resolveDecorator(state.plugins) })
-        : editorState,
+      editorState:
+        editorState != null
+          ? EditorState.set(editorState, {
+              decorator: resolveDecorator(state.plugins),
+            })
+          : editorState,
       editorProps: {
         autoCapitalize,
         autoComplete,
@@ -97,48 +108,50 @@ export default class EditorContainer extends Component<Props, State> {
         ariaLabel,
         ariaLabelledBy,
         ariaMultiline,
-        webDriverTestID
-      }
+        webDriverTestID,
+      },
     }
   }
 
   resolveDecorator = () => resolveDecorator(this.state.plugins)
 
-  resolveCustomStyleMap = () => Array.from(this.state.plugins.values()).reduce(
-    (acc, plugin) => plugin.customStyleMap != null
-      ? {...acc, ...plugin.customStyleMap}
-      : acc,
-    this.props.customStyleMap
-  )
-
-  resolveBlockRendererMap = () => Array.from(this.state.plugins.values()).reduce(
-    (acc, plugin) => plugin.blockRenderMap != null
-      ? acc.merge(plugin.blockRenderMap)
-      : acc,
-    this.props.blockRenderMap
-  )
-
-  setupEditorState = () => this.setState({
-    editorState: EditorState.set(
-      this.state.editorState,
-      { decorator: this.resolveDecorator() }
+  resolveCustomStyleMap = () =>
+    Array.from(this.state.plugins.values()).reduce(
+      (acc, plugin) =>
+        plugin.customStyleMap != null
+          ? { ...acc, ...plugin.customStyleMap }
+          : acc,
+      this.props.customStyleMap
     )
-  })
 
-  unregisterPlugin = (key) => {
+  resolveBlockRendererMap = () =>
+    Array.from(this.state.plugins.values()).reduce(
+      (acc, plugin) =>
+        plugin.blockRenderMap != null ? acc.merge(plugin.blockRenderMap) : acc,
+      this.props.blockRenderMap
+    )
+
+  setupEditorState = () =>
+    this.setState({
+      editorState: EditorState.set(this.state.editorState, {
+        decorator: this.resolveDecorator(),
+      }),
+    })
+
+  unregisterPlugin = key => {
     const { plugins } = this.state
 
     plugins.delete(key)
 
-    this.setState({plugins})
+    this.setState({ plugins })
     this.setupEditorState()
   }
 
-  registerPlugin = (plugin) => {
+  registerPlugin = plugin => {
     const { plugins } = this.state
     const key = this.mapKey
 
-    this.setState({plugins: plugins.set(key, plugin)})
+    this.setState({ plugins: plugins.set(key, plugin) })
     this.setupEditorState()
 
     this.mapKey++
@@ -169,7 +182,9 @@ export default class EditorContainer extends Component<Props, State> {
   }
 
   eventCallback = (methodName, ...args) =>
-    this.state.plugins.forEach(plugin => plugin[methodName] != null && plugin[methodName](...args))
+    this.state.plugins.forEach(
+      plugin => plugin[methodName] != null && plugin[methodName](...args)
+    )
 
   onChange = editorState => {
     this.props.onChange(editorState)
@@ -185,17 +200,27 @@ export default class EditorContainer extends Component<Props, State> {
       editorState: this.state.editorState,
       customStyleMap: this.resolveCustomStyleMap(),
       blockRenderMap: this.resolveBlockRendererMap(),
-      blockRendererFn: (...args) => this.returnFirstTruthy('blockRendererFn', ...args),
-      blockStyleFn: (...args) => this.returnFirstTruthy('blockStyleFn', ...args),
-      customStyleFn: (...args) => this.returnFirstTruthy('customStyleFn', ...args),
-      keyBindingFn: (...args) => this.returnFirstTruthy('keyBindingFn', ...args),
-      handleKeyCommand: (...args) => this.returnFirstHandled('handleKeyCommand', ...args),
-      handleBeforeInput: (...args) => this.returnFirstHandled('handleBeforeInput', ...args),
-      handlePastedText: (...args) => this.returnFirstHandled('handlePastedText', ...args),
-      handlePastedFiles: (...args) => this.returnFirstHandled('handlePastedFiles', ...args),
-      handleDroppedFiles: (...args) => this.returnFirstHandled('handleDroppedFiles', ...args),
+      blockRendererFn: (...args) =>
+        this.returnFirstTruthy('blockRendererFn', ...args),
+      blockStyleFn: (...args) =>
+        this.returnFirstTruthy('blockStyleFn', ...args),
+      customStyleFn: (...args) =>
+        this.returnFirstTruthy('customStyleFn', ...args),
+      keyBindingFn: (...args) =>
+        this.returnFirstTruthy('keyBindingFn', ...args),
+      handleKeyCommand: (...args) =>
+        this.returnFirstHandled('handleKeyCommand', ...args),
+      handleBeforeInput: (...args) =>
+        this.returnFirstHandled('handleBeforeInput', ...args),
+      handlePastedText: (...args) =>
+        this.returnFirstHandled('handlePastedText', ...args),
+      handlePastedFiles: (...args) =>
+        this.returnFirstHandled('handlePastedFiles', ...args),
+      handleDroppedFiles: (...args) =>
+        this.returnFirstHandled('handleDroppedFiles', ...args),
       handleDrop: (...args) => this.returnFirstHandled('handleDrop', ...args),
-      handleReturn: (...args) => this.returnFirstHandled('handleReturn', ...args),
+      handleReturn: (...args) =>
+        this.returnFirstHandled('handleReturn', ...args),
       onChange: this.onChange,
       onDownArrow: (...args) => this.eventCallback('onDownArrow', ...args),
       onEscape: (...args) => this.eventCallback('onEscape', ...args),
@@ -204,27 +229,28 @@ export default class EditorContainer extends Component<Props, State> {
       onTab: (...args) => this.eventCallback('onTab', ...args),
       onUpArrow: (...args) => this.eventCallback('onUpArrow', ...args),
       onFocus: (...args) => this.eventCallback('onFocus', ...args),
-      onBlur: (...args) => this.eventCallback('onBlur', ...args)
+      onBlur: (...args) => this.eventCallback('onBlur', ...args),
     }
 
     // yepyepyep this gets the editorState lazily
     // avoids having to have a `getEditorState` prop
-    Object.defineProperty(
-      editorProps,
-      'editorState',
-      {
-        get: () => this.state.editorState
-      }
-    )
+    Object.defineProperty(editorProps, 'editorState', {
+      get: () => this.state.editorState,
+    })
 
     const pluginMethods = {
       registerPlugin: this.registerPlugin,
       setEditorState: this.onChange,
-      setEditorProps: editorProps => this.setState({ editorProps: { ...this.state.editorProps, ...editorProps} })
+      setEditorProps: editorProps =>
+        this.setState({
+          editorProps: { ...this.state.editorProps, ...editorProps },
+        }),
     }
 
-    return <Context.Provider value={{ pluginMethods, editorProps }}>
-      {this.props.children}
-    </Context.Provider>
+    return (
+      <Context.Provider value={{ pluginMethods, editorProps }}>
+        {this.props.children}
+      </Context.Provider>
+    )
   }
 }

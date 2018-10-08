@@ -8,31 +8,28 @@ import url from 'rollup-plugin-url'
 import pkg from './package.json'
 
 export default {
-  external: [
-    'draft-js',
-    'recat'
-  ],
+  external: ['draft-js', 'recat'],
   input: 'src/index.js',
   output: [
     {
       file: pkg.main,
-      format: 'cjs'
+      format: 'cjs',
     },
     {
       file: pkg.module,
-      format: 'es'
-    }
+      format: 'es',
+    },
   ],
   plugins: [
     external(),
     postcss({
-      modules: true
+      modules: true,
     }),
     url(),
     babel({
-      exclude: 'node_modules/**'
+      exclude: 'node_modules/**',
     }),
     resolve(),
-    commonjs()
-  ]
+    commonjs(),
+  ],
 }
