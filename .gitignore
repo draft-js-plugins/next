@@ -1,4 +1,5 @@
 node_modules
 _book
+build
 yarn-error.log
 lerna-debug.log
