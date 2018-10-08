@@ -1,7 +1,7 @@
 // @flow
 
 import { AtomicBlockUtils, RichUtils, EditorState, ContentState, SelectionState, Modifier } from 'draft-js'
-import type DraftEntityInstance from 'draft-js/lib/DraftEntityInstance'
+import type DraftEntityInstance from "draft-js/lib/DraftEntityInstance"
 
 export function insertEntityBlock(
   editorState: EditorState,

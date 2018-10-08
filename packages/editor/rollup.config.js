@@ -1,26 +1,23 @@
-import babel from 'rollup-plugin-babel'
-import commonjs from 'rollup-plugin-commonjs'
-import external from 'rollup-plugin-peer-deps-external'
-import postcss from 'rollup-plugin-postcss'
-import resolve from 'rollup-plugin-node-resolve'
-import url from 'rollup-plugin-url'
+import babel from "rollup-plugin-babel";
+import commonjs from "rollup-plugin-commonjs";
+import external from "rollup-plugin-peer-deps-external";
+import postcss from "rollup-plugin-postcss";
+import resolve from "rollup-plugin-node-resolve";
+import url from "rollup-plugin-url";
 
-import pkg from './package.json'
+import pkg from "./package.json";
 
 export default {
-  external: [
-    'draft-js',
-    'recat'
-  ],
-  input: 'src/index.js',
+  external: ["draft-js", "recat"],
+  input: "src/index.js",
   output: [
     {
       file: pkg.main,
-      format: 'cjs'
+      format: "cjs"
     },
     {
       file: pkg.module,
-      format: 'es'
+      format: "es"
     }
   ],
   plugins: [
@@ -30,9 +27,9 @@ export default {
     }),
     url(),
     babel({
-      exclude: 'node_modules/**'
+      exclude: "node_modules/**"
     }),
     resolve(),
     commonjs()
   ]
-}
+};

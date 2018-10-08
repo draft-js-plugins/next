@@ -1,9 +1,20 @@
 {
   "devDependencies": {
-    "@storybook/cli": "^3.4.11",
-    "@storybook/react": "^3.4.11",
-    "all-contributors-cli": "^5.4.0",
-    "lerna": "^2.11.0"
+    "babel-eslint": "^10.0.1",
+    "eslint": "^5.6.1",
+    "eslint-config-standard": "^12.0.0",
+    "eslint-config-standard-react": "^7.0.2",
+    "eslint-plugin-flowtype": "^2.50.3",
+    "eslint-plugin-import": "^2.14.0",
+    "eslint-plugin-node": "^7.0.1",
+    "eslint-plugin-prettier": "^3.0.0",
+    "eslint-plugin-promise": "^4.0.1",
+    "eslint-plugin-react": "^7.11.1",
+    "eslint-plugin-standard": "^4.0.0",
+    "flow-bin": "^0.80.0",
+    "flow-typed": "^2.5.1",
+    "husky": "^1.1.1",
+    "prettier": "^1.14.3"
   },
   "scripts": {
     "storybook": "start-storybook -p 9001 -c .storybook",
@@ -12,21 +23,10 @@
     "contributors": "./node_modules/.bin/all-contributors",
     "contributors:add": "./node_modules/.bin/all-contributors add",
     "contributors:generate": "./node_modules/.bin/all-contributors generate",
-    "prettier": "./node_modules/prettier --write \"{app,__{tests,mocks}__}/**/*.js\"",
-    "lint": "./node_modules/.bin/eslint"
-
+    "prettier": "./node_modules/.bin/prettier --write */**/*.js",
+    "lint": "./node_modules/.bin/eslint **/*.js"
   },
   "husky": {
-    "hooks": {
-    }
-  },
-  "devDependencies": {
-    "eslint": "^5.6.1",
-    "eslint-config-standard-react": "^7.0.2",
-    "eslint-plugin-prettier": "^3.0.0",
-    "flow-bin": "^0.80.0",
-    "flow-typed": "^2.5.1",
-    "husky": "^1.1.1",
-    "prettier": "^1.14.3"
+    "hooks": {}
   }
 }

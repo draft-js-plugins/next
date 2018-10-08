@@ -1,5 +1,7 @@
 {
-  "plugins": ["prettier"],
+  "parser": "babel-eslint",
+  "extends": ["eslint:recommended", "standard-react"],
+  "plugins": ["prettier", "flowtype"],
   "rules": {
     "prettier/prettier": "error"
   }
