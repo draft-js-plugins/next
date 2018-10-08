@@ -2,6 +2,8 @@
   "devDependencies": {
     "babel-eslint": "^10.0.1",
     "eslint": "^5.6.1",
+    "eslint-config-prettier": "^3.1.0",
+    "eslint-config-react": "^1.1.7",
     "eslint-config-standard": "^12.0.0",
     "eslint-config-standard-react": "^7.0.2",
     "eslint-plugin-flowtype": "^2.50.3",
@@ -14,16 +16,19 @@
     "flow-bin": "^0.80.0",
     "flow-typed": "^2.5.1",
     "husky": "^1.1.1",
-    "prettier": "^1.14.3"
+    "prettier": "^1.14.3",
+    "prettier-eslint": "^8.8.2",
+    "prettier-eslint-cli": "^4.7.1"
   },
   "scripts": {
+    "eslint-check": "eslint --print-config . | eslint-config-prettier-check",
     "storybook": "start-storybook -p 9001 -c .storybook",
     "reinstall": "./node_modules/.bin/lerna exec -- rm -rf && ./node_modules/.bin/lerna exec -- yarn",
     "build": "./node_modules/.bin/lerna exec -- yarn build",
     "contributors": "./node_modules/.bin/all-contributors",
     "contributors:add": "./node_modules/.bin/all-contributors add",
     "contributors:generate": "./node_modules/.bin/all-contributors generate",
-    "prettier": "./node_modules/.bin/prettier --write */**/*.js",
+    "format": "./node_modules/.bin/prettier-eslint --write **/*.js",
     "lint": "./node_modules/.bin/eslint **/*.js"
   },
   "husky": {

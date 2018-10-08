@@ -1,7 +1,25 @@
 {
   "parser": "babel-eslint",
-  "extends": ["eslint:recommended", "standard-react"],
-  "plugins": ["prettier", "flowtype"],
+  "extends": [
+    "standard",
+    "plugin:react/recommended",
+    "plugin:flowtype/recommended",
+    "prettier",
+    "prettier/flowtype",
+    "prettier/react",
+    "prettier/standard",
+  ],
+  "parserOptions": {
+    "sourceType": "module",
+    "ecmaFeatures": {
+      "jsx": true
+    }
+  },
+  "plugins": ["prettier", "flowtype", "react", "standard"],
+  "env": {
+    "es6": true,
+    "browser": true
+  },
   "rules": {
     "prettier/prettier": "error"
   }

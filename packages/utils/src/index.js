@@ -1,7 +1,14 @@
 // @flow
 
-import { AtomicBlockUtils, RichUtils, EditorState, ContentState, SelectionState, Modifier } from 'draft-js'
-import type DraftEntityInstance from "draft-js/lib/DraftEntityInstance"
+import {
+  AtomicBlockUtils,
+  RichUtils,
+  EditorState,
+  ContentState,
+  SelectionState,
+  Modifier,
+} from 'draft-js'
+import type DraftEntityInstance from 'draft-js/lib/DraftEntityInstance'
 
 export function insertEntityBlock(
   editorState: EditorState,
@@ -17,11 +24,7 @@ export function insertEntityBlock(
 
   const entityKey = contentStateWithEntity.getLastCreatedEntityKey()
 
-  return AtomicBlockUtils.insertAtomicBlock(
-    editorState,
-    entityKey,
-    ' '
-  )
+  return AtomicBlockUtils.insertAtomicBlock(editorState, entityKey, ' ')
 }
 
 export function createEntityDecorator(
@@ -31,19 +34,16 @@ export function createEntityDecorator(
 ) {
   return {
     strategy: (contentBlock, callback, contentState) => {
-      contentBlock.findEntityRanges(
-        (character) => {
-          const entityKey = character.getEntity()
-          return (
-            entityKey !== null &&
-            contentState.getEntity(entityKey).getType() === entityName
-          );
-        },
-        callback
-      )
+      contentBlock.findEntityRanges(character => {
+        const entityKey = character.getEntity()
+        return (
+          entityKey !== null &&
+          contentState.getEntity(entityKey).getType() === entityName
+        )
+      }, callback)
     },
     component,
-    props
+    props,
   }
 }
 
@@ -55,11 +55,7 @@ export function insertTextWithEntity(
   mutability?: 'IMMUTABLE' | 'MUTABLE' | 'SEGMENTED',
   entityData?: Object
 ): ContentState {
-  const content = contentState.createEntity(
-    entityType,
-    mutability,
-    entityData
-  )
+  const content = contentState.createEntity(entityType, mutability, entityData)
 
   return Modifier.insertText(
     content,
@@ -70,8 +66,13 @@ export function insertTextWithEntity(
   )
 }
 
-export function createLinkAtSelection(editorState: EditorState, url: string): EditorState {
-  const contentState = editorState.getCurrentContent().createEntity('LINK', 'MUTABLE', { url })
+export function createLinkAtSelection(
+  editorState: EditorState,
+  url: string
+): EditorState {
+  const contentState = editorState
+    .getCurrentContent()
+    .createEntity('LINK', 'MUTABLE', { url })
   const entityKey = contentState.getLastCreatedEntityKey()
   const withLink = RichUtils.toggleLink(
     editorState,
@@ -79,9 +80,7 @@ export function createLinkAtSelection(editorState: EditorState, url: string): Ed
     entityKey
   )
 
-  return EditorState.forceSelection(
-    withLink, editorState.getSelection()
-  )
+  return EditorState.forceSelection(withLink, editorState.getSelection())
 }
 
 export function removeLinkAtSelection(editorState: EditorState): EditorState {
@@ -98,7 +97,7 @@ export function collapseToEnd(editorState: EditorState): EditorState {
       anchorKey: selection.getEndKey(),
       focusKey: selection.getEndKey(),
       anchorOffset: selection.getEndOffset(),
-      focusOffset: selection.getEndOffset()
+      focusOffset: selection.getEndOffset(),
     })
   )
 }
@@ -113,13 +112,18 @@ export function getCurrentEntityKey(editorState: EditorState): ?string {
   return anchorBlock.getEntityAt(index)
 }
 
-export function getCurrentEntity(editorState: EditorState): ?DraftEntityInstance {
+export function getCurrentEntity(
+  editorState: EditorState
+): ?DraftEntityInstance {
   const contentState = editorState.getCurrentContent()
   const entityKey = this.getCurrentEntityKey(editorState)
   return entityKey ? contentState.getEntity(entityKey) : null
 }
 
-export function hasEntity(editorState: EditorState, entityType: string): boolean {
+export function hasEntity(
+  editorState: EditorState,
+  entityType: string
+): boolean {
   const entity = this.getCurrentEntity(editorState)
   return entity && entity.getType() === entityType
 }
