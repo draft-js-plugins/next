@@ -27,6 +27,7 @@ const rawContent = {
   entityMap: {
     0: {
       data: {
+        title: 'Kitten',
         src: 'https://placekitten.com/200/200',
       },
       mutability: 'IMMUTABLE',
@@ -51,7 +52,7 @@ class App extends Component {
           <Editor />
 
           <AtomicBlock type="image">
-            {({ blockProps }) => <img {...blockProps} />}
+            {({ blockProps: { src, title } }) => <img src={src} alt={title} />}
           </AtomicBlock>
         </EditorContainer>
       </div>
