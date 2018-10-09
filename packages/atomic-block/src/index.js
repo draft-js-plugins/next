@@ -7,8 +7,6 @@ import AtomicBlock from './AtomicBlock'
 
 const { EditorState } = Draft
 
-// import styles from './styles.css'
-
 type Props = {
   type: string,
   children: any,

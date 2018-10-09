@@ -8,7 +8,7 @@ import url from 'rollup-plugin-url'
 import pkg from './package.json'
 
 export default {
-  external: ['@djsp/editor', 'react-text-selection-popover'],
+  external: ['@djsp/editor', 'draft-js'],
   input: 'src/index.js',
   output: [
     {

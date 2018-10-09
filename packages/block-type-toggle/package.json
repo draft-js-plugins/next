@@ -2,7 +2,6 @@
   "name": "@djsp/block-type-toggle",
   "version": "0.0.3",
   "description": "Block Type Toggle for draft js plugins",
-  "private": true,
   "author": "juliankrispel",
   "license": "MIT",
   "repository": "draft-js-plugins/next/tree/master/packages/block-type-toggle",

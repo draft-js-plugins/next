@@ -18,8 +18,7 @@
     "deploy": "gh-pages -d example/build"
   },
   "dependencies": {
-    "@djsp/editor": "^0.0.3",
-    "emojis-list": "^2.1.0"
+    "@djsp/editor": "^0.0.3"
   },
   "peerDependencies": {
     "prop-types": "^15.5.4",
