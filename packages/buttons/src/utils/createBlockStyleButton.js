@@ -2,7 +2,7 @@
 import React, { Component } from 'react';
 import { RichUtils } from 'draft-js';
 import unionClassNames from 'union-class-names';
-import { withEditorContext } from 'djs-editor';
+import { withEditorContext } from '@djsp/editor';
 import buttonStyles from '../styles.css';
 
 export default ({ blockType, children }: { blockType: string, children: string | React.Node }) => {

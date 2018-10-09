@@ -8,7 +8,7 @@ import url from 'rollup-plugin-url'
 import pkg from './package.json'
 
 export default {
-  external: ['react', 'djs-editor'],
+  external: ['react', 'draft-js', '@djsp/editor'],
   input: 'src/index.js',
   output: [
     {

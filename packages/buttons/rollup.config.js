@@ -9,7 +9,7 @@ import { plugin as analyze } from 'rollup-plugin-analyzer'
 import pkg from './package.json'
 
 export default {
-  external: ['react', 'djs-editor', 'draft-js'],
+  external: ['react', '@djsp/editor', 'draft-js'],
   input: 'src/index.js',
   output: [
     {

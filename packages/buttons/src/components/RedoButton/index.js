@@ -2,7 +2,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { EditorState } from 'draft-js';
-import { withEditorContext } from 'djs-editor';
+import { withEditorContext } from '@djsp/editor';
 import unionClassNames from 'union-class-names';
 
 class RedoButton extends Component {
