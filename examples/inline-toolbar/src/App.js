@@ -10,13 +10,13 @@ import InlineStyleToggle from '@djsp/inline-style-toggle'
 import BlockTypeToggle from '@djsp/block-type-toggle'
 
 const InlineButton = ({
-  style,
+  inlineStyle,
   children,
 }: {
-  style: string,
+  inlineStyle: string,
   children: React.Element,
 }) => (
-  <InlineStyleToggle inlineStyle={style}>
+  <InlineStyleToggle inlineStyle={inlineStyle}>
     {({ toggleStyle, hasStyle }) => {
       const className = `toolbar__button${
         hasStyle === true ? ' toolbar__button--active' : ''
@@ -76,10 +76,10 @@ export default class App extends Component {
           onChange={editorState => this.setState({ editorState })}>
           <main className="container">
             <Popover className="toolbar">
-              <InlineButton style="BOLD">B</InlineButton>
-              <InlineButton style="UNDERLINE">U</InlineButton>
-              <InlineButton style="STRIKETHROUGH">S</InlineButton>
-              <InlineButton style="ITALIC">I</InlineButton>
+              <InlineButton inlineStyle="BOLD">B</InlineButton>
+              <InlineButton inlineStyle="UNDERLINE">U</InlineButton>
+              <InlineButton inlineStyle="STRIKETHROUGH">S</InlineButton>
+              <InlineButton inlineStyle="ITALIC">I</InlineButton>
               <BlockTypeButton blockType="header-one">H1</BlockTypeButton>
               <BlockTypeButton blockType="header-two">H2</BlockTypeButton>
               <BlockTypeButton blockType="header-three">H3</BlockTypeButton>
