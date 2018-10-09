@@ -76,7 +76,9 @@ export default class App extends Component {
             <header className="toolbar">
               <InlineButton inlineStyle="BOLD">Bold</InlineButton>
               <InlineButton inlineStyle="UNDERLINE">Underline</InlineButton>
-              <InlineButton inlineStyle="STRIKETHROUGH">Strikethrough</InlineButton>
+              <InlineButton inlineStyle="STRIKETHROUGH">
+                Strikethrough
+              </InlineButton>
               <InlineButton inlineStyle="ITALIC">Italic</InlineButton>
               <BlockTypeButton blockType="header-one">H1</BlockTypeButton>
               <BlockTypeButton blockType="header-two">H2</BlockTypeButton>
