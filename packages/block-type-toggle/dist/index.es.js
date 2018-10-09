@@ -80,9 +80,9 @@ var BlockTypeToggle = function (_Component) {
     key: 'render',
     value: function render() {
       var _props = this.props,
-          _props$pluginMethods = _props.pluginMethods,
-          setEditorState = _props$pluginMethods.setEditorState,
-          editorState = _props$pluginMethods.editorState,
+          _props$pluginProps = _props.pluginProps,
+          setEditorState = _props$pluginProps.setEditorState,
+          editorState = _props$pluginProps.editorState,
           blockType = _props.blockType,
           children = _props.children;
 

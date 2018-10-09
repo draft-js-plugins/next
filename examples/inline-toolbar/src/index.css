@@ -6,19 +6,29 @@ body {
 }
 
 .public-DraftEditor-content {
-  padding: 1em 2em 2em;
+  padding: 2em;
   height: 100%;
 }
 
 .toolbar {
-  padding: 2em 2em 0;
+  border-radius: 5px;
+  overflow: hidden;
+  padding: 0;
+  display: flex;
 }
 
 .toolbar__button {
-  border: 1px solid #ccc;
-  border-radius: 2px;
+  border: none;
+  margin: 0;
   cursor: pointer;
-  background: none;
+  padding: .5em 1em;
+  font-size: 14px;
+  background: #333;
+  color: #fff;
+}
+
+.toolbar__button:last-child {
+  border-right: none;
 }
 
 .toolbar__button--active {

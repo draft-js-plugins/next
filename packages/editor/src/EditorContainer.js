@@ -238,7 +238,7 @@ export default class EditorContainer extends Component<Props, State> {
       get: () => this.state.editorState,
     })
 
-    const pluginMethods = {
+    const pluginProps = {
       registerPlugin: this.registerPlugin,
       setEditorState: this.onChange,
       editorState: this.state.editorState,
@@ -248,14 +248,14 @@ export default class EditorContainer extends Component<Props, State> {
         }),
     }
 
-    Object.defineProperty(pluginMethods, 'editorState', {
+    Object.defineProperty(pluginProps, 'editorState', {
       get: () => this.state.editorState,
     })
 
-    console.log('pluginMethods', pluginMethods)
+    console.log('pluginProps', pluginProps)
 
     return (
-      <Context.Provider value={{ pluginMethods, editorProps }}>
+      <Context.Provider value={{ pluginProps, editorProps }}>
         {this.props.children}
       </Context.Provider>
     )

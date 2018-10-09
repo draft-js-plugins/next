@@ -24,7 +24,7 @@ class AtomicBlockPlugin extends Component<Props, State> {
     super(props)
 
     const {
-      pluginMethods: { registerPlugin },
+      pluginProps: { registerPlugin },
     } = this.props
 
     this.unregister = registerPlugin({
@@ -41,7 +41,7 @@ class AtomicBlockPlugin extends Component<Props, State> {
   focusBlock = (blockKey: string) => {
     const {
       editorProps: { editorState },
-      pluginMethods: { setEditorState },
+      pluginProps: { setEditorState },
     } = this.props
 
     let selection = editorState.getSelection()

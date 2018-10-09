@@ -151,7 +151,7 @@ var Suggestions = function (_Component) {
   createClass(Suggestions, [{
     key: 'componentDidMount',
     value: function componentDidMount() {
-      var registerPlugin = this.props.pluginMethods.registerPlugin;
+      var registerPlugin = this.props.pluginProps.registerPlugin;
 
 
       this._unregister = registerPlugin({

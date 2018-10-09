@@ -10,7 +10,7 @@ type InlineStyleRenderProps = {
 }
 
 type InlineStyleProps = {
-  pluginMethods: {
+  pluginProps: {
     setEditorState: (editorState: EditorState) => void,
     editorState: EditorState,
   },
@@ -21,7 +21,7 @@ type InlineStyleProps = {
 class InlineStyleToggle extends Component<InlineStyleProps> {
   render() {
     const {
-      pluginMethods: { setEditorState, editorState },
+      pluginProps: { setEditorState, editorState },
       inlineStyle,
       children,
     } = this.props

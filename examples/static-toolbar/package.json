@@ -5,6 +5,8 @@
   "license": "MIT",
   "dependencies": {
     "@djsp/editor": "latest",
+    "@djsp/inline-style-toggle": "latest",
+    "@djsp/block-type-toggle": "latest",
     "draft-js": "^0.10.5",
     "prop-types": "^15.6.1",
     "react": "^16.5.0",

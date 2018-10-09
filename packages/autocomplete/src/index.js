@@ -13,7 +13,7 @@ type Props = {
   onSelect: (suggestion: any) => void,
   onSearch: (searchText: string) => void,
   suggestions: Array<any>,
-  pluginMethods: Object,
+  pluginProps: Object,
 }
 
 type State = {
@@ -47,7 +47,7 @@ class Suggestions extends Component<Props, State> {
 
   componentDidMount() {
     const {
-      pluginMethods: { registerPlugin },
+      pluginProps: { registerPlugin },
     } = this.props
 
     this._unregister = registerPlugin({

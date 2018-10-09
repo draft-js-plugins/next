@@ -18130,7 +18130,7 @@ function (_Component) {
     _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "focusBlock", function (blockKey) {
       var _this$props = _this.props,
           editorState = _this$props.editorProps.editorState,
-          setEditorState = _this$props.pluginMethods.setEditorState;
+          setEditorState = _this$props.pluginProps.setEditorState;
       var selection = editorState.getSelection();
       selection = selection.merge({
         anchorKey: blockKey,
@@ -18189,7 +18189,7 @@ function (_Component) {
       }
     });
 
-    var registerPlugin = _this.props.pluginMethods.registerPlugin;
+    var registerPlugin = _this.props.pluginProps.registerPlugin;
     _this.unregister = registerPlugin({
       handleReturn: _this.handleReturn,
       keyBindingFn: _this.keyBindingFn,

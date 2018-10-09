@@ -4,6 +4,8 @@ import React, { Component } from 'react'
 
 import { EditorState } from 'draft-js'
 import { EditorContainer, Editor } from '@djsp/editor'
+import Popover from 'react-text-selection-popover'
+
 import InlineStyleToggle from '@djsp/inline-style-toggle'
 import BlockTypeToggle from '@djsp/block-type-toggle'
 
@@ -73,11 +75,11 @@ export default class App extends Component {
           editorState={this.state.editorState}
           onChange={editorState => this.setState({ editorState })}>
           <main className="container">
-            <header className="toolbar">
-              <InlineButton style="BOLD">Bold</InlineButton>
-              <InlineButton style="UNDERLINE">Underline</InlineButton>
-              <InlineButton style="STRIKETHROUGH">Strikethrough</InlineButton>
-              <InlineButton style="ITALIC">Italic</InlineButton>
+            <Popover className="toolbar">
+              <InlineButton style="BOLD">B</InlineButton>
+              <InlineButton style="UNDERLINE">U</InlineButton>
+              <InlineButton style="STRIKETHROUGH">S</InlineButton>
+              <InlineButton style="ITALIC">I</InlineButton>
               <BlockTypeButton blockType="header-one">H1</BlockTypeButton>
               <BlockTypeButton blockType="header-two">H2</BlockTypeButton>
               <BlockTypeButton blockType="header-three">H3</BlockTypeButton>
@@ -87,7 +89,7 @@ export default class App extends Component {
               <BlockTypeButton blockType="ordered-list-item">
                 OL
               </BlockTypeButton>
-            </header>
+            </Popover>
             <Editor />
           </main>
         </EditorContainer>
@@ -95,22 +97,3 @@ export default class App extends Component {
     )
   }
 }
-
-/*
-<BlockTypeToggle {...pluginProps} blockType="header-one">
-  H1
-</BlockTypeToggle>
-<BlockTypeToggle {...pluginProps} blockType="header-two">
-  H2
-</BlockTypeToggle>
-<BlockTypeToggle
-  {...pluginProps}
-  blockType="unordered-list-item">
-  UL
-</BlockTypeToggle>
-<BlockTypeToggle
-  {...pluginProps}
-  blockType="ordered-list-item">
-  OL
-</BlockTypeToggle>
-*/

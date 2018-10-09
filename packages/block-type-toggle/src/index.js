@@ -10,7 +10,7 @@ type BlockTypeRenderProps = {
 }
 
 type BlockTypeProps = {
-  pluginMethods: {
+  pluginProps: {
     setEditorState: (editorState: EditorState) => void,
     editorState: EditorState,
   },
@@ -21,7 +21,7 @@ type BlockTypeProps = {
 class BlockTypeToggle extends Component<BlockTypeProps> {
   render() {
     const {
-      pluginMethods: { setEditorState, editorState },
+      pluginProps: { setEditorState, editorState },
       blockType,
       children,
     } = this.props

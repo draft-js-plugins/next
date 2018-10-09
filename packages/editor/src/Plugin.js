@@ -8,7 +8,7 @@ type Props = Object
 class Plugin extends Component<Props> {
   componentDidMount() {
     const {
-      pluginMethods: { registerPlugin },
+      pluginProps: { registerPlugin },
       editorProps,
       ...props
     } = this.props
@@ -19,7 +19,7 @@ class Plugin extends Component<Props> {
 
   render() {
     if (this.props.children) {
-      return this.props.children(this.props.pluginMethods)
+      return this.props.children(this.props.pluginProps)
     }
     return null
   }
