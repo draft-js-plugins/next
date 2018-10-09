@@ -1,29 +1,40 @@
-# djs-buttons
+# @djsp/toolbar
 
-> Buttons for draft js plugins
-
-[![NPM](https://img.shields.io/npm/v/djs-buttons.svg)](https://www.npmjs.com/package/djs-buttons) [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
+> Toolbar for draft js plugins
 
 ## Install
 
 ```bash
-npm install --save djs-buttons
+npm install --save @djsp/toolbar
 ```
 
 ## Usage
 
 ```jsx
-import React, { Component } from 'react'
+<EditorContainer>
+  <Editor />
+  
+  <!-- static toolbar with default buttons -->
+  <Toolbar />
 
-import MyComponent from 'djs-buttons'
-
-class Example extends Component {
-  render () {
-    return (
-      <MyComponent />
-    )
+  <!-- static toolbar with default buttons -->
+  <Toolbar>
+  {
+    () => {
+      return <div>
+        <HeadlineOneButton />
+        <BoldButton />
+      </div>
+    }
   }
-}
+  </Toolbar>
+
+  <!-- inline toolbar with default buttons -->
+  <Toolbar toolbarPosition="inline"/>
+
+  <!-- side toolbar(left/right) with default buttons -->
+  <Toolbar toolbarPosition="left"/>
+</EditorContainer>
 ```
 
 ## License
