@@ -5,7 +5,7 @@ import unionClassNames from 'union-class-names'
 import { withEditorContext } from 'djs-editor'
 import buttonStyles from '../styles.css'
 
-export default (style: string, children: string | React.Node) => {
+export default ({ style, children }: { style: string, children: string | React.Node }) => {
   type Props = {
     children: () => React.Node,
   };
@@ -25,7 +25,7 @@ export default (style: string, children: string | React.Node) => {
       }
     }
 
-    toggleStyle = (event: SyntheticEvent<HTMLButtonElement>) => {
+    toggleStyle = (event: SyntheticEvent<>) => {
       const {
         editorProps: { editorState },
         pluginMethods: { setEditorState }

@@ -2,6 +2,7 @@
 import React from 'react';
 import Separator from './components/Separator';
 import { getVisibleSelectionRect } from 'draft-js';
+import { withEditorContext } from 'djs-editor'
 import {
   ItalicButton,
   BoldButton,
@@ -11,7 +12,7 @@ import {
 import BlockTypeSelect from './components/BlockTypeSelect';
 import toolbarStyles from './styles/toolbarStyles.css';
 
-export default class Toolbar extends React.Component {
+class Toolbar extends React.Component {
 
   static defaultProps = {
     children: () => (
@@ -199,6 +200,8 @@ export default class Toolbar extends React.Component {
     );
   }
 }
+
+export default withEditorContext(Toolbar)
 
 export {
   Separator,
