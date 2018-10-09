@@ -1,13 +1,13 @@
 {
-  "name": "static-toolbar-example",
+  "name": "side-toolbar-example",
   "version": "0.0.1",
   "private": true,
   "dependencies": {
     "react": "^16.5.2",
     "react-dom": "^16.5.2",
     "react-scripts": "2.0.3",
-    "@djsp/editor": "latest",
-    "@djsp/toolbar": "latest"
+    "@djs/editor": "latest",
+    "@djs/toolbar": "latest"
   },
   "scripts": {
     "start": "react-scripts start",

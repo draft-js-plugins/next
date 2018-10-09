@@ -26,7 +26,7 @@ class App extends Component {
           onChange={this.onChange}
         >
           <Editor />
-          <Toolbar />
+          <Toolbar toolbarPosition="inline"/>
         </EditorContainer>
       </div>
     );
