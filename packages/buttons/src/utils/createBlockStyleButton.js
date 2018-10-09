@@ -5,7 +5,7 @@ import unionClassNames from 'union-class-names';
 import { withEditorContext } from 'djs-editor';
 import buttonStyles from '../styles.css';
 
-export default ({ blockType: string, children: string | React.Node }) => {
+export default (blockType: string, children: string | React.Node) => {
   type Props = {
     children: () => React.Node,
   };
