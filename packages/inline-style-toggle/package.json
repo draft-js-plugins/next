@@ -1,11 +1,11 @@
 {
-  "name": "@djsp/buttons",
+  "name": "@djsp/inline-style-toggle",
   "version": "0.0.2",
-  "description": "Buttons for draft js plugins",
+  "description": "Inline Style Toggle for draft js plugins",
   "private": true,
   "author": "juliankrispel",
   "license": "MIT",
-  "repository": "draft-js-plugins/next/tree/master/packages/buttons",
+  "repository": "draft-js-plugins/next/tree/master/packages/inline-style-toggle",
   "main": "dist/index.js",
   "module": "dist/index.es.js",
   "jsnext:main": "dist/index.es.js",
@@ -17,6 +17,9 @@
     "prepare": "yarn run build",
     "predeploy": "cd example && yarn install && yarn run build",
     "deploy": "gh-pages -d example/build"
+  },
+  "dependencies": {
+    "@djsp/editor": "0.0.2"
   },
   "peerDependencies": {
     "prop-types": "^15.5.4",

@@ -463,12 +463,21 @@ var EditorContainer = function (_Component) {
       var pluginMethods = {
         registerPlugin: this.registerPlugin,
         setEditorState: this.onChange,
+        editorState: this.state.editorState,
         setEditorProps: function setEditorProps(editorProps) {
           return _this2.setState({
             editorProps: _extends({}, _this2.state.editorProps, editorProps)
           });
         }
       };
+
+      Object.defineProperty(pluginMethods, 'editorState', {
+        get: function get$$1() {
+          return _this2.state.editorState;
+        }
+      });
+
+      console.log('pluginMethods', pluginMethods);
 
       return React.createElement(
         Context.Provider,

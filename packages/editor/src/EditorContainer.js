@@ -241,11 +241,18 @@ export default class EditorContainer extends Component<Props, State> {
     const pluginMethods = {
       registerPlugin: this.registerPlugin,
       setEditorState: this.onChange,
+      editorState: this.state.editorState,
       setEditorProps: editorProps =>
         this.setState({
           editorProps: { ...this.state.editorProps, ...editorProps },
         }),
     }
+
+    Object.defineProperty(pluginMethods, 'editorState', {
+      get: () => this.state.editorState,
+    })
+
+    console.log('pluginMethods', pluginMethods)
 
     return (
       <Context.Provider value={{ pluginMethods, editorProps }}>
