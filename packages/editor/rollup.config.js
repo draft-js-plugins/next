@@ -8,7 +8,7 @@ import url from 'rollup-plugin-url'
 import pkg from './package.json'
 
 export default {
-  external: ['draft-js', 'recat'],
+  external: ['draft-js', 'react'],
   input: 'src/index.js',
   output: [
     {

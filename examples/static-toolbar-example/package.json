@@ -1,0 +1,24 @@
+{
+  "name": "@djsp/static-toolbar-example",
+  "version": "0.0.3",
+  "private": true,
+  "license": "MIT",
+  "dependencies": {
+    "@djsp/block-type-toggle": "latest",
+    "@djsp/editor": "latest",
+    "@djsp/inline-style-toggle": "latest",
+    "draft-js": "^0.10.5",
+    "prop-types": "^15.6.1",
+    "react": "^16.5.0",
+    "react-dom": "^16.2.0",
+    "react-scripts": "^1.1.1",
+    "react-text-selection-popover": "^1.2.1",
+    "styled-components": "^3.4.5"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject"
+  }
+}

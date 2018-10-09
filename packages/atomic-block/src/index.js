@@ -7,8 +7,6 @@ import AtomicBlock from './AtomicBlock'
 
 const { EditorState } = Draft
 
-// import styles from './styles.css'
-
 type Props = {
   type: string,
   children: any,
@@ -24,7 +22,7 @@ class AtomicBlockPlugin extends Component<Props, State> {
     super(props)
 
     const {
-      pluginMethods: { registerPlugin },
+      pluginProps: { registerPlugin },
     } = this.props
 
     this.unregister = registerPlugin({
@@ -41,7 +39,7 @@ class AtomicBlockPlugin extends Component<Props, State> {
   focusBlock = (blockKey: string) => {
     const {
       editorProps: { editorState },
-      pluginMethods: { setEditorState },
+      pluginProps: { setEditorState },
     } = this.props
 
     let selection = editorState.getSelection()

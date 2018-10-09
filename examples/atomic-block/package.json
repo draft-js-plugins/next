@@ -1,7 +1,7 @@
 {
   "name": "@djsp/atomic-block-example",
   "homepage": "https://juliankrispel.github.io/djs-autocomplete",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "private": true,
   "license": "MIT",
   "dependencies": {

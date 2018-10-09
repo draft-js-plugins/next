@@ -467,9 +467,10 @@ var EditorContainer = function (_Component) {
         }
       });
 
-      var pluginMethods = {
+      var pluginProps = {
         registerPlugin: this.registerPlugin,
         setEditorState: this.onChange,
+        editorState: this.state.editorState,
         setEditorProps: function setEditorProps(editorProps) {
           return _this2.setState({
             editorProps: _extends({}, _this2.state.editorProps, editorProps)
@@ -477,9 +478,17 @@ var EditorContainer = function (_Component) {
         }
       };
 
+      Object.defineProperty(pluginProps, 'editorState', {
+        get: function get$$1() {
+          return _this2.state.editorState;
+        }
+      });
+
+      console.log('pluginProps', pluginProps);
+
       return React__default.createElement(
         Context.Provider,
-        { value: { pluginMethods: pluginMethods, editorProps: editorProps } },
+        { value: { pluginProps: pluginProps, editorProps: editorProps } },
         this.props.children
       );
     }
@@ -570,9 +579,9 @@ var Plugin = function (_Component) {
     key: 'componentDidMount',
     value: function componentDidMount() {
       var _props = this.props,
-          registerPlugin = _props.pluginMethods.registerPlugin,
+          registerPlugin = _props.pluginProps.registerPlugin,
           editorProps = _props.editorProps,
-          props = objectWithoutProperties(_props, ['pluginMethods', 'editorProps']);
+          props = objectWithoutProperties(_props, ['pluginProps', 'editorProps']);
 
       this.unsubscribe = registerPlugin(props);
     }
@@ -580,7 +589,7 @@ var Plugin = function (_Component) {
     key: 'render',
     value: function render() {
       if (this.props.children) {
-        return this.props.children(this.props.pluginMethods);
+        return this.props.children(this.props.pluginProps);
       }
       return null;
     }

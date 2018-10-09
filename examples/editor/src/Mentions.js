@@ -7,7 +7,7 @@ import Popover from 'react-text-selection-popover'
 type Props = {
   trigger: string | (textUntilCursor => ?string),
   renderSuggestion: { suggestion: any, onSelect: any => void },
-  pluginMethods: Object,
+  pluginProps: Object,
   getSuggestions: (searchText: string) => Array<any> | Promise<Array<any>>,
 }
 
@@ -31,7 +31,7 @@ class Suggestions extends Component<Props> {
 
   componentDidMount() {
     const {
-      pluginMethods: { registerPlugin },
+      pluginProps: { registerPlugin },
     } = this.props
     this._unregister = registerPlugin({
       onChange: this.onChange,
