@@ -28,6 +28,8 @@ export default {
     }),
     url(),
     babel({
+      babelrc: false,
+      configFile: '../../babel.config.js',
       exclude: 'node_modules/**',
     }),
     resolve(),
