@@ -5,6 +5,6 @@
 		}
 	],
 	"settings": {
-		"eslint.nodePath": "./node_modules"
+		"eslint.nodePath": "${workspaceRoot}./node_modules"
 	}
 }

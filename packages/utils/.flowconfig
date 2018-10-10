@@ -1,8 +1,17 @@
 [ignore]
-.*/node_modules/.*
+.*/node_modules/@babel/.*
+.*/node_modules/@octokit/.*
+.*/node_modules/@types/.*
+.*/node_modules/\([a-c]\|[g-h]\|e\|[j-z]\).*/.*
+.*/node_modules/draft-js/lib/BlockNode.js.flow
+.*/node_modules/draft-js/lib/ContentState.js.flow
+.*/node_modules/draft-js/lib/DraftEditorDragHandler.js.flow
+.*/node_modules/draft-js/lib/DraftEntityType.js.flow
+.*/node_modules/draft-js/lib/DraftEditorLeaf.react.js.flow
+.*/node_modules/draft-js/lib/DraftEditor.react.js.flow
 
 [include]
-node_modules/draft-js
+flow-typed
 
 [libs]
 

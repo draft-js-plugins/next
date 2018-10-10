@@ -9,6 +9,7 @@ import {
   Modifier,
 } from 'draft-js'
 import type DraftEntityInstance from 'draft-js/lib/DraftEntityInstance'
+import type { DraftDecorator } from 'draft-js/lib/DraftDecorator'
 
 export function insertEntityBlock(
   editorState: EditorState,
@@ -29,9 +30,9 @@ export function insertEntityBlock(
 
 export function createEntityDecorator(
   entityName: string,
-  component: React$Element,
+  component: Function,
   props?: Object
-) {
+): DraftDecorator {
   return {
     strategy: (contentBlock, callback, contentState) => {
       contentBlock.findEntityRanges(character => {
