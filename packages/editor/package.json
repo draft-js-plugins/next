@@ -17,6 +17,9 @@
     "predeploy": "cd example && yarn install && yarn run build",
     "deploy": "gh-pages -d example/build"
   },
+  "publishConfig": {
+    "access": "public"
+  },
   "dependencies": {
     "draft-js": "^0.10.5"
   },
