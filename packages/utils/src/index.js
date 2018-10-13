@@ -11,6 +11,37 @@ import {
 import type DraftEntityInstance from 'draft-js/lib/DraftEntityInstance'
 import type { DraftDecorator } from 'draft-js/lib/DraftDecorator'
 
+export function replaceWithAtomicBlock(
+  editorState: EditorState,
+  entityType: string,
+  data: Object
+): EditorState {
+  const contentState = editorState.getCurrentContent()
+  const contentStateWithEntity = contentState.createEntity(
+    entityType,
+    'IMMUTABLE',
+    data
+  )
+
+  let selection = editorState.getSelection()
+  let content = editorState.getCurrentContent()
+  const entityKey = contentStateWithEntity.getLastCreatedEntityKey()
+  const block = content.getBlockForKey(selection.getStartKey())
+
+  content = Modifier.replaceText(
+    content,
+    selection.merge({ anchorOffset: 0, focusOffset: block.getText().length }),
+    ' ',
+    null,
+    entityKey
+  )
+  selection = content.getSelectionAfter()
+  content = Modifier.splitBlock(content, selection)
+  content = Modifier.setBlockType(content, selection, 'atomic')
+
+  return EditorState.push(editorState, content, 'insert-fragment')
+}
+
 export function insertEntityBlock(
   editorState: EditorState,
   entityType: string,
