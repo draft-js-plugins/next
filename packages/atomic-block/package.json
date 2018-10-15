@@ -1,6 +1,6 @@
 {
   "name": "@djsp/atomic-block",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "Plugin for atomic block",
   "author": "Julian Krispel",
   "license": "MIT",
@@ -29,12 +29,12 @@
     "react-dom": "^15.0.0 || ^16.0.0"
   },
   "devDependencies": {
-    "@babel/plugin-proposal-class-properties": "^7.1.0",
-    "@babel/preset-stage-0": "^7.0.0",
     "@babel/core": "^7.1.0",
+    "@babel/plugin-proposal-class-properties": "^7.1.0",
     "@babel/preset-env": "^7.1.0",
     "@babel/preset-flow": "^7.0.0",
     "@babel/preset-react": "^7.0.0",
+    "@babel/preset-stage-0": "^7.0.0",
     "@babel/preset-stage-2": "^7.0.0",
     "flow-bin": "^0.81.0",
     "flow-typed": "^2.5.1",
