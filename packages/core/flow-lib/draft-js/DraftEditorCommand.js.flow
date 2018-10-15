@@ -1,0 +1,22 @@
+// @flow
+
+declare module 'draft-js/lib/DraftEditorCommand' {
+  declare export type DraftEditorCommand =
+    | 'undo'
+    | 'redo'
+    | 'delete'
+    | 'delete-word'
+    | 'backspace'
+    | 'backspace-word'
+    | 'backspace-to-start-of-line'
+    | 'bold'
+    | 'italic'
+    | 'underline'
+    | 'code'
+    | 'split-block'
+    | 'transpose-characters'
+    | 'move-selection-to-start-of-block'
+    | 'move-selection-to-end-of-block'
+    | 'secondary-cut'
+    | 'secondary-paste'
+}

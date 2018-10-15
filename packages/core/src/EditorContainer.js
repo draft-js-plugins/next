@@ -1,7 +1,7 @@
 // @flow
 
 import React, { createContext, Component } from 'react'
-import type { Node, ComponentType, Context as ContextType } from 'react'
+import type { Node, ComponentType } from 'react'
 import {
   CompositeDecorator,
   EditorState,
@@ -12,48 +12,13 @@ import {
 
 import { HANDLED } from './constants'
 import type { DraftEditorProps } from 'draft-js/lib/DraftEditorProps'
-import type { DraftTextAlignment } from 'draft-js/lib/DraftTextAlignment'
-import type { DraftHandleValue } from 'draft-js/lib/DraftHandleValue'
 import type { BlockNodeRecord } from 'draft-js/lib/BlockNodeRecord'
 import type { DraftEditorCommand } from 'draft-js/lib/DraftEditorCommand'
-import type { BidiDirection } from 'fbjs/lib/UnicodeBidiDirection'
 import type { DraftDragType } from 'draft-js/lib/DraftDragType'
 
-export type StaticProps = {
-  editorKey?: string,
-  placeholder?: string,
-  textAlignment?: DraftTextAlignment,
-  textDirectionality?: BidiDirection,
-  readOnly: boolean,
-  spellCheck: boolean,
-  stripPastedStyles: boolean,
-  tabIndex?: number,
-  autoCapitalize?: string,
-  autoComplete?: string,
-  autoCorrect?: string,
+import type { PluginProps, StaticProps, ContextType } from './types'
 
-  ariaActiveDescendantID?: string,
-  ariaAutoComplete?: string,
-  ariaControls?: string,
-  ariaDescribedBy?: string,
-  ariaExpanded?: boolean,
-  ariaLabel?: string,
-  ariaLabelledBy?: string,
-  ariaMultiline?: boolean,
-  webDriverTestID?: string,
-}
-
-export type PluginProps = {
-  registerPlugin: DraftEditorProps => () => void,
-  setEditorState: EditorState => void,
-  editorState: EditorState,
-  setEditorProps: (editorProps: StaticProps) => void,
-}
-
-export const Context: ContextType<{
-  pluginProps?: PluginProps,
-  editorProps?: DraftEditorProps,
-}> = createContext({})
+export const Context: ContextType = createContext({})
 
 export const withEditorContext = <Props: {}>(
   Comp: ComponentType<Props>

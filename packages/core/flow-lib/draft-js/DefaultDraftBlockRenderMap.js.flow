@@ -1,0 +1,12 @@
+// @flow
+
+import type { DraftBlockRenderConfig } from './DraftBlockRenderConfig'
+import type { CoreDraftBlockType } from './DraftBlockType'
+
+declare module 'draft-js/lib/DefaultDraftBlockRenderMap' {
+  declare type DefaultDraftBlockRenderMap = Map<
+    CoreDraftBlockType,
+    DraftBlockRenderConfig
+  >
+  declare export default DefaultDraftBlockRenderMap
+}

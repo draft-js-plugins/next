@@ -1,0 +1,5 @@
+// @flow
+
+declare module 'draft-js/lib/DraftHandleValue' {
+  declare export type DraftHandleValue = 'handled' | 'not-handled'
+}

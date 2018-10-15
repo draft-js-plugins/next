@@ -4,7 +4,7 @@ function _interopDefault (ex) { return (ex && (typeof ex === 'object') && 'defau
 
 var React = require('react');
 var React__default = _interopDefault(React);
-var editor = require('@djsp/core');
+var core = require('@djsp/core');
 
 var styles = { "ul": "styles_ul__37R59", "li": "styles_li__2kGXu", "suggestion": "styles_suggestion__1bOge", "suggestionFocused": "styles_suggestionFocused__2ZMxu" };
 
@@ -112,10 +112,10 @@ var Suggestions = function (_Component) {
     _this.handleReturn = function () {
       if (_this.state.isOpen && _this.props.suggestions.length > 0) {
         _this.onSelect(_this.props.suggestions[_this.state.selectedItem]);
-        return editor.constants.HANDLED;
+        return core.constants.HANDLED;
       }
 
-      return editor.constants.NOT_HANDLED;
+      return core.constants.NOT_HANDLED;
     };
 
     _this.onDownArrow = function (e) {
@@ -124,9 +124,9 @@ var Suggestions = function (_Component) {
         var _selectedItem = _this.state.selectedItem >= _this.props.suggestions.length - 1 ? 0 : _this.state.selectedItem + 1;
 
         _this.setState({ selectedItem: _selectedItem });
-        return editor.constants.HANDLED;
+        return core.constants.HANDLED;
       }
-      return editor.constants.NOT_HANDLED;
+      return core.constants.NOT_HANDLED;
     };
 
     _this.onUpArrow = function (e) {
@@ -135,9 +135,9 @@ var Suggestions = function (_Component) {
         var _selectedItem2 = _this.state.selectedItem === 0 ? _this.props.suggestions.length - 1 : _this.state.selectedItem - 1;
 
         _this.setState({ selectedItem: _selectedItem2 });
-        return editor.constants.HANDLED;
+        return core.constants.HANDLED;
       }
-      return editor.constants.NOT_HANDLED;
+      return core.constants.NOT_HANDLED;
     };
 
     _this.onSelect = function (item) {
@@ -263,6 +263,6 @@ Suggestions.defaultProps = {
 };
 
 
-var index = editor.withEditorContext(Suggestions);
+var index = core.withEditorContext(Suggestions);
 
 module.exports = index;

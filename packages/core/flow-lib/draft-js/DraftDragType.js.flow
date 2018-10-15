@@ -1,0 +1,5 @@
+// @flow
+
+declare module 'draft-js/lib/DraftDragType' {
+  declare export type DraftDragType = 'internal' | 'external'
+}

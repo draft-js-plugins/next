@@ -1,12 +1,13 @@
 // @flow
 
 import React, { Component } from 'react'
+import type { Node } from 'react'
 import styles from './styles.css'
 
 type Props = {
   onClick: (event: SyntheticMouseEvent<*>) => void,
   isFocused: boolean,
-  children: React.Node,
+  children: Node,
 }
 
 export default class AtomicBlock extends Component<Props> {

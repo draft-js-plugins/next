@@ -1,0 +1,40 @@
+/**
+ * Copyright (c) 2013-present, Facebook, Inc.
+ * All rights reserved.
+ *
+ * This source code is licensed under the BSD-style license found in the
+ * LICENSE file in the root directory of this source tree. An additional grant
+ * of patent rights can be found in the PATENTS file in the same directory.
+ *
+ * @providesModule ContentBlock
+ * @format
+ * @flow
+ */
+
+import type { BlockNode, BlockNodeConfig, BlockNodeKey } from './BlockNode'
+import type { DraftBlockType } from './DraftBlockType'
+import type { DraftInlineStyle } from './DraftInlineStyle'
+import type { Record } from 'immutable'
+
+declare module 'draft-js/lib/CompositeDraftDecorator' {
+  declare export default class ContentBlock extends Record<BlockNodeConfig>
+    implements BlockNode {
+    getKey(): BlockNodeKey;
+    getType(): DraftBlockType;
+    getText(): string;
+    getCharacterList(): List<CharacterMetadata>;
+    getLength(): number;
+    getDepth(): number;
+    getData(): Map<any, any>;
+    getInlineStyleAt(offset: number): DraftInlineStyle;
+    getEntityAt(offset: number): ?string;
+    findStyleRanges(
+      filterFn: (value: CharacterMetadata) => boolean,
+      callback: (start: number, end: number) => void
+    ): void;
+    findEntityRanges(
+      filterFn: (value: CharacterMetadata) => boolean,
+      callback: (start: number, end: number) => void
+    ): void;
+  }
+  }

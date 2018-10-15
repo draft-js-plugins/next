@@ -2,7 +2,7 @@
 
 import { Component } from 'react'
 import { withPluginContext } from './EditorContainer'
-import type { StaticProps, PluginProps } from './EditorContainer'
+import type { StaticProps, PluginProps } from './types'
 import type { DraftEditorProps } from 'draft-js/lib/DraftEditorProps'
 import type { Node } from 'react'
 

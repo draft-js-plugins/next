@@ -1,11 +1,16 @@
 [ignore]
-.*/node_modules/.*
+.*/node_modules/draft-js
+.*/node_modules/@babel/.*
+.*/node_modules/@octokit/.*
+.*/node_modules/@types/.*
+.*/node_modules/\([a-c]\|[g-h]\|e\|[j-z]\).*/.*
+
 
 [include]
-node_modules/draft-js
 node_modules/react
 
 [libs]
+node_modules/@djsp/core/flow-lib
 
 [lints]
 

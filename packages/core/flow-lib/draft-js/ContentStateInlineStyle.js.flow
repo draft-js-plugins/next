@@ -1,0 +1,21 @@
+// @flow
+
+import type ContentState from './ContentState'
+import type SelectionState from './SelectionState'
+
+declare module 'draft-js/lib/ContentStateInlineStyle' {
+  declare type ContentStateInlineStyle = {
+    add: (
+      contentState: ContentState,
+      selectionState: SelectionState,
+      inlineStyle: string
+    ) => ContentState,
+    remove: (
+      contentState: ContentState,
+      selectionState: SelectionState,
+      inlineStyle: string
+    ) => ContentState,
+  }
+
+  declare export default ContentStateInlineStyle
+}

@@ -1,0 +1,7 @@
+// @flow
+declare module 'draft-js/lib/DraftRange' {
+  declare export type DraftRange = {
+    start: number,
+    end: number,
+  }
+}

@@ -1,0 +1,66 @@
+/**
+ * Copyright (c) 2013-present, Facebook, Inc.
+ * All rights reserved.
+ *
+ * This source code is licensed under the BSD-style license found in the
+ * LICENSE file in the root directory of this source tree. An additional grant
+ * of patent rights can be found in the PATENTS file in the same directory.
+ *
+ * @providesModule ContentState
+ * @format
+ * @flow
+ */
+
+import type { BlockMap } from './BlockMap'
+import type { BlockNodeRecord } from './BlockNodeRecord'
+import type DraftEntityInstance from './DraftEntityInstance'
+import type { DraftEntityMutability } from './DraftEntityMutability'
+import type { Record } from 'immutable'
+import BlockMapBuilder from './BlockMapBuilder'
+import CharacterMetadata from './CharacterMetadata'
+import SelectionState from './Selection'
+
+declare module 'draft-js/lib/ContentState' {
+  declare export default class ContentState extends Record<{
+    entityMap: ?any,
+    blockMap: ?BlockMap,
+    selectionBefore: ?SelectionState,
+    selectionAfter: ?SelectionState,
+  }> {
+    getEntityMap(): any;
+    getBlockMap(): BlockMap;
+    getSelectionBefore(): SelectionState;
+    getSelectionAfter(): SelectionState;
+    getBlockForKey(key: string): BlockNodeRecord;
+    getKeyBefore(key: string): ?string;
+    getKeyAfter(key: string): ?string;
+    getBlockAfter(key: string): ?BlockNodeRecord;
+    getBlockBefore(key: string): ?BlockNodeRecord;
+    getBlocksAsArray(): Array<BlockNodeRecord>;
+    getFirstBlock(): BlockNodeRecord;
+    getLastBlock(): BlockNodeRecord;
+    getPlainText(delimiter?: string): string;
+    getLastCreatedEntityKey(): ?string;
+    hasText(): boolean;
+    createEntity(
+      type: string,
+      mutability: DraftEntityMutability,
+      data?: Object
+    ): ContentState;
+    mergeEntityData(key: string, toMerge: { [key: string]: any }): ContentState;
+    replaceEntityData(
+      key: string,
+      newData: { [key: string]: any }
+    ): ContentState;
+    addEntity(instance: DraftEntityInstance): ContentState;
+    getEntity(key: string): DraftEntityInstance;
+    static createFromBlockArray(
+      Array<BlockNodeRecord> | { contentBlocks: Array<BlockNodeRecord> },
+      entityMap: ?any
+    ): ContentState;
+    static createFromText(
+      text: string,
+      delimiter: string | RegExp
+    ): ContentState;
+  }
+}

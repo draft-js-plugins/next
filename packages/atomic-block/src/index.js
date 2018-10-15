@@ -1,13 +1,14 @@
 // @flow
 
 import React, { Component } from 'react'
-import { withEditorContext } from '@djsp/core'
+import { withPluginContext } from '@djsp/core'
+import type { PluginProps } from '@djsp/core'
 import Draft from 'draft-js'
 import AtomicBlock from './AtomicBlock'
 
 const { EditorState } = Draft
 
-type Props = {
+type Props = PluginProps & {
   type: string,
   children: any,
   editorProps: Object,
@@ -18,12 +19,12 @@ type State = {
 }
 
 class AtomicBlockPlugin extends Component<Props, State> {
+  unregister: () => void
+
   constructor(props) {
     super(props)
 
-    const {
-      pluginProps: { registerPlugin },
-    } = this.props
+    const { registerPlugin } = this.props
 
     this.unregister = registerPlugin({
       handleReturn: this.handleReturn,
@@ -37,12 +38,10 @@ class AtomicBlockPlugin extends Component<Props, State> {
   }
 
   focusBlock = (blockKey: string) => {
-    const {
-      editorProps: { editorState },
-      pluginProps: { setEditorState },
-    } = this.props
+    const { setEditorState, editorState } = this.props
 
     let selection = editorState.getSelection()
+
     selection = selection.merge({
       anchorKey: blockKey,
       anchorOffset: 0,
@@ -118,4 +117,4 @@ class AtomicBlockPlugin extends Component<Props, State> {
   }
 }
 
-export default withEditorContext(AtomicBlockPlugin)
+export default withPluginContext(AtomicBlockPlugin)

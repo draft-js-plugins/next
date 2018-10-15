@@ -1,0 +1,10 @@
+// @flow
+
+import type SelectionState from './SelectionState'
+
+declare module 'draft-js/lib/DOMDerivedSelection' {
+  declare export type DOMDerivedSelection = {
+    selectionState: SelectionState,
+    needsRecovery: boolean,
+  }
+}

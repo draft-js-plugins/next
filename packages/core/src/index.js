@@ -16,3 +16,5 @@ export {
   Plugin,
   constants,
 }
+
+export type { PluginProps } from './types'
