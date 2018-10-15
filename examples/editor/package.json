@@ -1,11 +1,11 @@
 {
-  "name": "@djsp/editor-example",
-  "homepage": "https://juliankrispel.github.io/@djsp/editor",
+  "name": "@djsp/core-example",
+  "homepage": "https://juliankrispel.github.io/@djsp/core",
   "version": "0.0.3",
   "private": true,
   "license": "MIT",
   "dependencies": {
-    "@djsp/editor": "latest",
+    "@djsp/core": "latest",
     "draft-js": "^0.10.5",
     "prop-types": "^15.6.1",
     "react": "^16.5.0",

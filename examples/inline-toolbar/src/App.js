@@ -3,7 +3,7 @@
 import React, { Component } from 'react'
 
 import { EditorState } from 'draft-js'
-import { EditorContainer, Editor } from '@djsp/editor'
+import { EditorContainer, Editor } from '@djsp/core'
 import Popover from 'react-text-selection-popover'
 
 import InlineStyleToggle from '@djsp/inline-style-toggle'

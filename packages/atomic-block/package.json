@@ -21,7 +21,7 @@
     "access": "public"
   },
   "dependencies": {
-    "@djsp/editor": "^0.0.3"
+    "@djsp/core": "^0.0.3"
   },
   "peerDependencies": {
     "prop-types": "^15.5.4",

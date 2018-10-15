@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 
 import { EditorState } from 'draft-js'
-import { EditorContainer, Editor, Plugin } from '@djsp/editor'
+import { EditorContainer, Editor, Plugin } from '@djsp/core'
 
 export default class App extends Component {
   state = {

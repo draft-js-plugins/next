@@ -4,7 +4,7 @@ function _interopDefault (ex) { return (ex && (typeof ex === 'object') && 'defau
 
 var React = require('react');
 var React__default = _interopDefault(React);
-var editor = require('@djsp/editor');
+var editor = require('@djsp/core');
 var Draft = _interopDefault(require('draft-js'));
 
 function _classCallCheck(instance, Constructor) {

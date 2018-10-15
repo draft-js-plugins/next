@@ -1,7 +1,7 @@
 import React, { Component, Fragment } from 'react'
 
 import { EditorState, EditorBlock } from 'draft-js'
-import { EditorContainer, Editor, Plugin } from '@djsp/editor'
+import { EditorContainer, Editor, Plugin } from '@djsp/core'
 import { replaceWithAtomicBlock } from '@djsp/utils'
 import AtomicBlock from '@djsp/atomic-block'
 
