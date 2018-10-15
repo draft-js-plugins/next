@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import ReactDOM from 'react-dom'
 
 import { EditorState, convertFromRaw } from 'draft-js'
-import { EditorContainer, Editor } from '@djsp/editor'
+import { EditorContainer, Editor } from '@djsp/core'
 import AtomicBlock from '@djsp/atomic-block'
 import '@djsp/atomic-block/dist/index.css'
 import './styles.css'

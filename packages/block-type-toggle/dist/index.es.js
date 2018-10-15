@@ -1,6 +1,6 @@
 import { Component } from 'react';
 import { RichUtils } from 'draft-js';
-import { withEditorContext } from '@djsp/editor';
+import { withEditorContext } from '@djsp/core';
 
 var classCallCheck = function (instance, Constructor) {
   if (!(instance instanceof Constructor)) {

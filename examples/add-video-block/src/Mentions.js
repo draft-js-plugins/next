@@ -1,7 +1,7 @@
 // @flow
 
 import React, { Component } from 'react'
-import { withEditorContext } from '@djsp/editor'
+import { withEditorContext } from '@djsp/core'
 import Popover from 'react-text-selection-popover'
 
 type Props = {

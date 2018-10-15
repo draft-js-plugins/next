@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import ReactDOM from 'react-dom'
 
 import { EditorState, ContentState, Modifier } from 'draft-js'
-import { EditorContainer, Editor } from '@djsp/editor'
+import { EditorContainer, Editor } from '@djsp/core'
 import Autocomplete from '@djsp/autocomplete'
 import emojis from 'emoji.json'
 import '@djsp/autocomplete/dist/index.css'

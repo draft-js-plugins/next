@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { constants, withEditorContext } from '@djsp/editor';
+import { constants, withEditorContext } from '@djsp/core';
 
 var styles = { "ul": "styles_ul__37R59", "li": "styles_li__2kGXu", "suggestion": "styles_suggestion__1bOge", "suggestionFocused": "styles_suggestionFocused__2ZMxu" };
 

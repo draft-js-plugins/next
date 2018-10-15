@@ -4,7 +4,7 @@ function _interopDefault (ex) { return (ex && (typeof ex === 'object') && 'defau
 
 var React = require('react');
 var React__default = _interopDefault(React);
-var editor = require('@djsp/editor');
+var editor = require('@djsp/core');
 
 var styles = { "ul": "styles_ul__37R59", "li": "styles_li__2kGXu", "suggestion": "styles_suggestion__1bOge", "suggestionFocused": "styles_suggestionFocused__2ZMxu" };
 

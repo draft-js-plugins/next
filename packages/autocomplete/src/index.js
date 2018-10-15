@@ -1,7 +1,7 @@
 // @flow
 
 import React, { Component } from 'react'
-import { withEditorContext, constants } from '@djsp/editor'
+import { withEditorContext, constants } from '@djsp/core'
 // import Draft from 'draft-js'
 import styles from './styles.css'
 

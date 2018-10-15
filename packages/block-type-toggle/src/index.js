@@ -2,7 +2,7 @@
 
 import { Component } from 'react'
 import { EditorState, RichUtils } from 'draft-js'
-import { withEditorContext } from '@djsp/editor'
+import { withEditorContext } from '@djsp/core'
 
 type BlockTypeRenderProps = {
   toggleBlockType: () => void,

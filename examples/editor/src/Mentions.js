@@ -1,7 +1,7 @@
 // @flow
 
 import React, { Component } from 'react'
-import { withEditorContext } from '@djsp/editor'
+import { withPluginContext } from '@djsp/core'
 import Popover from 'react-text-selection-popover'
 
 type Props = {
@@ -140,4 +140,4 @@ class Suggestions extends Component<Props> {
   }
 }
 
-export default withEditorContext(Suggestions)
+export default withPluginContext(Suggestions)
