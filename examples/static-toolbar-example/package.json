@@ -4,9 +4,9 @@
   "private": true,
   "license": "MIT",
   "dependencies": {
-    "@djsp/block-type-toggle": "latest",
-    "@djsp/core": "latest",
-    "@djsp/inline-style-toggle": "latest",
+    "@djsp/block-type-toggle": "0.0.5",
+    "@djsp/core": "0.0.5",
+    "@djsp/inline-style-toggle": "0.0.5",
     "draft-js": "^0.10.5",
     "prop-types": "^15.6.1",
     "react": "^16.5.0",

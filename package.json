@@ -40,7 +40,8 @@
     "contributors:generate": "./node_modules/.bin/all-contributors generate",
     "format": "./node_modules/.bin/prettier-eslint --write **/*.js",
     "lint": "./node_modules/.bin/eslint **/*.js",
-    "flow": "./node_modules/.bin/lerna exec -- rm -rf && ./node_modules/.bin/lerna exec -- npm run flow"
+    "reinstall": "./node_modules/.bin/lerna exec -- rm -rf ./node_modules && ./node_modules/.bin/lerna exec -- npm install",
+    "flow": "./node_modules/.bin/lerna exec -- rm npm run flow"
   },
   "husky": {
     "hooks": {

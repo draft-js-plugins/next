@@ -5,8 +5,9 @@
   "private": true,
   "license": "MIT",
   "dependencies": {
-    "@djsp/atomic-block": "latest",
-    "@djsp/autocomplete": "latest",
+    "@djsp/atomic-block": "0.0.5",
+    "@djsp/core": "0.0.5",
+    "@djsp/autocomplete": "0.0.5",
     "emoji.json": "^11.0.0",
     "prop-types": "^15.6.1",
     "react": "^16.2.0",

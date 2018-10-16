@@ -6,7 +6,7 @@
   "license": "MIT",
   "dependencies": {
     "@djsp/atomic-block": "^0.0.5",
-    "@djsp/core": "latest",
+    "@djsp/core": "0.0.5",
     "@djsp/utils": "^0.0.5",
     "draft-js": "^0.10.5",
     "prop-types": "^15.6.1",
