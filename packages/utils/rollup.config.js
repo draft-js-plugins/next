@@ -20,6 +20,8 @@ export default {
   plugins: [
     external(),
     babel({
+      babelrc: false,
+      configFile: '../../babel.config.js',
       exclude: 'node_modules/**',
     }),
     commonjs(),
