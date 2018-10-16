@@ -11,9 +11,9 @@
   "scripts": {
     "test": "cross-env CI=1 react-scripts test --env=jsdom",
     "test:watch": "react-scripts test --env=jsdom",
-    "build": "rimraf dist && rollup -c && yarn build:flow",
+    "build": "rimraf dist && ./node_modules/.bin/rollup -c && yarn build:flow",
     "build:flow": "./node_modules/.bin/flow-copy-source -v -i '**/__tests__/**' src dist",
-    "start": "rollup -c -w",
+    "start": "./node_modules/.bin/rollup -c -w",
     "flow": "./node_modules/.bin/flow",
     "prepare": "yarn run build && yarn build:flow",
     "predeploy": "cd example && yarn install && yarn run build",
