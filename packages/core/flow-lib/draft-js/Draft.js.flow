@@ -1,42 +1,30 @@
-/**
- * Copyright (c) 2013-present, Facebook, Inc.
- * All rights reserved.
- *
- * This source code is licensed under the BSD-style license found in the
- * LICENSE file in the root directory of this source tree. An additional grant
- * of patent rights can be found in the PATENTS file in the same directory.
- *
- * @providesModule Draft
- * @format
- * @flow
- */
+// @flow
 
-'use strict';
+import type KeyBindingUtil from './KeyBindingUtil'
+import AtomicBlockUtils from './AtomicBlockUtils'
+import BlockMapBuilder from './BlockMapBuilder'
+import CharacterMetadata from './CharacterMetadata'
+import CompositeDraftDecorator from './CompositeDraftDecorator'
+import ContentBlock from './ContentBlock'
+import ContentState from './ContentState'
+import DefaultDraftBlockRenderMap from './DefaultDraftBlockRenderMap'
+import DefaultDraftInlineStyle from './DefaultDraftInlineStyle'
+import DraftEditor from './DraftEditor.react'
+import DraftEditorBlock from './DraftEditorBlock.react'
+import DraftEntity from './DraftEntity'
+import DraftModifier from './DraftModifier'
+import DraftEntityInstance from './DraftEntityInstance'
+import EditorState from './EditorState'
 
-const AtomicBlockUtils = require('./AtomicBlockUtils');
-const BlockMapBuilder = require('./BlockMapBuilder');
-const CharacterMetadata = require('./CharacterMetadata');
-const CompositeDraftDecorator = require('./CompositeDraftDecorator');
-const ContentBlock = require('./ContentBlock');
-const ContentState = require('./ContentState');
-const DefaultDraftBlockRenderMap = require('./DefaultDraftBlockRenderMap');
-const DefaultDraftInlineStyle = require('./DefaultDraftInlineStyle');
-const DraftEditor = require('./DraftEditor.react');
-const DraftEditorBlock = require('./DraftEditorBlock.react');
-const DraftEntity = require('./DraftEntity');
-const DraftModifier = require('./DraftModifier');
-const DraftEntityInstance = require('./DraftEntityInstance');
-const EditorState = require('./EditorState');
-const KeyBindingUtil = require('./KeyBindingUtil');
-const RichTextEditorUtil = require('./RichTextEditorUtil');
-const SelectionState = require('./SelectionState');
+import RichTextEditorUtil from './RichTextEditorUtil'
+import SelectionState from './SelectionState'
 
-const convertFromDraftStateToRaw = require('./convertFromDraftStateToRaw');
-const convertFromHTMLToContentBlocks = require('./convertFromHTMLToContentBlocks');
-const convertFromRawToDraftState = require('./convertFromRawToDraftState');
-const generateRandomKey = require('./generateRandomKey');
-const getDefaultKeyBinding = require('./getDefaultKeyBinding');
-const getVisibleSelectionRect = require('./getVisibleSelectionRect');
+import convertFromDraftStateToRaw from './convertFromDraftStateToRaw'
+import convertFromHTMLToContentBlocks from './convertFromHTMLToContentBlocks'
+import convertFromRawToDraftState from './convertFromRawToDraftState'
+import generateRandomKey from './generateRandomKey'
+import getDefaultKeyBinding from './getDefaultKeyBinding'
+import getVisibleSelectionRect from './getVisibleSelectionRect'
 
 declare module 'draft-js' {
   declare module.exports: {
@@ -63,10 +51,10 @@ declare module 'draft-js' {
     DefaultDraftInlineStyle: DefaultDraftInlineStyle,
 
     convertFromHTML: convertFromHTMLToContentBlocks,
-    convertFromRaw: typeof convertFromRawToDraftState,
-    convertToRaw: typeof convertFromDraftStateToRaw,
+    convertFromRaw: convertFromRawToDraftState,
+    convertToRaw: convertFromDraftStateToRaw,
     genKey: generateRandomKey,
-    getDefaultKeyBinding: typeof getDefaultKeyBinding,
-    getVisibleSelectionRect: typeof getVisibleSelectionRect
+    getDefaultKeyBinding: getDefaultKeyBinding,
+    getVisibleSelectionRect: getVisibleSelectionRect,
   }
 }
