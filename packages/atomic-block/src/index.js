@@ -58,9 +58,7 @@ class AtomicBlockPlugin extends Component<Props, State> {
   }
 
   renderChildren = (props: Object) => {
-    const {
-      editorState,
-    } = this.props
+    const { editorState } = this.props
 
     const blockKey = props.block.getKey()
     const selection = editorState.getSelection()
@@ -77,10 +75,7 @@ class AtomicBlockPlugin extends Component<Props, State> {
   }
 
   blockRendererFn = block => {
-    const {
-      type,
-      editorState,
-    } = this.props
+    const { type, editorState } = this.props
     const content = editorState.getCurrentContent()
 
     if (block.getType() === 'atomic') {

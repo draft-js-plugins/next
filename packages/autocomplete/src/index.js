@@ -44,9 +44,7 @@ class Suggestions extends Component<Props, State> {
   _unregister: () => void
 
   componentDidMount() {
-    const {
-      registerPlugin,
-    } = this.props
+    const { registerPlugin } = this.props
 
     this._unregister = registerPlugin({
       onBlur: this.onBlur,
@@ -100,11 +98,7 @@ class Suggestions extends Component<Props, State> {
   }
 
   static getDerivedStateFromProps(props, state) {
-    const {
-      trigger,
-      suggestions,
-      editorState,
-    } = props
+    const { trigger, suggestions, editorState } = props
 
     const selection = editorState.getSelection()
 

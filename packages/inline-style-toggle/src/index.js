@@ -17,12 +17,7 @@ type InlineStyleProps = PluginProps & {
 
 class InlineStyleToggle extends Component<InlineStyleProps> {
   render() {
-    const {
-      setEditorState,
-      editorState,
-      inlineStyle,
-      children,
-    } = this.props
+    const { setEditorState, editorState, inlineStyle, children } = this.props
 
     const hasStyle =
       editorState != null &&
