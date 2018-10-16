@@ -41,7 +41,8 @@
     "format": "./node_modules/.bin/prettier-eslint --write **/*.js",
     "lint": "./node_modules/.bin/eslint **/*.js",
     "reinstall": "./node_modules/.bin/lerna exec -- rm -rf ./node_modules && ./node_modules/.bin/lerna exec -- npm install",
-    "flow": "./node_modules/.bin/lerna exec -- rm npm run flow"
+    "flow": "./node_modules/.bin/lerna exec -- npm run flow",
+    "unlink": "./node_modules/.bin/lerna exec -- npm unlink"
   },
   "husky": {
     "hooks": {
