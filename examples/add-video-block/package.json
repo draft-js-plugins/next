@@ -6,7 +6,8 @@
   "license": "MIT",
   "dependencies": {
     "@djsp/atomic-block": "^0.0.5",
-    "@djsp/utils": "^0.0.5",
+    "@djsp/core": "0.0.5",
+    "@djsp/utils": "0.0.5",
     "prop-types": "^15.6.1",
     "react": "^16.5.0",
     "react-dom": "^16.2.0",
