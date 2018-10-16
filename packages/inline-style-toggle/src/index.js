@@ -5,8 +5,8 @@ import { EditorState, RichUtils } from 'draft-js'
 import { withEditorContext } from '@djsp/core'
 
 type InlineStyleRenderProps = {
-  toggleInlineStyle: () => void,
-  hasInlineStyle: boolean,
+  toggleStyle: () => void,
+  hasStyle: boolean,
 }
 
 type InlineStyleProps = {

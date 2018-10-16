@@ -15,23 +15,25 @@
     "eslint-plugin-standard": "^4.0.0",
     "flow-bin": "^0.80.0",
     "flow-typed": "^2.5.1",
+    "gitbook-cli": "^2.3.2",
     "husky": "^1.1.1",
     "lerna": "^3.4.1",
     "prettier": "^1.14.3",
-    "to-fast-properties": "^2.0.0",
     "prettier-eslint": "^8.8.2",
-    "prettier-eslint-cli": "^4.7.1"
+    "prettier-eslint-cli": "^4.7.1",
+    "to-fast-properties": "^2.0.0"
   },
   "scripts": {
     "eslint-check": "eslint --print-config . | eslint-config-prettier-check",
+    "docs": "./node_modules/.bin/gitbook serve",
     "storybook": "start-storybook -p 9001 -c .storybook",
-    "reinstall": "./node_modules/.bin/lerna exec -- rm -rf && ./node_modules/.bin/lerna exec -- yarn",
-    "build": "./node_modules/.bin/lerna exec -- yarn build",
+    "build": "./node_modules/.bin/lerna exec -- npm run build",
     "contributors": "./node_modules/.bin/all-contributors",
     "contributors:add": "./node_modules/.bin/all-contributors add",
     "contributors:generate": "./node_modules/.bin/all-contributors generate",
     "format": "./node_modules/.bin/prettier-eslint --write **/*.js",
-    "lint": "./node_modules/.bin/eslint **/*.js"
+    "lint": "./node_modules/.bin/eslint **/*.js",
+    "flow": "./node_modules/.bin/lerna exec -- rm -rf && ./node_modules/.bin/lerna exec -- npm run flow"
   },
   "husky": {
     "hooks": {

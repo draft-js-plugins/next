@@ -10,7 +10,8 @@ import ContentBlock from './ContentBlock'
 import ContentState from './ContentState'
 import DefaultDraftBlockRenderMap from './DefaultDraftBlockRenderMap'
 import DefaultDraftInlineStyle from './DefaultDraftInlineStyle'
-import DraftEditor from './DraftEditor.react'
+// import type DraftEditor from './DraftEditor.react'
+import DraftEditorProps from './DraftEditorProps'
 import DraftEditorBlock from './DraftEditorBlock.react'
 import DraftEntity from './DraftEntity'
 import DraftModifier from './DraftModifier'
@@ -29,7 +30,7 @@ import getVisibleSelectionRect from './getVisibleSelectionRect'
 
 declare module 'draft-js' {
   declare module.exports: {
-    Editor: DraftEditor,
+    Editor: React.Component<{ editorState: boolean }>,
     EditorBlock: DraftEditorBlock,
     EditorState: EditorState,
 

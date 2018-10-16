@@ -5,5 +5,6 @@ cache:
   yarn: true
 script:
   - ./node_modules/.bin/lerna bootstrap
-  - yarn build
-  - yarn lint
+  - npm run build
+  - npm run lint
+  - npm run flow

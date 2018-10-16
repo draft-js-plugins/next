@@ -15,7 +15,6 @@ import type { DraftEditorProps } from 'draft-js/lib/DraftEditorProps'
 import type { BlockNodeRecord } from 'draft-js/lib/BlockNodeRecord'
 import type { DraftEditorCommand } from 'draft-js/lib/DraftEditorCommand'
 import type { DraftDragType } from 'draft-js/lib/DraftDragType'
-
 import type { PluginProps, StaticProps, ContextType } from './types'
 
 export const Context: ContextType = createContext({})

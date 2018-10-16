@@ -3,6 +3,7 @@ node_modules
 _book
 build
 dist
+**/dist
 yarn.lock
 yarn-error.log
 lerna-debug.log

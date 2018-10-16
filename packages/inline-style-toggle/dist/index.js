@@ -2,7 +2,7 @@
 
 var react = require('react');
 var draftJs = require('draft-js');
-var editor = require('@djsp/core');
+var core = require('@djsp/core');
 
 var classCallCheck = function (instance, Constructor) {
   if (!(instance instanceof Constructor)) {
@@ -101,6 +101,6 @@ var InlineStyleToggle = function (_Component) {
   return InlineStyleToggle;
 }(react.Component);
 
-var index = editor.withEditorContext(InlineStyleToggle);
+var index = core.withEditorContext(InlineStyleToggle);
 
 module.exports = index;

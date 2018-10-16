@@ -10,6 +10,7 @@
   "jsnext:main": "dist/index.es.js",
   "scripts": {
     "test": "cross-env CI=1 react-scripts test --env=jsdom",
+    "flow": "./node_modules/.bin/flow",
     "test:watch": "react-scripts test --env=jsdom",
     "build": "rollup -c",
     "start": "rollup -c -w",
@@ -21,7 +22,7 @@
     "access": "public"
   },
   "dependencies": {
-    "@djsp/core": "^0.0.3"
+    "@djsp/core": "^0.0.4"
   },
   "peerDependencies": {
     "prop-types": "^15.5.4",
@@ -35,6 +36,7 @@
     "babel-preset-react": "^6.24.1",
     "babel-preset-stage-0": "^6.24.1",
     "cross-env": "^5.1.4",
+    "flow-bin": "^0.83.0",
     "gh-pages": "^1.1.0",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",

@@ -88,9 +88,6 @@ var possibleConstructorReturn = function (self, call) {
   return call && (typeof call === "object" || typeof call === "function") ? call : self;
 };
 
-// import Draft from 'draft-js'
-// const { EditorState, Modifier } = Draft
-
 var Suggestions = function (_Component) {
   inherits(Suggestions, _Component);
 
@@ -263,6 +260,6 @@ Suggestions.defaultProps = {
 };
 
 
-var index = core.withEditorContext(Suggestions);
+var index = core.withPluginContext(Suggestions);
 
 module.exports = index;

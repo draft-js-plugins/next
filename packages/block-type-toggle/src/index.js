@@ -1,30 +1,23 @@
 // @flow
 
 import { Component } from 'react'
-import { EditorState, RichUtils } from 'draft-js'
-import { withEditorContext } from '@djsp/core'
+import { RichUtils } from 'draft-js'
+import { withPluginContext } from '@djsp/core'
+import type { PluginProps } from '@djsp/core'
 
 type BlockTypeRenderProps = {
   toggleBlockType: () => void,
   hasBlockType: boolean,
 }
 
-type BlockTypeProps = {
-  pluginProps: {
-    setEditorState: (editorState: EditorState) => void,
-    editorState: EditorState,
-  },
+type BlockTypeProps = PluginProps & {
   children: BlockTypeRenderProps => React.Element,
   blockType: string,
 }
 
 class BlockTypeToggle extends Component<BlockTypeProps> {
   render() {
-    const {
-      pluginProps: { setEditorState, editorState },
-      blockType,
-      children,
-    } = this.props
+    const { setEditorState, editorState, blockType, children } = this.props
 
     const hasBlockType =
       editorState != null &&
@@ -37,4 +30,4 @@ class BlockTypeToggle extends Component<BlockTypeProps> {
   }
 }
 
-export default withEditorContext(BlockTypeToggle)
+export default withPluginContext(BlockTypeToggle)

@@ -1,16 +1,14 @@
 // @flow
 
 import React, { Component } from 'react'
-import { withEditorContext, constants } from '@djsp/core'
-// import Draft from 'draft-js'
+import type { Node } from 'react'
+import { withPluginContext, constants } from '@djsp/core'
 import styles from './styles.css'
-
-// const { EditorState, Modifier } = Draft
 
 type Props = {
   trigger: string | ((textUntilCursor: string) => ?string),
-  renderSuggestion?: { suggestion: any, onSelect: any => void },
-  onSelect: (suggestion: any) => void,
+  renderSuggestion: ({ isFocused: boolean, suggestion: any }) => Node,
+  onSelect: (suggestion: any, searchText: ?string) => void,
   onSearch: (searchText: string) => void,
   suggestions: Array<any>,
   pluginProps: Object,
@@ -21,6 +19,7 @@ type State = {
   isSearching: boolean,
   suggestions: Array<any>,
   selectedItem: number,
+  searchText: ?string,
 }
 
 class Suggestions extends Component<Props, State> {
@@ -36,14 +35,13 @@ class Suggestions extends Component<Props, State> {
 
   state = {
     isOpen: false,
-    selectedItem: 0,
     isSearching: false,
+    suggestions: [],
+    selectedItem: 0,
+    searchText: null,
   }
 
-  constructor(props) {
-    super(props)
-    this.list = React.createRef()
-  }
+  _unregister: () => void
 
   componentDidMount() {
     const {
@@ -159,7 +157,7 @@ class Suggestions extends Component<Props, State> {
 
     if (isOpen === true && suggestions.length > 0) {
       return (
-        <ul ref={this.list} className={styles.ul}>
+        <ul className={styles.ul}>
           {suggestions.map((suggestion, index) => (
             <li
               className={styles.li}
@@ -179,4 +177,4 @@ class Suggestions extends Component<Props, State> {
   }
 }
 
-export default withEditorContext(Suggestions)
+export default withPluginContext(Suggestions)

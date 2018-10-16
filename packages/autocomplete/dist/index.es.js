@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { constants, withEditorContext } from '@djsp/core';
+import { constants, withPluginContext } from '@djsp/core';
 
 var styles = { "ul": "styles_ul__37R59", "li": "styles_li__2kGXu", "suggestion": "styles_suggestion__1bOge", "suggestionFocused": "styles_suggestionFocused__2ZMxu" };
 
@@ -82,9 +82,6 @@ var possibleConstructorReturn = function (self, call) {
 
   return call && (typeof call === "object" || typeof call === "function") ? call : self;
 };
-
-// import Draft from 'draft-js'
-// const { EditorState, Modifier } = Draft
 
 var Suggestions = function (_Component) {
   inherits(Suggestions, _Component);
@@ -258,6 +255,6 @@ Suggestions.defaultProps = {
 };
 
 
-var index = withEditorContext(Suggestions);
+var index = withPluginContext(Suggestions);
 
 export default index;
