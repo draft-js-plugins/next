@@ -1,6 +1,6 @@
 {
   "name": "@djsp/autocomplete",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "Autocomplete plugin",
   "author": "juliankrispel",
   "license": "MIT",
@@ -21,7 +21,7 @@
     "access": "public"
   },
   "dependencies": {
-    "@djsp/core": "^0.0.4"
+    "@djsp/core": "^0.0.5"
   },
   "peerDependencies": {
     "prop-types": "^15.5.4",

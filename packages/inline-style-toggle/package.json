@@ -1,6 +1,6 @@
 {
   "name": "@djsp/inline-style-toggle",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "Inline Style Toggle for draft js plugins",
   "author": "juliankrispel",
   "license": "MIT",
@@ -22,7 +22,7 @@
     "access": "public"
   },
   "dependencies": {
-    "@djsp/core": "^0.0.4"
+    "@djsp/core": "^0.0.5"
   },
   "peerDependencies": {
     "prop-types": "^15.5.4",
