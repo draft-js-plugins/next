@@ -1,7 +1,7 @@
 // @flow
 
 import { Component } from 'react'
-import { EditorState, RichUtils } from 'draft-js'
+import { RichUtils } from 'draft-js'
 import { withPluginContext } from '@djsp/core'
 import type { PluginProps } from '@djsp/core'
 
