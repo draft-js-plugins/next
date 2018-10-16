@@ -1,11 +1,9 @@
 // @flow
 
-import type { DraftEditorProps } from './DraftEditorProps'
+import type { DraftEditorProps } from 'draft-js/lib/DraftEditorProps'
 
 declare module 'draft-js/lib/DraftEditor.react' {
-  declare type State = { contentsKey: number }
-  declare export default class DraftEditor extends React.Component<
-    DraftEditorProps,
-    State
+  declare export default class DraftEditor extends React$Component<
+    DraftEditorProps
   > {}
 }

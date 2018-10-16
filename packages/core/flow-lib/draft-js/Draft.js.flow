@@ -1,5 +1,6 @@
 // @flow
 
+import React from 'react'
 import type KeyBindingUtil from './KeyBindingUtil'
 import AtomicBlockUtils from './AtomicBlockUtils'
 import BlockMapBuilder from './BlockMapBuilder'
