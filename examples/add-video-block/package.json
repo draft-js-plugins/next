@@ -7,7 +7,6 @@
   "dependencies": {
     "@djsp/atomic-block": "^0.0.5",
     "@djsp/utils": "^0.0.5",
-    "draft-js": "^0.10.5",
     "prop-types": "^15.6.1",
     "react": "^16.5.0",
     "react-dom": "^16.2.0",
@@ -20,5 +19,8 @@
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
+  },
+  "devDependencies": {
+    "draft-js": "^0.10.5"
   }
 }
