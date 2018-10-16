@@ -26,13 +26,19 @@ class App extends Component {
           editorState={this.state.editorState}
           onChange={this.onChange}>
           <Counter>
-            {editorState => <span>Char count: {getCharCount(editorState)}</span>}
+            {editorState => (
+              <span>Char count: {getCharCount(editorState)}</span>
+            )}
           </Counter>
           <Counter>
-            {editorState => <span>Word count: {getWordCount(editorState)}</span>}
+            {editorState => (
+              <span>Word count: {getWordCount(editorState)}</span>
+            )}
           </Counter>
           <Counter>
-            {editorState => <span>Line count: {getLineCount(editorState)}</span>}
+            {editorState => (
+              <span>Line count: {getLineCount(editorState)}</span>
+            )}
           </Counter>
           <Editor />
         </EditorContainer>

@@ -1,3 +1,4 @@
+// eslint-disable-next-line
 import punycode from 'punycode'
 
 export default function getCharCount(editorState) {

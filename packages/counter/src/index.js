@@ -11,7 +11,7 @@ type Props = {
   editorProps: Object,
 }
 
-class Counter extends Component {
+class Counter extends Component<Props> {
   render() {
     const {
       editorProps: { editorState },
