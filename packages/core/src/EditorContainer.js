@@ -305,9 +305,9 @@ export default class EditorContainer extends Component<Props, State> {
 
     // yepyepyep this gets the editorState lazily
     // avoids having to have a `getEditorState` prop
+    // $FlowFixMe
     Object.defineProperty(editorProps, 'editorState', {
       get: () => this.state.editorState,
-      value: this.state.editorState,
     })
 
     const pluginProps = {
@@ -320,9 +320,9 @@ export default class EditorContainer extends Component<Props, State> {
         }),
     }
 
+    // $FlowFixMe
     Object.defineProperty(pluginProps, 'editorState', {
       get: () => this.state.editorState,
-      value: this.state.editorState,
     })
 
     return (

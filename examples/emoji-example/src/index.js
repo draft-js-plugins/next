@@ -23,7 +23,7 @@ class App extends Component {
     if (isFocused) classNames.push('list__item--focused')
     return (
       <span className={`${classNames.join(' ')}`}>
-        {suggestion.char} {`{suggestion.name}`}
+        {suggestion.char} {suggestion.name}
       </span>
     )
   }

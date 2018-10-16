@@ -81,6 +81,7 @@ export default class App extends Component {
               <iframe
                 src={src}
                 frameBorder="0"
+                title="youtube video"
                 allow="autoplay; encrypted-media"
                 allowFullScreen
               />

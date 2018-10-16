@@ -2,18 +2,15 @@
 
 import { Component } from 'react'
 import { EditorState, RichUtils } from 'draft-js'
-import { withEditorContext } from '@djsp/core'
+import { withPluginContext } from '@djsp/core'
+import type { PluginProps } from '@djsp/core'
 
 type InlineStyleRenderProps = {
   toggleStyle: () => void,
   hasStyle: boolean,
 }
 
-type InlineStyleProps = {
-  pluginProps: {
-    setEditorState: (editorState: EditorState) => void,
-    editorState: EditorState,
-  },
+type InlineStyleProps = PluginProps & {
   children: InlineStyleRenderProps => React.Element,
   inlineStyle: string,
 }
@@ -21,7 +18,8 @@ type InlineStyleProps = {
 class InlineStyleToggle extends Component<InlineStyleProps> {
   render() {
     const {
-      pluginProps: { setEditorState, editorState },
+      setEditorState,
+      editorState,
       inlineStyle,
       children,
     } = this.props
@@ -37,4 +35,4 @@ class InlineStyleToggle extends Component<InlineStyleProps> {
   }
 }
 
-export default withEditorContext(InlineStyleToggle)
+export default withPluginContext(InlineStyleToggle)

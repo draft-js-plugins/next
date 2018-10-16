@@ -3,15 +3,15 @@
 import React, { Component } from 'react'
 import type { Node } from 'react'
 import { withPluginContext, constants } from '@djsp/core'
+import type { PluginProps } from '@djsp/core'
 import styles from './styles.css'
 
-type Props = {
+type Props = PluginProps & {
   trigger: string | ((textUntilCursor: string) => ?string),
   renderSuggestion: ({ isFocused: boolean, suggestion: any }) => Node,
   onSelect: (suggestion: any, searchText: ?string) => void,
   onSearch: (searchText: string) => void,
   suggestions: Array<any>,
-  pluginProps: Object,
 }
 
 type State = {
@@ -45,7 +45,7 @@ class Suggestions extends Component<Props, State> {
 
   componentDidMount() {
     const {
-      pluginProps: { registerPlugin },
+      registerPlugin,
     } = this.props
 
     this._unregister = registerPlugin({
@@ -103,7 +103,7 @@ class Suggestions extends Component<Props, State> {
     const {
       trigger,
       suggestions,
-      editorProps: { editorState },
+      editorState,
     } = props
 
     const selection = editorState.getSelection()

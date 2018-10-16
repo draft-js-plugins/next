@@ -11,7 +11,6 @@ const { EditorState } = Draft
 type Props = PluginProps & {
   type: string,
   children: any,
-  editorProps: Object,
 }
 
 type State = {
@@ -58,19 +57,9 @@ class AtomicBlockPlugin extends Component<Props, State> {
     console.log('event.key', event.key)
   }
 
-  handleReturn = () => {
-    // const {
-    //   editorProps: { editorState },
-    // } = this.props
-
-    // const selection = editorState.getSelection()
-
-    console.log('handle return')
-  }
-
   renderChildren = (props: Object) => {
     const {
-      editorProps: { editorState },
+      editorState,
     } = this.props
 
     const blockKey = props.block.getKey()
@@ -90,7 +79,7 @@ class AtomicBlockPlugin extends Component<Props, State> {
   blockRendererFn = block => {
     const {
       type,
-      editorProps: { editorState },
+      editorState,
     } = this.props
     const content = editorState.getCurrentContent()
 
