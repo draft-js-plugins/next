@@ -2,6 +2,7 @@
 
 > Utilities for draft js
 
+![file size](http://img.badgesize.io/https://unpkg.com/@djsp/utils/dist/index.js?label=size&style=flat-square)
 [![NPM](https://img.shields.io/npm/v/@djsp/utils.svg)](https://www.npmjs.com/package/@djsp/utils) [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
 
 ## Install
