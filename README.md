@@ -1,5 +1,6 @@
 # draft-js-plugins@next
 [![All Contributors](https://img.shields.io/badge/all_contributors-3-orange.svg?style=flat-square)](#contributors)
+[![Build Status]](https://travis-ci.org/draft-js-plugins/next.svg?branch=master)
 
 # DISCLAIMER: This project isn't usable yet
 
