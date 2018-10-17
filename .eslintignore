@@ -1,5 +1,7 @@
 node_modules
 dist
+.storybook
+public
 _book
 .book
 .storybook
