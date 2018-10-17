@@ -11,7 +11,7 @@
 .*/node_modules/draft-js/lib/DraftEditor.react.js.flow
 
 [include]
-flow-typed
+node_modules/@djsp/core/flow-lib
 
 [libs]
 

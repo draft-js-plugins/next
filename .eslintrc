@@ -15,6 +15,11 @@
       "jsx": true
     }
   },
+  "settings": {
+    "react": {
+      "version": "16"
+    }
+  },
   "plugins": ["prettier", "flowtype", "react", "standard"],
   "env": {
     "es6": true,

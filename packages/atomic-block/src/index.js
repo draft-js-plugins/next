@@ -26,7 +26,6 @@ class AtomicBlockPlugin extends Component<Props, State> {
     const { registerPlugin } = this.props
 
     this.unregister = registerPlugin({
-      handleReturn: this.handleReturn,
       keyBindingFn: this.keyBindingFn,
       blockRendererFn: this.blockRendererFn,
     })

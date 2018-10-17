@@ -41,7 +41,7 @@
     "lint": "./node_modules/.bin/eslint **/*.js",
     "reinstall": "./node_modules/.bin/lerna exec -- rm -rf ./node_modules && ./node_modules/.bin/lerna exec -- npm install",
     "publish:all": "node ./scripts/publish.js",
-    "flow": "./node_modules/.bin/lerna exec -- npm run flow",
+    "flow": "./node_modules/.bin/lerna run flow",
     "unlink": "./node_modules/.bin/lerna exec -- npm unlink"
   },
   "husky": {
