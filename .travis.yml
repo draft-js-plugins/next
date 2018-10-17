@@ -1,10 +1,10 @@
 language: node_js
 node_js:
   - "8.10.0"
-cache:
-  yarn: true
 script:
-  - ./node_modules/.bin/lerna bootstrap
+  - npm cache verify
+  - ./node_modules/.bin/lerna exec -- npm cache verify
+  - ./node_modules/.bin/lerna bootstrap --hoist
   - npm run build
   - npm run lint
   - npm run flow
