@@ -22,7 +22,6 @@
     "eslint-plugin-standard": "^4.0.0",
     "flow-bin": "^0.80.0",
     "flow-typed": "^2.5.1",
-    "gitbook-cli": "^2.3.2",
     "husky": "^1.1.1",
     "lerna": "^3.4.1",
     "prettier": "^1.14.3",
@@ -41,6 +40,7 @@
     "format": "./node_modules/.bin/prettier-eslint --write **/*.js",
     "lint": "./node_modules/.bin/eslint **/*.js",
     "reinstall": "./node_modules/.bin/lerna exec -- rm -rf ./node_modules && ./node_modules/.bin/lerna exec -- npm install",
+    "publish:all": "node ./scripts/publish.js",
     "flow": "./node_modules/.bin/lerna exec -- npm run flow",
     "unlink": "./node_modules/.bin/lerna exec -- npm unlink"
   },
@@ -48,5 +48,6 @@
     "hooks": {
       "pre-commit": "yarn format && yarn lint"
     }
-  }
+  },
+  "dependencies": {}
 }
