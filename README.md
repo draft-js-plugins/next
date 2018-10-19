@@ -6,6 +6,15 @@
 
 This is at an experimental stage, mostly this project isn't complete and ready for use. If you're interested in participating, whether it's code or just debate, please open an issue, hit me up on twitter or the [draft js slack channel](https://draftjs.herokuapp.com/)
 
+# Examples
+
+- [Inline Toolbar](https://codesandbox.io/s/github/draft-js-plugins/next/tree/master/examples/inline-toolbar)
+- [Emoji picker](https://codesandbox.io/s/github/draft-js-plugins/next/tree/master/examples/emoji-example)
+- [Static Toolbar](https://codesandbox.io/s/github/draft-js-plugins/next/tree/master/examples/static-toolbar-example)
+- [Mentions](https://codesandbox.io/s/github/draft-js-plugins/next/tree/master/examples/mentions-example)
+- [Atomic Block](https://codesandbox.io/s/github/draft-js-plugins/next/tree/master/examples/atomic-block)
+- [Block Switcher](https://codesandbox.io/s/github/draft-js-plugins/next/tree/master/examples/inline-toolbar)
+
 # Contributing
 
 ## Install project
