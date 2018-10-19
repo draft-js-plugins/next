@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
 import { EditorState } from 'draft-js'
 import { EditorContainer, Editor } from '@djsp/core'
-import InsertBlock from './InsertBlock'
+import BlockSwitch from './BlockSwitch'
+import 'draft-js/dist/Draft.css'
 
 export default class App extends Component {
   state = {
@@ -16,7 +17,10 @@ export default class App extends Component {
         <EditorContainer
           editorState={this.state.editorState}
           onChange={this.onChange}>
-          <InsertBlock onChange={this.onChange} />
+          <BlockSwitch
+            onChange={this.onChange}
+            editorState={this.state.editorState}
+          />
           <Editor />
         </EditorContainer>
       </div>
