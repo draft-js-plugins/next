@@ -32,7 +32,7 @@
   },
   "devDependencies": {
     "cross-env": "^5.1.4",
-    "fbjs": "^1.0.0",
+    "fbjs": "^0.8.15",
     "flow-bin": "^0.83.0",
     "flow-copy-source": "^2.0.2",
     "gh-pages": "^1.1.0",
