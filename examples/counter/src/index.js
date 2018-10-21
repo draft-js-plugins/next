@@ -3,17 +3,13 @@ import ReactDOM from 'react-dom'
 
 import { EditorState, ContentState } from 'draft-js'
 import { EditorContainer, Editor } from '@djsp/editor'
-import Counter, {
-  getCharCount,
-  getWordCount,
-  getLineCount,
-} from '@djsp/counter'
+import { getCharCount, getWordCount, getLineCount } from '@djsp/utils'
 import './styles.css'
 
 class App extends Component {
   state = {
     editorState: EditorState.createWithContent(
-      ContentState.createFromText('Have a nice day!')
+      ContentState.createFromText('Just type!')
     ),
   }
 
@@ -25,21 +21,9 @@ class App extends Component {
         <EditorContainer
           editorState={this.state.editorState}
           onChange={this.onChange}>
-          <Counter>
-            {editorState => (
-              <span>Char count: {getCharCount(editorState)}</span>
-            )}
-          </Counter>
-          <Counter>
-            {editorState => (
-              <span>Word count: {getWordCount(editorState)}</span>
-            )}
-          </Counter>
-          <Counter>
-            {editorState => (
-              <span>Line count: {getLineCount(editorState)}</span>
-            )}
-          </Counter>
+          <div>Char count: {getCharCount(this.state.editorState)}</div>
+          <div>Word count: {getWordCount(this.state.editorState)}</div>
+          <div>Line count: {getLineCount(this.state.editorState)}</div>
           <Editor />
         </EditorContainer>
       </div>

@@ -5,7 +5,7 @@
   "private": true,
   "license": "MIT",
   "dependencies": {
-    "@djsp/counter": "latest",
+    "@djsp/utils": "latest",
     "@djsp/editor": "latest",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
