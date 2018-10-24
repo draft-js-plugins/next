@@ -141,22 +141,32 @@ class AtomicBlockPlugin extends Component<Props, State> {
   }
 
   renderChildren = (props: Object) => {
-    const { editorState, setEditorState } = this.props
+    const {
+      editorProps: { readOnly },
+      editorState,
+      setEditorState,
+    } = this.props
 
     const blockKey = props.block.getKey()
     const selection = editorState.getSelection()
     const isFocused =
-      selection.getAnchorKey() === blockKey && selection.isCollapsed()
+      selection.getAnchorKey() === blockKey &&
+      selection.isCollapsed() &&
+      readOnly !== true
 
-    return (
-      <AtomicBlock
-        onDeleteBlock={() => this.deleteAtomicBlock(blockKey)}
-        setEditorState={setEditorState}
-        isFocused={isFocused}
-        onClick={() => this.focusBlock(blockKey)}>
-        {this.props.children({ ...props, isFocused })}
-      </AtomicBlock>
-    )
+    if (readOnly) {
+      return this.props.children({ ...props, isFocused })
+    } else {
+      return (
+        <AtomicBlock
+          onDeleteBlock={() => this.deleteAtomicBlock(blockKey)}
+          setEditorState={setEditorState}
+          isFocused={isFocused}
+          onClick={() => this.focusBlock(blockKey)}>
+          {this.props.children({ ...props, isFocused })}
+        </AtomicBlock>
+      )
+    }
   }
 
   handleReturn = (event, editorState) => {
@@ -166,7 +176,12 @@ class AtomicBlockPlugin extends Component<Props, State> {
   }
 
   blockRendererFn = block => {
-    const { type, editorState } = this.props
+    const {
+      type,
+      editorProps: { readOnly },
+      editorState,
+    } = this.props
+
     const content = editorState.getCurrentContent()
 
     if (block.getType() === 'atomic') {
@@ -180,7 +195,7 @@ class AtomicBlockPlugin extends Component<Props, State> {
       if (entityType.toLowerCase() === type.toLowerCase()) {
         return {
           component: this.renderChildren,
-          editable: false,
+          editable: readOnly !== true,
           props: data,
         }
       }

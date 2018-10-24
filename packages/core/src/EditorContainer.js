@@ -22,7 +22,7 @@ export const Context: ContextType = createContext({})
 
 const omitUndefined = obj =>
   Object.keys(obj).reduce(
-    (acc, key) => (obj[key] !== undefined ? { ...acc, key: obj[key] } : acc),
+    (acc, key) => (obj[key] !== undefined ? { ...acc, [key]: obj[key] } : acc),
     {}
   )
 
@@ -119,6 +119,30 @@ export default class EditorContainer extends Component<Props, State> {
       webDriverTestID,
     } = props
 
+    const passedProps = omitUndefined({
+      autoCapitalize,
+      autoComplete,
+      autoCorrect,
+      readOnly,
+      spellCheck,
+      stripPastedStyles,
+      editorKey,
+      tabIndex,
+      placeholder,
+      textAlignment,
+      textDirectionality,
+
+      ariaActiveDescendantID,
+      ariaAutoComplete,
+      ariaControls,
+      ariaDescribedBy,
+      ariaExpanded,
+      ariaLabel,
+      ariaLabelledBy,
+      ariaMultiline,
+      webDriverTestID,
+    })
+
     return {
       ...state,
       editorState:
@@ -129,29 +153,7 @@ export default class EditorContainer extends Component<Props, State> {
           : editorState,
       editorProps: {
         ...state.editorProps,
-        ...omitUndefined({
-          autoCapitalize,
-          autoComplete,
-          autoCorrect,
-          readOnly,
-          spellCheck,
-          stripPastedStyles,
-          editorKey,
-          tabIndex,
-          placeholder,
-          textAlignment,
-          textDirectionality,
-
-          ariaActiveDescendantID,
-          ariaAutoComplete,
-          ariaControls,
-          ariaDescribedBy,
-          ariaExpanded,
-          ariaLabel,
-          ariaLabelledBy,
-          ariaMultiline,
-          webDriverTestID,
-        }),
+        ...passedProps,
       },
     }
   }
@@ -327,6 +329,7 @@ export default class EditorContainer extends Component<Props, State> {
     const pluginProps = {
       registerPlugin: this.registerPlugin,
       setEditorState: this.onChange,
+      editorProps: this.state.editorProps,
       editorRef: this.editorRef,
       editorState: this.state.editorState,
       setEditorProps: editorProps => {

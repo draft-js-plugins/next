@@ -4,6 +4,7 @@
 .*/node_modules/@octokit/.*
 .*/node_modules/@types/.*
 .*/node_modules/\([a-c]\|[g-h]\|e\|[j-z]\).*/.*
+.*/core/src/.*
 .*/EditorContainer/.*
 
 
