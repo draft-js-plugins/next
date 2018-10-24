@@ -1,12 +1,12 @@
 {
   "name": "@djsp/static-toolbar-example",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "private": true,
   "license": "MIT",
   "dependencies": {
-    "@djsp/block-type-toggle": "^0.1.1",
-    "@djsp/core": "^0.1.1",
-    "@djsp/inline-style-toggle": "^0.1.1",
+    "@djsp/block-type-toggle": "^0.1.2",
+    "@djsp/core": "^0.1.2",
+    "@djsp/inline-style-toggle": "^0.1.2",
     "draft-js": "^0.10.5",
     "prop-types": "^15.6.1",
     "react": "^16.5.0",

@@ -1,13 +1,13 @@
 {
   "name": "@djsp/block-switcher",
   "homepage": "https://juliankrispel.github.io/@djsp/core",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "private": true,
   "license": "MIT",
   "dependencies": {
-    "@djsp/atomic-block": "^0.1.1",
-    "@djsp/core": "^0.1.1",
-    "@djsp/utils": "^0.1.1",
+    "@djsp/atomic-block": "^0.1.2",
+    "@djsp/core": "^0.1.2",
+    "@djsp/utils": "^0.1.2",
     "prop-types": "^15.6.1",
     "react": "^16.5.0",
     "react-dom": "^16.2.0",
