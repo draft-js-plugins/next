@@ -133,9 +133,10 @@ The `Plugin` also accepts an optional render prop which exposes the plugin conte
 
 
 
-### <Plugin>(RenderProps)</Plugin>
+### `<Plugin>(RenderProps)</Plugin>`
 
 | Property | Type | Description |
+| - | - | - |
 | `editorState` | `EditorState` | The `EditorState` object |
 | `setEditorState` | `(editorState: EditorState) => void` | Lets you update the editorState |
 | `editorProps` | `Object` | Contains props that can be set via `setEditorProps`, these are `editorKey` `placeholder` `textAlignment` `textDirectionality` `readOnly` `spellCheck` `stripPastedStyles` `tabIndex` `autoCapitalize` `autoComplete` `autoCorrect` `ariaActiveDescendantID` `ariaAutoComplete` `ariaControls` `ariaDescribedBy` `ariaExpanded` `ariaLabel` `ariaLabelledBy` `ariaMultiline` `webDriverTestID` |
