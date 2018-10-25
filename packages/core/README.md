@@ -134,6 +134,7 @@ The `Plugin` also accepts an optional render prop which exposes the plugin conte
 
 
 ### <Plugin>(RenderProps)</Plugin>
+
 | Property | Type | Description |
 | `editorState` | `EditorState` | The `EditorState` object |
 | `setEditorState` | `(editorState: EditorState) => void` | Lets you update the editorState |
