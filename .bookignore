@@ -1,0 +1,17 @@
+**/node_modules
+**/*.js
+**/*.jsx
+**/*.png
+**/*.jpg
+**/package.json
+**/package-lock.json
+**/*.log
+**/.flowconfig
+dist
+examples
+**/src
+.vscode
+flow-lib
+.storybook
+.git
+.DS_Store

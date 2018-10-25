@@ -28,11 +28,11 @@ const omitUndefined = obj =>
 
 export const withEditorContext = <Props: {}>(
   Comp: ComponentType<Props>
-): ComponentType<Props & DraftEditorProps & { ref: Ref<typeof DraftEditor> }> =>
-  function WithConsumer(props: Object) {
+): ComponentType<DraftEditorProps & { ref: Ref<typeof DraftEditor> }> =>
+  function WithConsumer() {
     return (
       <Context.Consumer>
-        {contextProps => <Comp {...props} {...contextProps.editorProps} />}
+        {contextProps => <Comp {...contextProps.editorProps} />}
       </Context.Consumer>
     )
   }
