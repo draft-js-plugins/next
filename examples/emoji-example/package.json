@@ -1,12 +1,12 @@
 {
   "name": "@djsp/emoji-example",
   "homepage": "https://juliankrispel.github.io/djs-autocomplete",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "private": true,
   "license": "MIT",
   "dependencies": {
-    "@djsp/autocomplete": "^0.1.2",
-    "@djsp/core": "^0.1.2",
+    "@djsp/autocomplete": "^0.1.3",
+    "@djsp/core": "^0.1.3",
     "draft-js": "^0.10.5",
     "emoji.json": "^11.0.0",
     "prop-types": "^15.6.1",
