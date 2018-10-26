@@ -176,11 +176,7 @@ class AtomicBlockPlugin extends Component<Props, State> {
   }
 
   blockRendererFn = block => {
-    const {
-      type,
-      editorProps: { readOnly },
-      editorState,
-    } = this.props
+    const { type, editorState } = this.props
 
     const content = editorState.getCurrentContent()
 
@@ -195,7 +191,7 @@ class AtomicBlockPlugin extends Component<Props, State> {
       if (entityType.toLowerCase() === type.toLowerCase()) {
         return {
           component: this.renderChildren,
-          editable: readOnly !== true,
+          editable: false,
           props: data,
         }
       }
