@@ -20,7 +20,7 @@ import {
 
 ### Usage
 
-`EditorContainer` contains all props for the draft js Editor which it passes down to plugins and the `Editor` via the React context api.
+`EditorContainer` contains all props for the draft js Editor which it passes down to plugins and the `Editor` via the [React context api](https://reactjs.org/docs/context.html).
 
 ```js
 import { EditorContainer } from '@djsp/core'
@@ -38,6 +38,7 @@ Here are the props that `EditorContainer` accepts, all of the below props are in
 | - | - | - | - |
 | `editorState` | `EditorState` | required | The state of the editor. Identical to the [draft js editorState prop](https://draftjs.org/docs/api-reference-editor#editorstate) |
 | `onChange` | `(EditorState) => void` | required | Fired when content changes. Identical to the [draft js onChange prop](https://draftjs.org/docs/api-reference-editor#onchange) |
+| `editorKey` | `string` | optional | Overrides [props set via plugin](#setEditorProps) |
 | `textAlignment` | `"left" or "center" or "right"` | optional | Overrides [props set via plugin](#setEditorProps) |
 | `textDirectionality` | `"LTR" or "RTL"` | optional | Overrides [props set via plugin](#setEditorProps) |
 | `placeholder` | `string` | optional | Overrides [props set via plugin](#setEditorProps) |
@@ -139,7 +140,7 @@ The `Plugin` also accepts an optional render prop which exposes the plugin conte
 | - | - | - |
 | `editorState` | `EditorState` | The `EditorState` object |
 | `setEditorState` | `(editorState: EditorState) => void` | Lets you update the editorState |
-| `editorProps` | `Object` | Contains props that can be set via `setEditorProps`, these are `editorKey` `placeholder` `textAlignment` `textDirectionality` `readOnly` `spellCheck` `stripPastedStyles` `tabIndex` `autoCapitalize` `autoComplete` `autoCorrect` `ariaActiveDescendantID` `ariaAutoComplete` `ariaControls` `ariaDescribedBy` `ariaExpanded` `ariaLabel` `ariaLabelledBy` `ariaMultiline` `webDriverTestID` |
+| `editorProps` | `Object` | Contains the [props for `EditorContainer`](#props) except `editorState` and `onChange` |
 | `setEditorProps` | `(editorProps: Object) => void` | lets you set the above editorProps. Be aware that editor props set via Plugins are overridden by `EditorContainer` props |
 | `editorRef` | `Ref<DraftEditor>` | A React reference to the draft js editor |
 
