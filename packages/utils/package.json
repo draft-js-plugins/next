@@ -22,7 +22,6 @@
     "access": "public"
   },
   "devDependencies": {
-    "@babel/preset-flow": "^7.0.0",
     "cross-env": "^5.1.4",
     "flow-bin": "^0.81.0",
     "flow-typed": "^2.5.1",
@@ -39,7 +38,5 @@
   "peerDependencies": {
     "draft-js": "^0.10.5"
   },
-  "dependencies": {
-    "draft-js": "^0.10.5"
-  }
+  "dependencies": {}
 }
