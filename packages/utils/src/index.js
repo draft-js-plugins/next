@@ -202,11 +202,13 @@ export function hasEntity(
 const insertBlockAfterSelection = (contentState, selectionState, newBlock) => {
   const targetKey = selectionState.getStartKey()
   const array = []
+
   contentState.getBlockMap().forEach((block, blockKey) => {
     array.push(block)
     if (blockKey !== targetKey) return
     array.push(newBlock)
   })
+
   return contentState.merge({
     blockMap: BlockMapBuilder.createFromArray(array),
     selectionBefore: selectionState,
@@ -223,12 +225,14 @@ const insertBlockAfterSelection = (contentState, selectionState, newBlock) => {
 export function insertNewLine(editorState: EditorState) {
   const contentState = editorState.getCurrentContent()
   const selectionState = editorState.getSelection()
+
   const newLineBlock = new ContentBlock({
     key: generateRandomKey(),
     type: 'unstyled',
     text: '',
     characterList: List(),
   })
+
   const withNewLine = insertBlockAfterSelection(
     contentState,
     selectionState,

@@ -9,10 +9,11 @@ import pkg from './package.json'
 
 export default {
   external: [
-    'draft-js/lib/DraftOffsetKey',
     '@djsp/core',
     '@djsp/utils',
     'draft-js',
+    'draft-js/lib/DraftOffsetKey',
+    'react',
   ],
   input: 'src/index.js',
   output: [
