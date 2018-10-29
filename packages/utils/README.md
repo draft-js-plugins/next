@@ -11,20 +11,118 @@
 npm install --save @djsp/utils
 ```
 
-## Usage
+## Static Methods
 
-```jsx
-import React, { Component } from 'react'
+### replaceWithAtomicBlock
 
-import MyComponent from '@djsp/utils'
+```javascript
+replaceWithAtomicBlock(
+  editorState: EditorState,
+  entityType: string,
+  data: Object
+): EditorState
+```
 
-class Example extends Component {
-  render () {
-    return (
-      <MyComponent />
-    )
-  }
-}
+### insertEntityBlock
+
+```javascript
+insertEntityBlock(
+  editorState: EditorState,
+  entityType: string,
+  data: Object
+): EditorState
+```
+
+### createEntityDecorator
+
+```javascript
+createEntityDecorator(
+  entityName: string,
+  component: Function,
+  props?: Object
+): DraftDecorator
+```
+
+### insertTextWithEntity
+
+```javascript
+insertTextWithEntity(
+  contentState: ContentState,
+  selection: SelectionState,
+  entityType: string,
+  text: string,
+  mutability?: 'IMMUTABLE' | 'MUTABLE' | 'SEGMENTED',
+  entityData?: Object
+): ContentState
+```
+
+### createLinkAtSelection
+
+```javascript
+createLinkAtSelection(
+  editorState: EditorState,
+  url: string
+): EditorState
+```
+
+### removeLinkAtSelection
+
+```javascript
+removeLinkAtSelection(editorState: EditorState): EditorState
+```
+
+### collapseToEnd
+
+```javascript
+collapseToEnd(editorState: EditorState): EditorState
+```
+
+### getCurrentEntityKey
+
+```javascript
+getCurrentEntityKey(editorState: EditorState): ?string
+```
+
+### createEntityStrategy
+
+```javascript
+createEntityStrategy(entityType: string): (
+  contentBlock: ContentBlock,
+  callback: (start: number, end: number) => void,
+  contentState: ContentState
+) => void
+```
+
+### getCurrentEntity
+
+```javascript
+getCurrentEntity(
+  editorState: EditorState
+): ?DraftEntityInstance
+```
+
+### getBlockEntityKey
+
+```javascript
+getBlockEntityKey(
+  contentState: ContentState,
+  key: string
+): ?string
+```
+
+### hasEntity
+
+```javascript
+hasEntity(
+  editorState: EditorState,
+  entityType: string
+): boolean
+```
+
+### insertNewLine
+
+```javascript
+insertNewLine(editorState: EditorState): EditorState
 ```
 
 ## License
