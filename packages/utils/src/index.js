@@ -222,7 +222,7 @@ const insertBlockAfterSelection = (contentState, selectionState, newBlock) => {
   })
 }
 
-export function insertNewLine(editorState: EditorState) {
+export function insertNewLine(editorState: EditorState): EditorState {
   const contentState = editorState.getCurrentContent()
   const selectionState = editorState.getSelection()
 
