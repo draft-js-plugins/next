@@ -55,7 +55,7 @@ class AtomicBlockPlugin extends Component<Props, State> {
   constructor(props) {
     super(props)
 
-    const { registerPlugin } = this.props
+    const { registerPlugin } = props
 
     this.unregister = registerPlugin({
       blockRendererFn: this.blockRendererFn,
@@ -171,8 +171,18 @@ class AtomicBlockPlugin extends Component<Props, State> {
 
   handleReturn = (event, editorState) => {
     const { setEditorState } = this.props
+    const selection = editorState.getSelection()
 
-    setEditorState(insertNewLine(editorState))
+    const currentBlock = editorState
+      .getCurrentContent()
+      .getBlockForKey(selection.getStartKey())
+
+    if (selection.isCollapsed() && currentBlock.getType() === 'atomic') {
+      setEditorState(insertNewLine(editorState))
+      return constants.HANDLED
+    }
+
+    return constants.NOT_HANDLED
   }
 
   blockRendererFn = block => {

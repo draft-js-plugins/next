@@ -43,7 +43,9 @@ export const withPluginContext = <Props: {}>(
   function WithConsumer(props: Object) {
     return (
       <Context.Consumer>
-        {contextProps => <Comp {...props} {...contextProps.pluginProps} />}
+        {contextProps => {
+          return <Comp {...props} {...contextProps.pluginProps} />
+        }}
       </Context.Consumer>
     )
   }
