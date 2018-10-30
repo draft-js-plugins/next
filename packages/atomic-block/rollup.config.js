@@ -8,7 +8,13 @@ import url from 'rollup-plugin-url'
 import pkg from './package.json'
 
 export default {
-  external: ['@djsp/core', 'draft-js'],
+  external: [
+    '@djsp/core',
+    '@djsp/utils',
+    'draft-js',
+    'draft-js/lib/DraftOffsetKey',
+    'react',
+  ],
   input: 'src/index.js',
   output: [
     {

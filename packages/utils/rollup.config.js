@@ -16,7 +16,7 @@ export default {
       format: 'es',
     },
   ],
-  external: ['draft-js'],
+  external: ['draft-js', 'immutable'],
   plugins: [
     external(),
     babel({

@@ -1,8 +1,9 @@
 // @flow
 
-import type { Context } from 'react'
+import type { Ref, Context } from 'react'
 import type { BidiDirection } from 'fbjs/lib/UnicodeBidiDirection'
 import type { DraftTextAlignment } from 'draft-js/lib/DraftTextAlignment'
+import { Editor as DraftEditor } from 'draft-js'
 import type { EditorState } from 'draft-js'
 
 export type StaticProps = {
@@ -32,7 +33,9 @@ export type StaticProps = {
 export type PluginProps = {
   registerPlugin: DraftEditorProps => () => void,
   setEditorState: EditorState => void,
+  editorRef: Ref<DraftEditor>,
   editorState: EditorState,
+  editorProps: StaticProps,
   setEditorProps: (editorProps: StaticProps) => void,
 }
 

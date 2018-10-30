@@ -1,9 +1,10 @@
 // @flow
 
-import React, { createContext, Component } from 'react'
-import type { Node, ComponentType } from 'react'
+import React, { createContext, Component, createRef } from 'react'
+import type { Ref, Node, ComponentType } from 'react'
 import {
   CompositeDecorator,
+  Editor as DraftEditor,
   EditorState,
   SelectionState,
   getDefaultKeyBinding,
@@ -19,13 +20,19 @@ import type { PluginProps, StaticProps, ContextType } from './types'
 
 export const Context: ContextType = createContext({})
 
+const omitUndefined = obj =>
+  Object.keys(obj).reduce(
+    (acc, key) => (obj[key] !== undefined ? { ...acc, [key]: obj[key] } : acc),
+    {}
+  )
+
 export const withEditorContext = <Props: {}>(
   Comp: ComponentType<Props>
-): ComponentType<Props & DraftEditorProps> =>
-  function WithConsumer(props: Object) {
+): ComponentType<DraftEditorProps & { ref: Ref<typeof DraftEditor> }> =>
+  function WithConsumer() {
     return (
       <Context.Consumer>
-        {contextProps => <Comp {...props} {...contextProps.editorProps} />}
+        {contextProps => <Comp {...contextProps.editorProps} />}
       </Context.Consumer>
     )
   }
@@ -36,7 +43,9 @@ export const withPluginContext = <Props: {}>(
   function WithConsumer(props: Object) {
     return (
       <Context.Consumer>
-        {contextProps => <Comp {...props} {...contextProps.pluginProps} />}
+        {contextProps => {
+          return <Comp {...props} {...contextProps.pluginProps} />
+        }}
       </Context.Consumer>
     )
   }
@@ -66,10 +75,13 @@ export default class EditorContainer extends Component<Props, State> {
     blockRenderMap: DefaultDraftBlockRenderMap,
   }
 
+  editorRef: Ref<typeof DraftEditor>
+
   mapKey: number
 
   constructor(props: Props) {
     super(props)
+    this.editorRef = createRef()
     this.mapKey = 0
   }
 
@@ -109,6 +121,30 @@ export default class EditorContainer extends Component<Props, State> {
       webDriverTestID,
     } = props
 
+    const passedProps = omitUndefined({
+      autoCapitalize,
+      autoComplete,
+      autoCorrect,
+      readOnly,
+      spellCheck,
+      stripPastedStyles,
+      editorKey,
+      tabIndex,
+      placeholder,
+      textAlignment,
+      textDirectionality,
+
+      ariaActiveDescendantID,
+      ariaAutoComplete,
+      ariaControls,
+      ariaDescribedBy,
+      ariaExpanded,
+      ariaLabel,
+      ariaLabelledBy,
+      ariaMultiline,
+      webDriverTestID,
+    })
+
     return {
       ...state,
       editorState:
@@ -118,27 +154,8 @@ export default class EditorContainer extends Component<Props, State> {
             })
           : editorState,
       editorProps: {
-        autoCapitalize,
-        autoComplete,
-        autoCorrect,
-        readOnly,
-        spellCheck,
-        stripPastedStyles,
-        editorKey,
-        tabIndex,
-        placeholder,
-        textAlignment,
-        textDirectionality,
-
-        ariaActiveDescendantID,
-        ariaAutoComplete,
-        ariaControls,
-        ariaDescribedBy,
-        ariaExpanded,
-        ariaLabel,
-        ariaLabelledBy,
-        ariaMultiline,
-        webDriverTestID,
+        ...state.editorProps,
+        ...passedProps,
       },
     }
   }
@@ -231,6 +248,7 @@ export default class EditorContainer extends Component<Props, State> {
     const editorProps = {
       ...this.state.editorProps,
       editorState: this.state.editorState,
+      ref: this.editorRef,
       customStyleMap: this.resolveCustomStyleMap(),
       blockRenderMap: this.resolveBlockRendererMap(),
       blockRendererFn: (block: BlockNodeRecord): ?Object =>
@@ -313,11 +331,14 @@ export default class EditorContainer extends Component<Props, State> {
     const pluginProps = {
       registerPlugin: this.registerPlugin,
       setEditorState: this.onChange,
+      editorProps: this.state.editorProps,
+      editorRef: this.editorRef,
       editorState: this.state.editorState,
-      setEditorProps: editorProps =>
+      setEditorProps: editorProps => {
         this.setState({
           editorProps: { ...this.state.editorProps, ...editorProps },
-        }),
+        })
+      },
     }
 
     // $FlowFixMe

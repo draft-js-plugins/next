@@ -1,10 +1,14 @@
 // @flow
 
+import { List } from 'immutable'
 import {
   AtomicBlockUtils,
   RichUtils,
   EditorState,
+  ContentBlock,
   ContentState,
+  BlockMapBuilder,
+  genKey as generateRandomKey,
   SelectionState,
   Modifier,
 } from 'draft-js'
@@ -144,18 +148,98 @@ export function getCurrentEntityKey(editorState: EditorState): ?string {
   return anchorBlock.getEntityAt(index)
 }
 
+export function createEntityStrategy(entityType: string) {
+  return function entityStrategy(
+    contentBlock: ContentBlock,
+    callback: (start: number, end: number) => void,
+    contentState: ContentState
+  ) {
+    if (!contentState) return
+    contentBlock.findEntityRanges(character => {
+      const entityKey = character.getEntity()
+      return (
+        entityKey !== null &&
+        contentState.getEntity(entityKey).getType() === entityType
+      )
+    }, callback)
+  }
+}
+
 export function getCurrentEntity(
   editorState: EditorState
 ): ?DraftEntityInstance {
   const contentState = editorState.getCurrentContent()
-  const entityKey = this.getCurrentEntityKey(editorState)
+  const entityKey = getCurrentEntityKey(editorState)
   return entityKey ? contentState.getEntity(entityKey) : null
+}
+
+export function getBlockEntityKey(
+  contentState: ContentState,
+  key: string
+): ?string {
+  const block = contentState.getBlockForKey(key)
+  const entity = block.getEntityAt(0)
+
+  if (entity != null) {
+    return entity
+  } else {
+    return null
+  }
 }
 
 export function hasEntity(
   editorState: EditorState,
   entityType: string
 ): boolean {
-  const entity = this.getCurrentEntity(editorState)
-  return entity && entity.getType() === entityType
+  const entity = getCurrentEntity(editorState)
+  if (entity) {
+    return entity.getType() === entityType
+  } else {
+    return false
+  }
+}
+
+const insertBlockAfterSelection = (contentState, selectionState, newBlock) => {
+  const targetKey = selectionState.getStartKey()
+  const array = []
+
+  contentState.getBlockMap().forEach((block, blockKey) => {
+    array.push(block)
+    if (blockKey !== targetKey) return
+    array.push(newBlock)
+  })
+
+  return contentState.merge({
+    blockMap: BlockMapBuilder.createFromArray(array),
+    selectionBefore: selectionState,
+    selectionAfter: selectionState.merge({
+      anchorKey: newBlock.getKey(),
+      anchorOffset: newBlock.getLength(),
+      focusKey: newBlock.getKey(),
+      focusOffset: newBlock.getLength(),
+      isBackward: false,
+    }),
+  })
+}
+
+export function insertNewLine(editorState: EditorState) {
+  const contentState = editorState.getCurrentContent()
+  const selectionState = editorState.getSelection()
+
+  const newLineBlock = new ContentBlock({
+    key: generateRandomKey(),
+    type: 'unstyled',
+    text: '',
+    characterList: List(),
+  })
+
+  const withNewLine = insertBlockAfterSelection(
+    contentState,
+    selectionState,
+    newLineBlock
+  )
+  const newContent = withNewLine.merge({
+    selectionAfter: withNewLine.getSelectionAfter().set('hasFocus', true),
+  })
+  return EditorState.push(editorState, newContent, 'insert-fragment')
 }

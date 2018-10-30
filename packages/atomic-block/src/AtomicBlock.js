@@ -2,7 +2,6 @@
 
 import React, { Component } from 'react'
 import type { Node } from 'react'
-import styles from './styles.css'
 
 type Props = {
   onClick: (event: SyntheticMouseEvent<*>) => void,
@@ -12,14 +11,8 @@ type Props = {
 
 export default class AtomicBlock extends Component<Props> {
   render() {
-    const { onClick, children, isFocused } = this.props
-    const classNames = []
-    if (isFocused) classNames.push(styles.focused)
+    const { onClick, children } = this.props
 
-    return (
-      <div className={classNames} onClick={onClick}>
-        {children}
-      </div>
-    )
+    return <div onClick={onClick}>{children}</div>
   }
 }

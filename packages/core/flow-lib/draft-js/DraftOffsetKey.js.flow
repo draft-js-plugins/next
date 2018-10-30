@@ -32,4 +32,16 @@ var DraftOffsetKey = {
   }
 };
 
-export default DraftOffsetKey;
+
+declare module 'draft-js/lib/DraftOffsetKey' {
+  declare type DraftOffsetKey = {
+    encode: (
+      blockKey: string,
+      decoratorKey: number,
+      leafKey: number
+    ) =>  string,
+    decode: (offsetKey: string) => DraftOffsetKeyPath,
+  }
+
+  declare export default DraftOffsetKey
+}

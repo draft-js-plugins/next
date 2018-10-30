@@ -26,11 +26,19 @@ class Plugin extends Component<Props> {
   componentWillUnmount = () => this.unsubscribe()
 
   render() {
-    const { setEditorState, editorState, setEditorProps } = this.props
+    const {
+      setEditorState,
+      editorProps,
+      editorRef,
+      editorState,
+      setEditorProps,
+    } = this.props
 
     if (this.props.children) {
       return this.props.children({
         setEditorState,
+        editorProps,
+        editorRef,
         editorState,
         setEditorProps,
       })
