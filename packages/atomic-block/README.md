@@ -31,3 +31,4 @@ yarn add @djsp/utils @djsp/atomic-block
 
 ## Examples
 - [Editor with image](https://codesandbox.io/s/github/draft-js-plugins/next/tree/master/examples/atomic-block)
+- [Editor with divider](https://codesandbox.io/s/github/draft-js-plugins/next/tree/master/examples/divider-example)
