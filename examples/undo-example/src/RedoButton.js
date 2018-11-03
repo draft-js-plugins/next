@@ -1,20 +1,30 @@
+// @flow
+
 import React, { Component } from 'react'
 import { EditorState } from 'draft-js'
 
-class RedoButton extends Component {
+type Props = {
+  editorState: EditorState,
+  setEditorState: EditorState => void,
+}
 
-  onClick = (event) => {
-    event.stopPropagation();
-    this.props.setEditorState(EditorState.redo(this.props.editorState));
-  };
+class RedoButton extends Component<Props> {
+  onClick = event => {
+    event.stopPropagation()
+    this.props.setEditorState(EditorState.redo(this.props.editorState))
+  }
 
   render() {
     return (
-			<button
-        disabled={ !this.props.editorState || this.props.editorState.getRedoStack().isEmpty() }
+      <button
+        disabled={
+          !this.props.editorState ||
+          this.props.editorState.getRedoStack().isEmpty()
+        }
         type="button"
-        onClick={this.onClick}
-      >redo</button>
+        onClick={this.onClick}>
+        redo
+      </button>
     )
   }
 }

@@ -1,20 +1,30 @@
+// @flow
+
 import React, { Component } from 'react'
 import { EditorState } from 'draft-js'
 
-class UndoButton extends Component {
+type Props = {
+  editorState: EditorState,
+  setEditorState: EditorState => void,
+}
 
-  onClick = (event) => {
-    event.stopPropagation();
-    this.props.setEditorState(EditorState.undo(this.props.editorState));
-  };
+class UndoButton extends Component<Props> {
+  onClick = event => {
+    event.stopPropagation()
+    this.props.setEditorState(EditorState.undo(this.props.editorState))
+  }
 
   render() {
     return (
-			<button
-        disabled={ !this.props.editorState || this.props.editorState.getUndoStack().isEmpty() }
+      <button
+        disabled={
+          !this.props.editorState ||
+          this.props.editorState.getUndoStack().isEmpty()
+        }
         type="button"
-        onClick={this.onClick}
-      >undo</button>
+        onClick={this.onClick}>
+        undo
+      </button>
     )
   }
 }
