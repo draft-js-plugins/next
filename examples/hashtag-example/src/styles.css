@@ -13,25 +13,6 @@ body {
   background: #244a46;
 }
 
-.autocomplete {
-  margin-top: 1em;
-}
-
-.list__item {
-  display: block;
-  padding: .5em;
-  color: #ccc;
-  background: transparent;
-  transition: 100ms;
-}
-
-.list__item--focused {
-  color: #fff;
-  padding-left: 1.2em;
-  background: #2a6f51;
-  border-radius: 5px;
-}
-
 .hashtag {
   color: #5e93c5;
 }
