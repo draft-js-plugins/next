@@ -1,13 +1,13 @@
 {
   "name": "@djsp/block-insert",
   "homepage": "https://juliankrispel.github.io/@djsp/core",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "private": true,
   "license": "MIT",
   "dependencies": {
-    "@djsp/atomic-block": "^0.1.4",
-    "@djsp/core": "^0.1.4",
-    "@djsp/utils": "^0.1.4",
+    "@djsp/atomic-block": "^0.1.5",
+    "@djsp/core": "^0.1.5",
+    "@djsp/utils": "^0.1.5",
     "prop-types": "^15.6.1",
     "react": "^16.5.0",
     "react-dom": "^16.2.0",

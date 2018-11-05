@@ -1,6 +1,6 @@
 {
   "name": "@djsp/utils",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "description": "Utilities for draft js",
   "author": "juliankrispel",
   "license": "MIT",
@@ -37,6 +37,5 @@
   ],
   "peerDependencies": {
     "draft-js": "^0.10.5"
-  },
-  "dependencies": {}
+  }
 }
