@@ -4,7 +4,6 @@ import ReactDOM from 'react-dom'
 import { EditorState, convertFromRaw } from 'draft-js'
 import { EditorContainer, Editor } from '@djsp/core'
 import AtomicBlock from '@djsp/atomic-block'
-import '@djsp/atomic-block/dist/index.css'
 import './styles.css'
 
 const rawContent = {
@@ -52,7 +51,15 @@ class App extends Component {
           <Editor />
 
           <AtomicBlock type="image">
-            {({ blockProps: { src, title } }) => <img src={src} alt={title} />}
+            {({ isFocused, blockProps: { src, title } }) => {
+              return (
+                <img
+                  className={isFocused ? 'focused' : ''}
+                  src={src}
+                  alt={title}
+                />
+              )
+            }}
           </AtomicBlock>
         </EditorContainer>
       </div>

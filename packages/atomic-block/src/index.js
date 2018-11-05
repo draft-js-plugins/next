@@ -8,13 +8,36 @@ import { insertNewLine } from '@djsp/utils'
 import DraftOffsetKey from 'draft-js/lib/DraftOffsetKey'
 import AtomicBlock from './AtomicBlock'
 
+const _BlockChildren = ({
+  editorProps: { readOnly },
+  editorState,
+  setEditorState,
+  ...props
+}: Object) => {
+  const blockKey = props.block.getKey()
+  const { children, focusBlock } = props.blockProps
+  const selection = editorState.getSelection()
+  const isFocused =
+    selection.getAnchorKey() === blockKey &&
+    selection.isCollapsed() &&
+    readOnly !== true
+
+  if (readOnly) {
+    return props.children({ ...props, isFocused })
+  } else {
+    return (
+      <AtomicBlock onClick={() => focusBlock(blockKey)}>
+        {children({ ...props, isFocused })}
+      </AtomicBlock>
+    )
+  }
+}
+
+const BlockChildren = withPluginContext(_BlockChildren)
+
 type Props = PluginProps & {
   type: string,
   children: any,
-}
-
-type State = {
-  isFocused: boolean,
 }
 
 // Set selection of editor to next/previous block
@@ -74,13 +97,39 @@ class AtomicBlockPlugin extends Component<Props, State> {
     let contentState = editorState.getCurrentContent()
     const selection = editorState.getSelection()
     const key = selection.getStartKey()
-    const currentBlock = contentState.getBlockForKey(key)
+    const startBlock = contentState.getBlockForKey(key)
     const previousBlock = contentState.getBlockBefore(key)
 
-    if (!selection.isCollapsed()) {
-      return constants.NOT_HANDLED
+    if (!selection.isCollapsed() && startBlock.getType() === 'atomic') {
+      contentState = Modifier.removeRange(
+        contentState,
+        selection.merge({
+          anchorOffset: 0,
+          anchorKey: key,
+          focusKey: selection.getEndKey(),
+          focusOffset: selection.getEndOffset(),
+          isBackward: false,
+        })
+      )
+
+      const newSelection = contentState.getSelectionAfter().merge({
+        hasFocus: true,
+        anchorOffset: 0,
+        anchorKey: key,
+        focusKey: key,
+        focusOffset: 0,
+      })
+
+      setEditorState(
+        EditorState.push(
+          editorState,
+          Modifier.setBlockType(contentState, newSelection, 'unstyled')
+        )
+      )
+
+      return constants.HANDLED
     } else if (
-      currentBlock.getType() !== 'atomic' &&
+      startBlock.getType() !== 'atomic' &&
       previousBlock != null &&
       selection.getStartOffset() === 0 &&
       previousBlock.getType() === 'atomic' &&
@@ -89,7 +138,7 @@ class AtomicBlockPlugin extends Component<Props, State> {
       setSelection(editorState, setEditorState, previousBlock)
       return constants.HANDLED
     } else if (
-      currentBlock.getType() === 'atomic' &&
+      startBlock.getType() === 'atomic' &&
       ['backspace', 'delete'].includes(command)
     ) {
       contentState = Modifier.removeRange(
@@ -140,44 +189,15 @@ class AtomicBlockPlugin extends Component<Props, State> {
     )
   }
 
-  renderChildren = (props: Object) => {
-    const {
-      editorProps: { readOnly },
-      editorState,
-      setEditorState,
-    } = this.props
-
-    const blockKey = props.block.getKey()
-    const selection = editorState.getSelection()
-    const isFocused =
-      selection.getAnchorKey() === blockKey &&
-      selection.isCollapsed() &&
-      readOnly !== true
-
-    if (readOnly) {
-      return this.props.children({ ...props, isFocused })
-    } else {
-      return (
-        <AtomicBlock
-          onDeleteBlock={() => this.deleteAtomicBlock(blockKey)}
-          setEditorState={setEditorState}
-          isFocused={isFocused}
-          onClick={() => this.focusBlock(blockKey)}>
-          {this.props.children({ ...props, isFocused })}
-        </AtomicBlock>
-      )
-    }
-  }
-
   handleReturn = (event, editorState) => {
     const { setEditorState } = this.props
     const selection = editorState.getSelection()
 
-    const currentBlock = editorState
+    const startBlock = editorState
       .getCurrentContent()
       .getBlockForKey(selection.getStartKey())
 
-    if (selection.isCollapsed() && currentBlock.getType() === 'atomic') {
+    if (selection.isCollapsed() && startBlock.getType() === 'atomic') {
       setEditorState(insertNewLine(editorState))
       return constants.HANDLED
     }
@@ -186,7 +206,7 @@ class AtomicBlockPlugin extends Component<Props, State> {
   }
 
   blockRendererFn = block => {
-    const { type, editorState } = this.props
+    const { type, children, editorState } = this.props
 
     const content = editorState.getCurrentContent()
 
@@ -200,9 +220,14 @@ class AtomicBlockPlugin extends Component<Props, State> {
 
       if (entityType.toLowerCase() === type.toLowerCase()) {
         return {
-          component: this.renderChildren,
+          component: BlockChildren,
           editable: false,
-          props: data,
+          props: {
+            ...this.props,
+            children,
+            focusBlock: this.focusBlock,
+            ...data,
+          },
         }
       }
     }

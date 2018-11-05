@@ -31,3 +31,7 @@ body {
   background: #2a6f51;
   border-radius: 5px;
 }
+
+.focused {
+  border: 2px solid blue;
+}

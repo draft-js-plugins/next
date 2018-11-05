@@ -5,7 +5,6 @@ import type { Node } from 'react'
 
 type Props = {
   onClick: (event: SyntheticMouseEvent<*>) => void,
-  isFocused: boolean,
   children: Node,
 }
 
