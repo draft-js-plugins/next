@@ -1,3 +1,4 @@
+// @flow
 /* eslint-disable */
 
 // Some minimizers convert string escapes into their literal values, which leads to intermittent Unicode normalization bugs and
@@ -18,7 +19,7 @@ regexes.hashtagBoundary = new RegExp("(?:^|$|[^&" + unicodeLettersAndMarks + uni
 regexes.validHashtag = regexSupplant(/(#{hashtagBoundary})(#{hashSigns})(?!\ufe0f|\u20e3)(#{hashtagAlphaNumeric}*#{hashtagAlpha}#{hashtagAlphaNumeric}*)/gi);
 
 // A function that composes regexes together
-function regexSupplant(regex, flags) {
+function regexSupplant(regex: RegExp, flags: String): RegExp {
   flags = flags || '';
   if (typeof regex !== 'string') {
     if (regex.global && flags.indexOf("g") < 0) {

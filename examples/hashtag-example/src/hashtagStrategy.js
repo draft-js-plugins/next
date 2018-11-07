@@ -1,6 +1,7 @@
 /* @flow */
 
 import regexes from './hashtagRegex';
+import { ContentBlock } from 'draft-js';
 
 function extractHashtagsWithIndices(text: String): Array {
   if (!text || !text.match(regexes.hashSigns)) {
@@ -25,7 +26,7 @@ function extractHashtagsWithIndices(text: String): Array {
   return tags;
 }
 
-export default (contentBlock: Object, callback: Function) => {
+export default (contentBlock: ContentBlock, callback: Function) => {
   const text = contentBlock.getText();
   const results = extractHashtagsWithIndices(text);
 
