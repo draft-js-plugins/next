@@ -1,11 +1,11 @@
 {
   "name": "@djsp/hashtag-example",
-  "homepage": "https://juliankrispel.github.io/djs-autocomplete",
-  "version": "0.1.4",
+  "homepage": "https://github.com/draft-js-plugins/next#readme",
+  "version": "0.1.5",
   "private": true,
   "license": "MIT",
   "dependencies": {
-    "@djsp/core": "^0.1.4",
+    "@djsp/core": "^0.1.5",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
     "react-scripts": "^1.1.1"
