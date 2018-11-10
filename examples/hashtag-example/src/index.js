@@ -11,7 +11,7 @@ const rawContent = {
   blocks: [
     {
       text: 'Here is an example for hashtag! #djsp',
-    }
+    },
   ],
   entityMap: {},
 }
@@ -30,10 +30,14 @@ class App extends Component {
           editorState={this.state.editorState}
           onChange={this.onChange}>
           <Editor />
-          <Plugin decorators={[{
-            strategy: hashtagStrategy,
-            component: Hashtag
-          }]} />
+          <Plugin
+            decorators={[
+              {
+                strategy: hashtagStrategy,
+                component: Hashtag,
+              },
+            ]}
+          />
         </EditorContainer>
       </div>
     )

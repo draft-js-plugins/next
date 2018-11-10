@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component } from 'react'
 
 export default class Hashtag extends Component {
   render() {
@@ -9,10 +9,8 @@ export default class Hashtag extends Component {
       offsetKey, // eslint-disable-line no-unused-vars
       contentState, // eslint-disable-line no-unused-vars
       ...otherProps
-    } = this.props; // eslint-disable-line no-use-before-define
+    } = this.props // eslint-disable-line no-use-before-define
 
-    return (
-      <span {...otherProps} className="hashtag" />
-    );
+    return <span {...otherProps} className="hashtag" />
   }
 }
