@@ -2,9 +2,9 @@ import React, { Component } from 'react'
 import ReactDOM from 'react-dom'
 
 import { EditorState, convertFromRaw } from 'draft-js'
-import { EditorContainer, Editor } from '@djsp/core'
+import { EditorContainer, Editor, Plugin } from '@djsp/core'
 import AtomicBlock from '@djsp/atomic-block'
-import '@djsp/atomic-block/dist/index.css'
+import InsertDivider from './InsertDivider'
 import './styles.css'
 
 const rawContent = {
@@ -51,8 +51,12 @@ class App extends Component {
           <Editor />
 
           <AtomicBlock type="divider">
-            {() => <hr className="divider" />}
+            {({ isFocused }) => <hr className={isFocused ? 'divider focused' : 'divider'} />}
           </AtomicBlock>
+
+          <Plugin>{
+            ({ editorState, setEditorState }) => <InsertDivider editorState={editorState} setEditorState={setEditorState} />
+          }</Plugin>
         </EditorContainer>
       </div>
     )

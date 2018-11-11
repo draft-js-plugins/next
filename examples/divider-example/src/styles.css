@@ -32,3 +32,13 @@ body {
   letter-spacing: 48px; /* increase space between dots */
   content: '•••';
 }
+
+.divider:hover {
+  border-radius: 2px;
+  box-shadow: 0 0 0 2px #D2E3F7;
+}
+
+.divider.focused {
+  border-radius: 2px;
+  box-shadow: 0 0 0 2px #ACCEF7;
+}
