@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom'
 
 import { EditorState, ContentState } from 'draft-js'
 import { EditorContainer, Editor } from '@djsp/editor'
-import { getCharCount, getWordCount, getLineCount } from '@djsp/utils'
+import WordCountPlugin from './WordCountPlugin'
 import './styles.css'
 
 class App extends Component {
@@ -21,9 +21,7 @@ class App extends Component {
         <EditorContainer
           editorState={this.state.editorState}
           onChange={this.onChange}>
-          <div>Char count: {getCharCount(this.state.editorState)}</div>
-          <div>Word count: {getWordCount(this.state.editorState)}</div>
-          <div>Line count: {getLineCount(this.state.editorState)}</div>
+          <WordCountPlugin />
           <Editor />
         </EditorContainer>
       </div>

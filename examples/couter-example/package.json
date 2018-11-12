@@ -1,12 +1,12 @@
 {
   "name": "@djsp/counter-example",
-  "homepage": "https://github.com/draft-js-plugins/next",
-  "version": "0.0.1",
+  "homepage": "https://github.com/draft-js-plugins/next#readme",
+  "version": "0.1.5",
   "private": true,
   "license": "MIT",
   "dependencies": {
-    "@djsp/utils": "latest",
-    "@djsp/editor": "latest",
+    "@djsp/utils": "^0.1.5",
+    "@djsp/editor": "^0.1.5",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
     "react-scripts": "^1.1.1"

@@ -14,6 +14,7 @@ import {
 } from 'draft-js'
 import type DraftEntityInstance from 'draft-js/lib/DraftEntityInstance'
 import type { DraftDecorator } from 'draft-js/lib/DraftDecorator'
+// eslint-disable-next-line node/no-deprecated-api
 import punycode from 'punycode'
 
 export function replaceWithAtomicBlock(
