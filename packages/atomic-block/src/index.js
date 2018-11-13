@@ -72,7 +72,7 @@ const setSelection = (
   )
 }
 
-class AtomicBlockPlugin extends Component<Props, State> {
+class AtomicBlockPlugin extends Component<Props> {
   unregister: () => void
 
   constructor(props) {

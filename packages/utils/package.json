@@ -23,6 +23,7 @@
   },
   "devDependencies": {
     "cross-env": "^5.1.4",
+    "draft-js": "^0.10.5",
     "flow-bin": "^0.81.0",
     "flow-typed": "^2.5.1",
     "react": "^16.2.0",
