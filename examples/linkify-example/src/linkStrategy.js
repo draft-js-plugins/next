@@ -1,19 +1,20 @@
 // @flow
 
-import linkifyIt from 'linkify-it';
-import tlds from 'tlds';
+import { ContentBlock } from 'draft-js'
+import linkifyIt from 'linkify-it'
+import tlds from 'tlds'
 
-const linkify = linkifyIt();
-linkify.tlds(tlds);
+const linkify = linkifyIt()
+linkify.tlds(tlds)
 
 // Gets all the links in the text, and returns them via the callback
-const linkStrategy = (contentBlock: Object, callback: Function) => {
-  const links = linkify.match(contentBlock.get('text'));
+const linkStrategy = (contentBlock: ContentBlock, callback: Function): void => {
+  const links = linkify.match(contentBlock.get('text'))
   if (typeof links !== 'undefined' && links !== null) {
     for (let i = 0; i < links.length; i += 1) {
-      callback(links[i].index, links[i].lastIndex);
+      callback(links[i].index, links[i].lastIndex)
     }
   }
-};
+}
 
-export default linkStrategy;
+export default linkStrategy

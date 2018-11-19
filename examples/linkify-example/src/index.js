@@ -2,8 +2,7 @@ import React, { Component } from 'react'
 import ReactDOM from 'react-dom'
 
 import { EditorState, convertFromRaw } from 'draft-js'
-import { EditorContainer, Editor, Plugin } from '@djsp/core'
-import linkStrategy from './linkStrategy'
+import { EditorContainer, Editor } from '@djsp/core'
 import Link from './Link'
 import './styles.css'
 
@@ -30,14 +29,7 @@ class App extends Component {
           editorState={this.state.editorState}
           onChange={this.onChange}>
           <Editor />
-          <Plugin
-            decorators={[
-              {
-                strategy: linkStrategy,
-                component: Link,
-              },
-            ]}
-          />
+          <Link />
         </EditorContainer>
       </div>
     )
