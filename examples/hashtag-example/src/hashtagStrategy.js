@@ -1,5 +1,5 @@
 /* @flow */
-
+// This strategy is from https://github.com/draft-js-plugins/draft-js-plugins/blob/master/draft-js-hashtag-plugin/src/utils/index.js
 import regexes from './hashtagRegex'
 import { ContentBlock } from 'draft-js'
 
