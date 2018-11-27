@@ -1,5 +1,5 @@
 // @flow
-
+// This strategy is from https://github.com/draft-js-plugins/draft-js-plugins/blob/master/draft-js-linkify-plugin/src/linkStrategy.js
 import { ContentBlock } from 'draft-js'
 import linkifyIt from 'linkify-it'
 import tlds from 'tlds'
