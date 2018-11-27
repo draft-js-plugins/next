@@ -8,7 +8,7 @@ type Props = {
   setEditorState: EditorState => void,
 }
 
-class UndoButton extends Component<Props> {
+class Undo extends Component<Props> {
   onClick = event => {
     event.stopPropagation()
     this.props.setEditorState(EditorState.undo(this.props.editorState))
@@ -29,4 +29,4 @@ class UndoButton extends Component<Props> {
   }
 }
 
-export default UndoButton
+export default Undo

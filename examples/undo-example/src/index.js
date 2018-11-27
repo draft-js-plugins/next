@@ -1,10 +1,9 @@
-import React, { Component, Fragment } from 'react'
+import React, { Component } from 'react'
 import ReactDOM from 'react-dom'
 
 import { EditorState, ContentState } from 'draft-js'
-import { EditorContainer, Editor, Plugin } from '@djsp/core'
-import UndoButton from './UndoButton.js'
-import RedoButton from './RedoButton.js'
+import { EditorContainer, Editor } from '@djsp/core'
+import { RedoButton, UndoButton } from './Undo'
 import './styles.css'
 
 class App extends Component {
@@ -24,20 +23,8 @@ class App extends Component {
         <EditorContainer
           editorState={this.state.editorState}
           onChange={this.onChange}>
-          <Plugin>
-            {({ editorState, setEditorState }) => (
-              <Fragment>
-                <UndoButton
-                  editorState={editorState}
-                  setEditorState={setEditorState}
-                />
-                <RedoButton
-                  editorState={editorState}
-                  setEditorState={setEditorState}
-                />
-              </Fragment>
-            )}
-          </Plugin>
+          <RedoButton />
+          <UndoButton />
           <Editor />
         </EditorContainer>
       </div>

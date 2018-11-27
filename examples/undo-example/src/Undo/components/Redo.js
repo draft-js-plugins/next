@@ -8,7 +8,7 @@ type Props = {
   setEditorState: EditorState => void,
 }
 
-class RedoButton extends Component<Props> {
+class Redo extends Component<Props> {
   onClick = event => {
     event.stopPropagation()
     this.props.setEditorState(EditorState.redo(this.props.editorState))
@@ -29,4 +29,4 @@ class RedoButton extends Component<Props> {
   }
 }
 
-export default RedoButton
+export default Redo
