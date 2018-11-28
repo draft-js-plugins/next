@@ -1,5 +1,5 @@
 import React, { Fragment } from 'react'
-import { Plugin } from '@djsp/editor'
+import { Plugin } from '@djsp/core'
 import { getCharCount, getWordCount, getLineCount } from '@djsp/utils'
 
 export default function WordCountPlugin() {
