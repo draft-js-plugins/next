@@ -35,7 +35,7 @@
   "files": [
     "dist"
   ],
-  "peerDependencies": {
+  "dependencies": {
     "draft-js": "^0.10.5"
   }
 }
