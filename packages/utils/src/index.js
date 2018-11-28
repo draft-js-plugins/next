@@ -14,6 +14,8 @@ import {
 } from 'draft-js'
 import type DraftEntityInstance from 'draft-js/lib/DraftEntityInstance'
 import type { DraftDecorator } from 'draft-js/lib/DraftDecorator'
+// eslint-disable-next-line node/no-deprecated-api
+import punycode from 'punycode'
 
 export function replaceWithAtomicBlock(
   editorState: EditorState,
@@ -242,4 +244,25 @@ export function insertNewLine(editorState: EditorState): EditorState {
     selectionAfter: withNewLine.getSelectionAfter().set('hasFocus', true),
   })
   return EditorState.push(editorState, newContent, 'insert-fragment')
+}
+
+export function getCharCount(editorState: EditorState): number {
+  const decodeUnicode = str => punycode.ucs2.decode(str) // func to handle unicode characters
+  const plainText = editorState.getCurrentContent().getPlainText('')
+  const regex = /(?:\r\n|\r|\n)/g // new line, carriage return, line feed
+  const cleanString = plainText.replace(regex, '').trim() // replace above characters w/ nothing
+  return decodeUnicode(cleanString).length
+}
+
+export function getLineCount(editorState: EditorState): number {
+  const blockArray = editorState.getCurrentContent().getBlocksAsArray()
+  return blockArray ? blockArray.length : 0
+}
+
+export function getWordCount(editorState: EditorState): number {
+  const plainText = editorState.getCurrentContent().getPlainText('')
+  const regex = /(?:\r\n|\r|\n)/g // new line, carriage return, line feed
+  const cleanString = plainText.replace(regex, ' ').trim() // replace above characters w/ space
+  const wordArray = cleanString.match(/\S+/g) // matches words according to whitespace
+  return wordArray ? wordArray.length : 0
 }

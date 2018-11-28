@@ -36,6 +36,7 @@
     "dist"
   ],
   "dependencies": {
-    "draft-js": "^0.10.5"
+    "draft-js": "^0.10.5",
+    "punycode": "^2.1.1"
   }
 }

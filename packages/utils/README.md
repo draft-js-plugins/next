@@ -125,6 +125,24 @@ hasEntity(
 insertNewLine(editorState: EditorState): EditorState
 ```
 
+### getCharCount
+
+```javascript
+getCharCount(editorState: EditorState): number
+```
+
+### getLineCount
+
+```javascript
+getLineCount(editorState: EditorState): number
+```
+
+### getWordCount
+
+```javascript
+getWordCount(editorState: EditorState): number
+```
+
 ## License
 
 MIT © [juliankrispel](https://github.com/juliankrispel)
