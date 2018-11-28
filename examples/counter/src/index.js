@@ -21,6 +21,7 @@ class App extends Component {
         <EditorContainer
           editorState={this.state.editorState}
           onChange={this.onChange}>
+          <WordCountPlugin />
           <Editor />
         </EditorContainer>
       </div>
