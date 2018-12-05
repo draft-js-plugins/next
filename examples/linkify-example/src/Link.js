@@ -21,10 +21,6 @@ class LinkComponent extends Component<Props> {
       decoratedText, // eslint-disable-line no-unused-vars
       target = '_self',
       rel = 'noreferrer noopener',
-      dir, // eslint-disable-line no-unused-vars
-      entityKey, // eslint-disable-line no-unused-vars
-      offsetKey, // eslint-disable-line no-unused-vars
-      contentState, // eslint-disable-line no-unused-vars
       ...otherProps
     } = this.props // eslint-disable-line no-use-before-define
 
