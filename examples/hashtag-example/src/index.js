@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom'
 
 import { EditorState, convertFromRaw } from 'draft-js'
 import { EditorContainer, Editor, Plugin } from '@djsp/core'
-import hashtagStrategy from './hashtagStrategy'
+import hashtagStrategy from './Hashtag/hashtagStrategy'
 import Hashtag from './Hashtag'
 import './styles.css'
 
