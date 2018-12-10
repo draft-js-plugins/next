@@ -266,3 +266,12 @@ export function getWordCount(editorState: EditorState): number {
   const wordArray = cleanString.match(/\S+/g) // matches words according to whitespace
   return wordArray ? wordArray.length : 0
 }
+
+export function findWithRegex(regex: RegExp, contentBlock: ContentBlock, callback: (start: number, end: number) => void) {
+  const text = contentBlock.getText();
+  let matchArr: ?string[], start;
+  while ((matchArr = regex.exec(text)) && matchArr !== null) {
+    start = matchArr.index;
+    callback(start, start + matchArr[0].length);
+  }
+}
