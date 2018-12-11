@@ -18,24 +18,24 @@ type Props = DraftDecoratorComponentProps & {
 class LinkComponent extends Component<Props> {
   render() {
     const {
-      decoratedText, // eslint-disable-line no-unused-vars
+      decoratedText,
       target = '_self',
       rel = 'noreferrer noopener',
-      ...otherProps
-    } = this.props // eslint-disable-line no-use-before-define
+      children,
+    } = this.props
 
     const links = linkify.match(decoratedText)
     const href = links && links[0] ? links[0].url : ''
 
     const props = {
-      ...otherProps,
       href,
+      children,
       target,
       rel,
       className: 'link',
     }
 
-    return <a {...props} /> // eslint-disable-line jsx-a11y/anchor-has-content
+    return <a {...props} />
   }
 }
 
