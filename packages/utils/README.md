@@ -143,6 +143,12 @@ getLineCount(editorState: EditorState): number
 getWordCount(editorState: EditorState): number
 ```
 
+### findWithRegex
+
+```javascript
+findWithRegex(regex: RegExp, contentBlock: ContentBlock, callback: () => void): void
+```
+
 ## License
 
 MIT © [juliankrispel](https://github.com/juliankrispel)

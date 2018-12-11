@@ -1,14 +1,12 @@
 {
-  "name": "@djsp/block-switcher",
-  "homepage": "https://juliankrispel.github.io/@djsp/core",
+  "name": "@djsp/hashtag-example",
+  "homepage": "https://github.com/draft-js-plugins/next#readme",
   "version": "0.1.5",
   "private": true,
   "license": "MIT",
   "dependencies": {
-    "@djsp/atomic-block": "^0.1.5",
     "@djsp/core": "^0.1.5",
     "@djsp/utils": "^0.1.5",
-    "prop-types": "^15.6.1",
     "react": "16.5.0",
     "react-dom": "16.5.0",
     "react-scripts": "^1.1.1"

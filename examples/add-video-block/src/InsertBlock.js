@@ -28,30 +28,28 @@ class UnstyledBlock extends Component {
     return (
       <div className="paragraph">
         <EditorBlock {...this.props} />
-        {insertLink === true &&
-          block.getText().length === 0 && (
-            <div contentEditable={false} className="insert-link-placeholder">
-              Paste a youtube link
+        {insertLink === true && block.getText().length === 0 && (
+          <div contentEditable={false} className="insert-link-placeholder">
+            Paste a youtube link
+          </div>
+        )}
+        {insertLink === true && block.getText().length > 0 && (
+          <Fragment>
+            <div contentEditable={false} className="insert-link-instructions">
+              <span className="fa fa-video" /> Press enter when done
             </div>
-          )}
-        {insertLink === true &&
-          block.getText().length > 0 && (
-            <Fragment>
-              <div contentEditable={false} className="insert-link-instructions">
-                <span className="fa fa-video" /> Press enter when done
-              </div>
-              <Plugin
-                handleReturn={(event, editorState) => {
-                  onChange(
-                    replaceWithAtomicBlock(editorState, 'video', {
-                      src: block.getText(),
-                    })
-                  )
-                  return 'handled'
-                }}
-              />
-            </Fragment>
-          )}
+            <Plugin
+              handleReturn={(event, editorState) => {
+                onChange(
+                  replaceWithAtomicBlock(editorState, 'video', {
+                    src: block.getText(),
+                  })
+                )
+                return 'handled'
+              }}
+            />
+          </Fragment>
+        )}
         {showMenu && (
           <aside contentEditable={false} className="block-menu">
             <button onClick={() => this.setState({ insertLink: true })}>
