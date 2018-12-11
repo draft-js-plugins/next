@@ -1,0 +1,30 @@
+body {
+  font-family: sans-serif;
+  font-size: 1.8em;
+  padding: 1em;
+  background: #12312e;
+}
+
+.public-DraftEditor-content {
+  padding: 2em;
+  border-radius: 5px;
+  color: #fff;
+  border: #555;
+  background: #244a46;
+}
+
+
+.link, .link:visited {
+  color: #5e93c5;
+  text-decoration: none;
+}
+
+.link:hover, .link:focus {
+  color: #7eadda;
+  outline: 0; /* reset for :focus */
+  cursor: pointer;
+}
+
+.link:active {
+  color: #4a7bab;
+}
