@@ -7,8 +7,8 @@
   "dependencies": {
     "@djsp/atomic-block": "^0.1.5",
     "@djsp/core": "^0.1.5",
-    "react": "^16.2.0",
-    "react-dom": "^16.2.0",
+    "react": "16.5.0",
+    "react-dom": "16.5.0",
     "react-scripts": "^1.1.1"
   },
   "scripts": {

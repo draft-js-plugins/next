@@ -27,8 +27,8 @@
   },
   "peerDependencies": {
     "draft-js": "^0.10.5",
-    "react": "^15.0.0 || ^16.0.0",
-    "react-dom": "^15.0.0 || ^16.0.0"
+    "react": "16.5.0",
+    "react-dom": "16.5.0"
   },
   "devDependencies": {
     "cross-env": "^5.1.4",
@@ -36,8 +36,8 @@
     "flow-bin": "^0.83.0",
     "flow-copy-source": "^2.0.2",
     "gh-pages": "^1.1.0",
-    "react": "^16.2.0",
-    "react-dom": "^16.2.0",
+    "react": "16.5.0",
+    "react-dom": "16.5.0",
     "react-scripts": "^1.1.1",
     "rimraf": "^2.6.2",
     "rollup": "^0.54.0",
