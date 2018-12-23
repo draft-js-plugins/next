@@ -1,11 +1,10 @@
 // @flow
 
 import React, { Component, Fragment } from 'react'
-import { ContentBlock, RichUtils } from 'draft-js'
+import { EditorState, ContentBlock, DefaultDraftBlockRenderMap } from 'draft-js'
 import { Plugin, withPluginContext } from '@djsp/core'
-import { insertEntityBlock } from '@djsp/utils'
-import AtomicBlock from '@djsp/atomic-block'
-import { CheckableListItem, CheckableListItemBlock, CHECKABLE_LIST_ITEM, CheckableListItemUtils } from 'draft-js-checkable-list-item'
+import { insertEntityBlock, mergeEntityData } from '@djsp/utils'
+import { CheckableListItem, CheckableListItemBlock, CHECKABLE_LIST_ITEM, blockRenderMap } from 'draft-js-checkable-list-item'
 
 
 type Props = {
@@ -24,20 +23,25 @@ class CheckableList extends Component<Props> {
 
     const { setEditorState, editorState } = this.props
     setEditorState(insertEntityBlock(editorState, CHECKABLE_LIST_ITEM, {
-      checked: true
+      checked: false
     }))
   }
 
   toggleChecked = (block) => {
     const { setEditorState, editorState } = this.props
-    console.log(CheckableListItemUtils.toggleChecked(editorState, block))
-    setEditorState(
-      CheckableListItemUtils.toggleChecked(editorState, block)
-    );
+    const content = editorState.getCurrentContent();
+    const entityKey = block.getEntityAt(0);
+    const data = content.getEntity(entityKey).getData();
+    
+    let newEditorState = mergeEntityData(editorState, entityKey, { checked: !data.checked })
+    setEditorState(EditorState.forceSelection(
+      newEditorState,
+      editorState.getSelection()
+    ));
   }
 
   blockRendererFn = (block: ContentBlock): ?CheckableListItemBlock => {
-    const { setEditorState, editorState } = this.props;
+    const { editorState } = this.props;
     var content = editorState.getCurrentContent();
     
     if (block.getType() === 'atomic') {
@@ -51,28 +55,25 @@ class CheckableList extends Component<Props> {
           component: CheckableListItem,
           props: {
             onChangeChecked: () => this.toggleChecked(block),
-            checked: !!block.getData().get('checked'),
+            checked: !!data.checked,
           },
         }
       }
     }
   }
 
+  blockStyleFn(block: ContentBlock): ?string {
+    if (block.getType() === CHECKABLE_LIST_ITEM) {
+      return CHECKABLE_LIST_ITEM
+    }
+  }
+
   render() {
     return (<Fragment>
-      {/* <AtomicBlock type={CHECKABLE_LIST_ITEM}>
-        {({ isFocused, blockProps: { checked }, ...otherProps }) => {
-          const props = {
-            checked,
-            onChangeChecked: () => this.toggleChecked(otherProps.block)
-          }
-
-          return (
-            <CheckableListItem blockProps={props} {...otherProps} />
-          )
-        }}
-      </AtomicBlock> */}
-      <Plugin blockRendererFn={this.blockRendererFn}/>
+      <Plugin
+        blockRendererFn={this.blockRendererFn}
+        blockRenderMap={DefaultDraftBlockRenderMap.merge(blockRenderMap)}
+        blockStyleFn={this.blockStyleFn} />
       <button type="button" onClick={this.onClick}>
         Insert checkable-list
       </button>
