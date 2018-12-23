@@ -1,0 +1,25 @@
+{
+  "name": "@djsp/checkable-list-example",
+  "homepage": "https://github.com/draft-js-plugins/next#readme",
+  "version": "0.1.5",
+  "private": true,
+  "license": "MIT",
+  "dependencies": {
+    "@djsp/atomic-block": "^0.1.5",
+    "@djsp/core": "^0.1.5",
+    "@djsp/utils": "^0.1.5",
+    "draft-js-checkable-list-item": "^3.0.4",
+    "react": "^16.2.0",
+    "react-dom": "^16.5.0",
+    "react-scripts": "^1.1.1"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject"
+  },
+  "devDependencies": {
+    "draft-js": "^0.10.5"
+  }
+}
