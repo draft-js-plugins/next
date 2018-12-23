@@ -23,7 +23,8 @@
   "plugins": ["prettier", "flowtype", "react", "standard"],
   "env": {
     "es6": true,
-    "browser": true
+    "browser": true,
+    "mocha": true
   },
   "rules": {
     "prettier/prettier": "error"
