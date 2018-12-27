@@ -1,6 +1,6 @@
 {
-  "name": "@djsp/autocomplete-example",
-  "homepage": "https://juliankrispel.github.io/djs-autocomplete",
+  "name": "@djsp/mentions-example",
+  "homepage": "https://github.com/draft-js-plugins/next#readme",
   "version": "0.1.5",
   "private": true,
   "license": "MIT",
