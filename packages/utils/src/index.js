@@ -279,3 +279,19 @@ export function findWithRegex(
     callback(start, start + matchArr[0].length)
   }
 }
+
+export function mergeBlockData(
+  editorState: EditorState,
+  block: ContentBlock,
+  data: { [id: string]: any }
+): EditorState {
+  const content = editorState.getCurrentContent()
+  const updatedBlock = block.mergeIn(['data'], data)
+  const blockKey = block.getKey()
+  const blockMap = content.getBlockMap().merge({ [blockKey]: updatedBlock })
+  return EditorState.push(
+    editorState,
+    content.merge({ blockMap }),
+    'change-block-data'
+  )
+}

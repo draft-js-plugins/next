@@ -149,6 +149,12 @@ getWordCount(editorState: EditorState): number
 findWithRegex(regex: RegExp, contentBlock: ContentBlock, callback: () => void): void
 ```
 
+### mergeBlockData
+
+```javascript
+mergeBlockData(editorState: EditorState, block: ContentBlock, data: { [id: string]: any }): EditorState
+```
+
 ## License
 
 MIT © [juliankrispel](https://github.com/juliankrispel)
