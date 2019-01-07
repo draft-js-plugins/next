@@ -5,7 +5,13 @@ import {
   convertFromRaw,
   SelectionState,
 } from 'draft-js'
-import { getCharCount, getWordCount, getLineCount, hasEntity, getCurrentEntityKey } from '../index'
+import {
+  getCharCount,
+  getWordCount,
+  getLineCount,
+  hasEntity,
+  getCurrentEntityKey,
+} from '../index'
 
 describe('Entity', () => {
   const createEditorStateFromRaw = raw => {
