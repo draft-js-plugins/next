@@ -1,30 +1,50 @@
 // @flow
 
 import React, { Component, Fragment } from 'react'
-import { EditorState, ContentBlock, DefaultDraftBlockRenderMap, RichUtils } from 'draft-js'
+import {
+  EditorState,
+  ContentBlock,
+  DefaultDraftBlockRenderMap,
+  RichUtils,
+} from 'draft-js'
 import { withPluginContext } from '@djsp/core'
 import type { PluginProps } from '@djsp/core'
 import { mergeBlockData } from '@djsp/utils'
-import { CheckableListItem, CheckableListItemBlock, CHECKABLE_LIST_ITEM, blockRenderMap } from 'draft-js-checkable-list-item'
+import {
+  CheckableListItem,
+  CheckableListItemBlock,
+  CHECKABLE_LIST_ITEM,
+  blockRenderMap,
+} from 'draft-js-checkable-list-item'
 
 class CheckableList extends Component<PluginProps> {
   _unregister: () => void
 
+  updateEditorState = (newEditorState: EditorState) => {
+    const { setEditorState, editorState } = this.props
+    setEditorState(
+      EditorState.forceSelection(newEditorState, editorState.getSelection())
+    )
+  }
+
   onClick = event => {
     event.stopPropagation()
 
-    const { setEditorState, editorState } = this.props
-    setEditorState(RichUtils.toggleBlockType(editorState, CHECKABLE_LIST_ITEM))
+    const { editorState } = this.props
+    const newEditorState = RichUtils.toggleBlockType(
+      editorState,
+      CHECKABLE_LIST_ITEM
+    )
+    this.updateEditorState(newEditorState)
   }
 
   toggleChecked = (block: ContentBlock) => {
-    const { setEditorState, editorState } = this.props
-    
-    let newEditorState = mergeBlockData(editorState, block, { checked: !block.getData().get('checked') })
-    setEditorState(EditorState.forceSelection(
-      newEditorState,
-      editorState.getSelection()
-    ));
+    const { editorState } = this.props
+
+    let newEditorState = mergeBlockData(editorState, block, {
+      checked: !block.getData().get('checked'),
+    })
+    this.updateEditorState(newEditorState)
   }
 
   componentDidMount() {
@@ -47,16 +67,34 @@ class CheckableList extends Component<PluginProps> {
         if (block.getType() === CHECKABLE_LIST_ITEM) {
           return CHECKABLE_LIST_ITEM
         }
-      }
+      },
     })
   }
 
+  getStyle = (): object => {
+    const { editorState } = this.props
+    const selection = editorState.getSelection()
+    const currentBlockType = editorState
+      .getCurrentContent()
+      .getBlockForKey(selection.getStartKey())
+      .getType()
+
+    return currentBlockType === CHECKABLE_LIST_ITEM
+      ? {
+          fontWeight: 'BOLD',
+          cursor: 'pointer',
+        }
+      : { cursor: 'pointer' }
+  }
+
   render() {
-    return (<Fragment>
-      <button type="button" onClick={this.onClick}>
-        Toggle checkable-list
-      </button>
-    </Fragment>)
+    return (
+      <Fragment>
+        <span style={this.getStyle()} onClick={this.onClick}>
+          ✓
+        </span>
+      </Fragment>
+    )
   }
 }
 

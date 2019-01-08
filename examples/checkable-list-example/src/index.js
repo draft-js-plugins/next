@@ -11,7 +11,7 @@ const rawContent = {
   blocks: [
     {
       text: 'Hey there',
-    }
+    },
   ],
   entityMap: {},
 }
@@ -29,8 +29,8 @@ class App extends Component {
         <EditorContainer
           editorState={this.state.editorState}
           onChange={this.onChange}>
-          <Editor />
           <CheckableList />
+          <Editor />
         </EditorContainer>
       </div>
     )
