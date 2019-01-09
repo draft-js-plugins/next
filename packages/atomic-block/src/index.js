@@ -1,6 +1,7 @@
 // @flow
 
 import React, { Component } from 'react'
+import type { Node } from 'react'
 import { withPluginContext, constants } from '@djsp/core'
 import type { PluginProps } from '@djsp/core'
 import { ContentBlock, EditorState, Modifier, SelectionState } from 'draft-js'
@@ -13,7 +14,7 @@ const _BlockChildren = ({
   editorState,
   setEditorState,
   ...props
-}: Object) => {
+}: Object): Node => {
   const blockKey = props.block.getKey()
   const { children, focusBlock } = props.blockProps
   const selection = editorState.getSelection()
@@ -43,7 +44,7 @@ type Props = PluginProps & {
 // Set selection of editor to next/previous block
 const setSelection = (
   editorState: EditorState,
-  setEditorState: EditorState,
+  setEditorState: (editorState: EditorState) => void,
   newActiveBlock: ContentBlock
 ): void => {
   // TODO verify that always a key-0-0 exists
@@ -91,7 +92,7 @@ class AtomicBlockPlugin extends Component<Props> {
     this.unregister()
   }
 
-  handleKeyCommand = (command, editorState) => {
+  handleKeyCommand = (command: string, editorState: EditorState): DraftHandleValue => {
     const { setEditorState } = this.props
 
     let contentState = editorState.getCurrentContent()
@@ -189,7 +190,7 @@ class AtomicBlockPlugin extends Component<Props> {
     )
   }
 
-  handleReturn = (event, editorState) => {
+  handleReturn = (event: SyntheticKeyboardEvent<*>, editorState: EditorState): DraftHandleValue => {
     const { setEditorState } = this.props
     const selection = editorState.getSelection()
 
@@ -205,7 +206,7 @@ class AtomicBlockPlugin extends Component<Props> {
     return constants.NOT_HANDLED
   }
 
-  blockRendererFn = block => {
+  blockRendererFn = (block: ContentBlock): ?Object => {
     const { type, children, editorState } = this.props
 
     const content = editorState.getCurrentContent()
