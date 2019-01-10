@@ -1,6 +1,6 @@
 {
-  "name": "@djsp/block-switcher",
-  "homepage": "https://juliankrispel.github.io/@djsp/core",
+  "name": "@djsp/block-switcher-example",
+  "homepage": "https://github.com/draft-js-plugins/next#readme",
   "version": "0.1.5",
   "private": true,
   "license": "MIT",
