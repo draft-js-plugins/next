@@ -5,6 +5,7 @@
   "private": true,
   "license": "MIT",
   "dependencies": {
+    "@djsp/utils": "^0.1.5",
     "@djsp/atomic-block": "^0.1.5",
     "@djsp/core": "^0.1.5",
     "react": "16.5.0",
