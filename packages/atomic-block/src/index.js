@@ -92,7 +92,10 @@ class AtomicBlockPlugin extends Component<Props> {
     this.unregister()
   }
 
-  handleKeyCommand = (command: string, editorState: EditorState): DraftHandleValue => {
+  handleKeyCommand = (
+    command: string,
+    editorState: EditorState
+  ): DraftHandleValue => {
     const { setEditorState } = this.props
 
     let contentState = editorState.getCurrentContent()
@@ -190,7 +193,10 @@ class AtomicBlockPlugin extends Component<Props> {
     )
   }
 
-  handleReturn = (event: SyntheticKeyboardEvent<*>, editorState: EditorState): DraftHandleValue => {
+  handleReturn = (
+    event: SyntheticKeyboardEvent<*>,
+    editorState: EditorState
+  ): DraftHandleValue => {
     const { setEditorState } = this.props
     const selection = editorState.getSelection()
 
