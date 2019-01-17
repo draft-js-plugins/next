@@ -6,10 +6,10 @@ import {
   ContentBlock,
   DefaultDraftBlockRenderMap,
   RichUtils,
+  Modifier,
 } from 'draft-js'
 import { withPluginContext } from '@djsp/core'
 import type { PluginProps } from '@djsp/core'
-import { mergeBlockData } from '@djsp/utils'
 import {
   CheckableListItem,
   CheckableListItemBlock,
@@ -20,31 +20,34 @@ import {
 class CheckableList extends Component<PluginProps> {
   _unregister: () => void
 
-  updateEditorState = (newEditorState: EditorState) => {
+  onClick = event => {
+    event.stopPropagation()
+
     const { setEditorState, editorState } = this.props
+    const newEditorState = RichUtils.toggleBlockType(
+      editorState,
+      CHECKABLE_LIST_ITEM
+    )
     setEditorState(
       EditorState.forceSelection(newEditorState, editorState.getSelection())
     )
   }
 
-  onClick = event => {
-    event.stopPropagation()
-
-    const { editorState } = this.props
-    const newEditorState = RichUtils.toggleBlockType(
-      editorState,
-      CHECKABLE_LIST_ITEM
-    )
-    this.updateEditorState(newEditorState)
-  }
-
   toggleChecked = (block: ContentBlock) => {
-    const { editorState } = this.props
-
-    let newEditorState = mergeBlockData(editorState, block, {
-      checked: !block.getData().get('checked'),
-    })
-    this.updateEditorState(newEditorState)
+    const { setEditorState, editorState } = this.props
+    let newContentState = Modifier.mergeBlockData(
+      editorState.getCurrentContent(),
+      editorState.getSelection(),
+      {
+        checked: !block.getData().get('checked'),
+      }
+    )
+    let newEditorState = EditorState.push(
+      editorState,
+      newContentState,
+      'change-block-data'
+    )
+    setEditorState(newEditorState)
   }
 
   componentDidMount() {
