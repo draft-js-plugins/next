@@ -15,6 +15,7 @@ import {
   CheckableListItemBlock,
   CHECKABLE_LIST_ITEM,
   blockRenderMap,
+  CheckableListItemUtils,
 } from 'draft-js-checkable-list-item'
 
 class CheckableList extends Component<PluginProps> {
@@ -50,6 +51,27 @@ class CheckableList extends Component<PluginProps> {
     setEditorState(newEditorState)
   }
 
+  handleTab = (event: SyntheticKeyboardEvent): ?boolean => {
+    if (this.adjustBlockDepth(event)) {
+      return true
+    }
+    const { editorState, setEditorState } = this.props
+    const newEditorState = RichUtils.onTab(event, editorState, 4)
+    if (newEditorState !== editorState) {
+      setEditorState(newEditorState)
+    }
+  }
+
+  adjustBlockDepth(event: SyntheticKeyboardEvent): boolean {
+    const { editorState, setEditorState } = this.props
+    const newEditorState = CheckableListItemUtils.onTab(event, editorState, 4)
+    if (newEditorState !== editorState) {
+      setEditorState(newEditorState)
+      return true
+    }
+    return false
+  }
+
   componentDidMount() {
     const { registerPlugin } = this.props
 
@@ -71,6 +93,7 @@ class CheckableList extends Component<PluginProps> {
           return CHECKABLE_LIST_ITEM
         }
       },
+      // handleTab: this.handleTab
     })
   }
 
