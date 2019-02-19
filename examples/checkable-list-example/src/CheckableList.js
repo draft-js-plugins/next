@@ -6,7 +6,6 @@ import {
   ContentBlock,
   DefaultDraftBlockRenderMap,
   RichUtils,
-  Modifier,
 } from 'draft-js'
 import { withPluginContext } from '@djsp/core'
 import type { PluginProps } from '@djsp/core'
@@ -18,40 +17,53 @@ import {
   CheckableListItemUtils,
 } from 'draft-js-checkable-list-item'
 
+function mergeBlockData(
+  editorState: EditorState,
+  block: ContentBlock,
+  data: { [id: string]: any }
+): EditorState {
+  const content = editorState.getCurrentContent()
+  const updatedBlock = block.mergeIn(['data'], data)
+  const blockKey = block.getKey()
+  const blockMap = content.getBlockMap().merge({ [blockKey]: updatedBlock })
+  return EditorState.push(
+    editorState,
+    content.merge({ blockMap }),
+    'change-block-data'
+  )
+}
+
 class CheckableList extends Component<PluginProps> {
   _unregister: () => void
 
-  onClick = event => {
-    event.stopPropagation()
-
+  updateEditorState = (newEditorState: EditorState) => {
     const { setEditorState, editorState } = this.props
-    const newEditorState = RichUtils.toggleBlockType(
-      editorState,
-      CHECKABLE_LIST_ITEM
-    )
     setEditorState(
       EditorState.forceSelection(newEditorState, editorState.getSelection())
     )
   }
 
-  toggleChecked = (block: ContentBlock) => {
-    const { setEditorState, editorState } = this.props
-    let newContentState = Modifier.mergeBlockData(
-      editorState.getCurrentContent(),
-      editorState.getSelection(),
-      {
-        checked: !block.getData().get('checked'),
-      }
-    )
-    let newEditorState = EditorState.push(
+  onClick = event => {
+    event.stopPropagation()
+
+    const { editorState } = this.props
+    const newEditorState = RichUtils.toggleBlockType(
       editorState,
-      newContentState,
-      'change-block-data'
+      CHECKABLE_LIST_ITEM
     )
-    setEditorState(newEditorState)
+    this.updateEditorState(newEditorState)
+  }
+
+  toggleChecked = (block: ContentBlock) => {
+    const { editorState } = this.props
+    let newEditorState = mergeBlockData(editorState, block, {
+      checked: !block.getData().get('checked'),
+    })
+    this.updateEditorState(newEditorState)
   }
 
   handleTab = (event: SyntheticKeyboardEvent): ?boolean => {
+    // debugger
     if (this.adjustBlockDepth(event)) {
       return true
     }
@@ -93,7 +105,7 @@ class CheckableList extends Component<PluginProps> {
           return CHECKABLE_LIST_ITEM
         }
       },
-      // handleTab: this.handleTab
+      onTab: this.handleTab,
     })
   }
 

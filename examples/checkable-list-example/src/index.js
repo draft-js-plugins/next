@@ -4,6 +4,7 @@ import ReactDOM from 'react-dom'
 import { EditorState, convertFromRaw } from 'draft-js'
 import { EditorContainer, Editor } from '@djsp/core'
 import CheckableList from './CheckableList'
+import 'draft-js/dist/Draft.css'
 import 'draft-js-checkable-list-item/lib/CheckableListItem.css'
 import './styles.css'
 
