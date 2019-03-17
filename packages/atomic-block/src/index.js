@@ -84,6 +84,8 @@ class AtomicBlockPlugin extends Component<Props> {
       blockRendererFn: this.blockRendererFn,
       handleReturn: this.handleReturn,
       handleKeyCommand: this.handleKeyCommand,
+      onUpArrow: this.onUpArrow,
+      onDownArrow: this.onDownArrow,
     })
   }
 
@@ -203,6 +205,48 @@ class AtomicBlockPlugin extends Component<Props> {
     }
 
     return constants.NOT_HANDLED
+  }
+
+  onDownArrow = event => {
+    const { editorState, setEditorState } = this.props
+    // TODO edgecase: if one block is selected and the user wants to expand the selection using the shift key
+
+    // Don't manually overwrite in case the shift key is used to avoid breaking
+    // native behaviour that works anyway.
+    if (event.shiftKey) {
+      return constants.NOT_HANDLED
+    }
+
+    // Covering the case to select the after block with arrow down
+    const selectionKey = editorState.getSelection().getAnchorKey()
+    const afterBlock = editorState
+      .getCurrentContent()
+      .getBlockAfter(selectionKey)
+    if (afterBlock) {
+      setSelection(editorState, setEditorState, afterBlock)
+      return constants.HANDLED
+    }
+  }
+
+  onUpArrow = event => {
+    const { editorState, setEditorState } = this.props
+    // TODO edgecase: if one block is selected and the user wants to expand the selection using the shift key
+
+    // Don't manually overwrite in case the shift key is used to avoid breaking
+    // native behaviour that works anyway.
+    if (event.shiftKey) {
+      return constants.NOT_HANDLED
+    }
+
+    // Covering the case to select the before block with arrow up
+    const selectionKey = editorState.getSelection().getAnchorKey()
+    const beforeBlock = editorState
+      .getCurrentContent()
+      .getBlockBefore(selectionKey)
+    if (beforeBlock) {
+      setSelection(editorState, setEditorState, beforeBlock)
+      return constants.HANDLED
+    }
   }
 
   blockRendererFn = block => {
