@@ -1,8 +1,10 @@
 import React, { Component } from 'react'
 import ReactDOM from 'react-dom'
 
-import { EditorState, convertFromRaw } from 'draft-js'
+import { EditorState, convertFromRaw, Modifier } from 'draft-js'
 import { EditorContainer, Editor } from '@djsp/core'
+import { ResizableBox } from 'react-resizable'
+import 'react-resizable/css/styles.css'
 import AtomicBlock from '@djsp/atomic-block'
 import './styles.css'
 
@@ -28,6 +30,8 @@ const rawContent = {
       data: {
         title: 'Kitten',
         src: 'https://placekitten.com/200/200',
+        width: 200,
+        height: 200,
       },
       mutability: 'IMMUTABLE',
       type: 'IMAGE',
@@ -42,6 +46,38 @@ class App extends Component {
 
   onChange = editorState => this.setState({ editorState })
 
+  updateSizeData = (
+    resizeData,
+    editorState,
+    setEditorState,
+    block,
+    selection
+  ) => {
+    const contentstate = editorState.getCurrentContent()
+
+    const entityKey = block.getEntityAt(0)
+    let newContentState = contentstate.mergeEntityData(entityKey, {
+      width: resizeData.width,
+      height: resizeData.height,
+    })
+
+    // Add the created entity to the current selection, for a new contentState
+    newContentState = Modifier.applyEntity(
+      newContentState,
+      selection,
+      entityKey
+    )
+
+    // Add newContentState to the existing editorState, for a new editorState
+    const newEditorState = EditorState.push(
+      editorState,
+      newContentState,
+      'apply-entity'
+    )
+
+    setEditorState(newEditorState)
+  }
+
   render() {
     return (
       <div>
@@ -51,12 +87,41 @@ class App extends Component {
           <Editor />
 
           <AtomicBlock type="image">
-            {({ isFocused, blockProps: { src, title } }) => {
-              return (
+            {({
+              isFocused,
+              selection,
+              block,
+              blockProps: {
+                src,
+                title,
+                width = 200,
+                height = 200,
+                editorState,
+                setEditorState,
+              },
+            }) => {
+              return isFocused ? (
+                <ResizableBox
+                  width={width}
+                  height={height}
+                  lockAspectRatio={true}
+                  onResize={(event, data) =>
+                    this.updateSizeData(
+                      data.size,
+                      editorState,
+                      setEditorState,
+                      block,
+                      selection
+                    )
+                  }>
+                  <img className="imgBLock focused" src={src} alt={title} />
+                </ResizableBox>
+              ) : (
                 <img
-                  className={isFocused ? 'focused' : ''}
+                  className="imgBLock"
                   src={src}
                   alt={title}
+                  style={{ width, height }}
                 />
               )
             }}
