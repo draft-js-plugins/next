@@ -23,7 +23,7 @@ const _BlockChildren = ({
     readOnly !== true
 
   if (readOnly) {
-    return props.children({ ...props, isFocused })
+    return children({ ...props, isFocused })
   } else {
     return (
       <AtomicBlock onClick={() => focusBlock(blockKey)}>
