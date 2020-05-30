@@ -3,9 +3,9 @@
 ![Build Status](https://travis-ci.org/draft-js-plugins/next.svg?branch=master)
 ![codeship](https://img.shields.io/codeship/julian-little-haze-31/master.svg)
 
-# DISCLAIMER: This project isn't usable yet
+# DISCLAIMER: This project is unmaintained.
 
-This is at an experimental stage, mostly this project isn't complete and ready for use. If you're interested in participating, whether it's code or just debate, please open an issue, hit me up on twitter or the [draft js slack channel](https://draftjs.herokuapp.com/)
+Unfortunately the next version of draft js plugins has become unmaintained. If you are interested in maintaining draft js plugins please [follow the steps outlined here](https://github.com/draft-js-plugins/draft-js-plugins/issues/1407#issuecomment-629710454).
 
 # Examples
 
