@@ -4,5 +4,6 @@
     "examples/*",
     "packages/*"
   ],
+  "nohoist": ["**/draft-js"],
   "version": "0.1.5"
 }

@@ -14,7 +14,7 @@
     "build": "./node_modules/.bin/rollup -c",
     "start": "./node_modules/.bin/rollup -c -w",
     "prepare": "yarn run build",
-    "flow": "./node_modules/.bin/flow",
+    "flow": "./node_modules/.bin/flow check",
     "predeploy": "cd example && yarn install && yarn run build",
     "deploy": "gh-pages -d example/build"
   },

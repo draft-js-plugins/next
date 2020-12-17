@@ -13,7 +13,7 @@
     "test:watch": "react-scripts test --env=jsdom",
     "build": "./node_modules/.bin/rollup -c",
     "start": "./node_modules/.bin/rollup -c -w",
-    "flow": "./node_modules/.bin/flow",
+    "flow": "./node_modules/.bin/flow check",
     "prepare": "yarn run build",
     "predeploy": "cd example && yarn install && yarn run build",
     "deploy": "gh-pages -d example/build"

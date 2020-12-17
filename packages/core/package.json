@@ -14,7 +14,7 @@
     "build": "rimraf dist && ./node_modules/.bin/rollup -c && yarn build:flow",
     "build:flow": "./node_modules/.bin/flow-copy-source -v -i '**/__tests__/**' src dist",
     "start": "./node_modules/.bin/rollup -c -w",
-    "flow": "./node_modules/.bin/flow",
+    "flow": "./node_modules/.bin/flow check",
     "prepare": "yarn run build && yarn build:flow",
     "predeploy": "cd example && yarn install && yarn run build",
     "deploy": "gh-pages -d example/build"
