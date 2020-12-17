@@ -4,12 +4,15 @@
     "@babel/plugin-proposal-class-properties": "^7.1.0",
     "@babel/plugin-proposal-export-default-from": "^7.0.0",
     "@babel/plugin-proposal-export-namespace-from": "^7.0.0",
+    "@babel/polyfill": "^7.2.5",
     "@babel/preset-env": "^7.1.0",
     "@babel/preset-flow": "^7.0.0",
     "@babel/preset-react": "^7.0.0",
     "@babel/register": "^7.0.0",
     "babel-eslint": "^10.0.1",
     "chai": "^4.2.0",
+    "chai-dom": "^1.8.1",
+    "draft-js": "^0.10.5",
     "eslint": "^5.6.1",
     "eslint-config-prettier": "^3.1.0",
     "eslint-config-react": "^1.1.7",
@@ -26,15 +29,21 @@
     "flow-bin": "^0.80.0",
     "flow-typed": "^2.5.1",
     "husky": "^1.1.1",
+    "ignore-styles": "^5.0.1",
+    "jsdom": "^13.1.0",
+    "jsdom-global": "^3.0.2",
     "lerna": "^3.4.1",
     "mocha": "^5.2.0",
     "prettier": "^1.14.3",
     "prettier-eslint": "^8.8.2",
     "prettier-eslint-cli": "^4.7.1",
+    "react": "^16.8.2",
+    "react-dom": "^16.8.2",
+    "react-testing-library": "^5.4.4",
     "to-fast-properties": "^2.0.0"
   },
   "scripts": {
-    "test": "./node_modules/.bin/mocha --require @babel/register \"./packages/*/!(node_modules)/**/__test__/*.js\"",
+    "test": "./node_modules/.bin/mocha --require @babel/register --require jsdom-global/register --require testHelper.js \"./{packages,examples}/*/!(node_modules)/**/__tests__/*.js\"",
     "eslint-check": "eslint --print-config . | eslint-config-prettier-check",
     "docs": "./node_modules/.bin/gitbook serve",
     "storybook": "start-storybook -p 9001 -c .storybook",
@@ -55,5 +64,9 @@
       "pre-push": "npm run lint && npm test && npm run flow"
     }
   },
-  "dependencies": {}
+  "dependencies": {},
+  "peerDependencies": {
+    "react": "^16.7.0",
+    "react-dom": "^16.7.0"
+  }
 }

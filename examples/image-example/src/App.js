@@ -1,6 +1,4 @@
 import React, { Component } from 'react'
-import ReactDOM from 'react-dom'
-
 import { EditorState, convertFromRaw } from 'draft-js'
 import { EditorContainer, Editor } from '@djsp/core'
 import AtomicBlock from '@djsp/atomic-block'
@@ -35,7 +33,7 @@ const rawContent = {
   },
 }
 
-class App extends Component {
+export default class App extends Component {
   state = {
     editorState: EditorState.createWithContent(convertFromRaw(rawContent)),
   }
@@ -66,5 +64,3 @@ class App extends Component {
     )
   }
 }
-
-ReactDOM.render(<App />, document.getElementById('root'))
