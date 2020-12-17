@@ -23,7 +23,7 @@ const _BlockChildren = ({
     readOnly !== true
 
   if (readOnly) {
-    return props.children({ ...props, isFocused })
+    return children({ ...props, isFocused })
   } else {
     return (
       <AtomicBlock onClick={() => focusBlock(blockKey)}>
@@ -43,7 +43,7 @@ type Props = PluginProps & {
 // Set selection of editor to next/previous block
 const setSelection = (
   editorState: EditorState,
-  setEditorState: EditorState,
+  setEditorState: () => void,
   newActiveBlock: ContentBlock
 ): void => {
   // TODO verify that always a key-0-0 exists
@@ -84,6 +84,8 @@ class AtomicBlockPlugin extends Component<Props> {
       blockRendererFn: this.blockRendererFn,
       handleReturn: this.handleReturn,
       handleKeyCommand: this.handleKeyCommand,
+      onUpArrow: this.onUpArrow,
+      onDownArrow: this.onDownArrow,
     })
   }
 
@@ -91,7 +93,7 @@ class AtomicBlockPlugin extends Component<Props> {
     this.unregister()
   }
 
-  handleKeyCommand = (command, editorState) => {
+  handleKeyCommand = (command: string, editorState: EditorState) => {
     const { setEditorState } = this.props
 
     let contentState = editorState.getCurrentContent()
@@ -189,7 +191,10 @@ class AtomicBlockPlugin extends Component<Props> {
     )
   }
 
-  handleReturn = (event, editorState) => {
+  handleReturn = (
+    event: SyntheticKeyboardEvent<>,
+    editorState: EditorState
+  ) => {
     const { setEditorState } = this.props
     const selection = editorState.getSelection()
 
@@ -205,7 +210,49 @@ class AtomicBlockPlugin extends Component<Props> {
     return constants.NOT_HANDLED
   }
 
-  blockRendererFn = block => {
+  onDownArrow = (event: SyntheticKeyboardEvent<>) => {
+    const { editorState, setEditorState } = this.props
+    // TODO edgecase: if one block is selected and the user wants to expand the selection using the shift key
+
+    // Don't manually overwrite in case the shift key is used to avoid breaking
+    // native behaviour that works anyway.
+    if (event.shiftKey) {
+      return constants.NOT_HANDLED
+    }
+
+    // Covering the case to select the after block with arrow down
+    const selectionKey = editorState.getSelection().getAnchorKey()
+    const afterBlock = editorState
+      .getCurrentContent()
+      .getBlockAfter(selectionKey)
+    if (afterBlock) {
+      setSelection(editorState, setEditorState, afterBlock)
+      return constants.HANDLED
+    }
+  }
+
+  onUpArrow = (event: SyntheticKeyboardEvent<>) => {
+    const { editorState, setEditorState } = this.props
+    // TODO edgecase: if one block is selected and the user wants to expand the selection using the shift key
+
+    // Don't manually overwrite in case the shift key is used to avoid breaking
+    // native behaviour that works anyway.
+    if (event.shiftKey) {
+      return constants.NOT_HANDLED
+    }
+
+    // Covering the case to select the before block with arrow up
+    const selectionKey = editorState.getSelection().getAnchorKey()
+    const beforeBlock = editorState
+      .getCurrentContent()
+      .getBlockBefore(selectionKey)
+    if (beforeBlock) {
+      setSelection(editorState, setEditorState, beforeBlock)
+      return constants.HANDLED
+    }
+  }
+
+  blockRendererFn = (block: ContentBlock) => {
     const { type, children, editorState } = this.props
 
     const content = editorState.getCurrentContent()
